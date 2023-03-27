@@ -1,16 +1,49 @@
-﻿.velg-livssituasjon-side {
-    margin: 0 10%;
+﻿h3 {
+    font-size: 1.5em;
+}
+
+.velg-livssituasjon-side {
+    margin: 5% 10%;
 }
 
 .livssituasjonene {
-    display: flex;
-}
-
-.livssituasjon-kolonne {
-    flex: 50%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1em 2em;
+    margin-top: 5%;
 }
 
 
 .livssituasjon-boks {
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    padding: 2% 4%;
+    margin-bottom: 2em;
+    height: 9em;
+}
+
+.livssituasjon-boks img {
+    width: 12%;
+}
+
+.livssituasjon-boks:hover {
+    background-color: #F5AA74;
+}
+
+.livssituasjon-boks-overskrift {
+    display: flex;
+    align-items: center;
+}
+
+.livssituasjon-boks-overskrift h3 {
+    padding-left: 2%;
+}
+
+.livssituasjon-boks p {
+    padding-top: 1%;
+}
+
+@media (max-width: 767px) {
+    .livssituasjonene {
+        grid-template-columns: 100%;
+    }
 }
