@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class Home extends Component {
     static displayName = Home.name;
@@ -6,7 +7,10 @@ export class Home extends Component {
     render() {
         return (
             <div>
+          
                 <h1>Hello, world!</h1>
+                <p> to font page-test </p>
+                <Link to = {"./frontPage"}> frontpage </Link>
             </div>
         );
     }

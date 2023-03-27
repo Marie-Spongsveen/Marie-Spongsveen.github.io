@@ -1,6 +1,7 @@
 import { Counter } from "./components/Counter";
 import { Home } from "./components/Home";
 import { MinVei } from "./components/MinVei";
+import { FrontPage } from "./components/frontPage";
 
 const AppRoutes = [
   {
@@ -14,7 +15,11 @@ const AppRoutes = [
   {
     path: '/min-vei',
     element: <MinVei />
-  }
+    },
+    {
+        path: '/frontPage',
+        element: <FrontPage/>
+    }
 ];
 
 export default AppRoutes;
