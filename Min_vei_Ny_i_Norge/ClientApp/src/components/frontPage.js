@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export class FrontPage extends Component {
     static displayName = FrontPage.name;
@@ -6,10 +7,15 @@ export class FrontPage extends Component {
     render() {
         return (
             <div>
-                <h1>Hello, world!</h1>
+                <div style {styles.container, {
+                    flexDirection: 'column',
+                }}
+                <h1>My digital Guide</h1>
+                <div style
                 <p> dette er test</p>
-             <div style= {{border: '2px red', borderRadious:'30px'}}>
+                <div style={{ border: '2px solid red' }}>
                 </div>
+            </div>
              </div>
         );
     }
