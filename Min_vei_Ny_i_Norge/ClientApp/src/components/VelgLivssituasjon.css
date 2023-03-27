@@ -1,0 +1,16 @@
+﻿.velg-livssituasjon-side {
+    margin: 0 10%;
+}
+
+.livssituasjonene {
+    display: flex;
+}
+
+.livssituasjon-kolonne {
+    flex: 50%;
+}
+
+
+.livssituasjon-boks {
+    box-shadow: 0 0 0 1px black;
+}
