@@ -1,0 +1,21 @@
+﻿.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9F9F9;
+}
+
+.headline{
+    border-style: dashed;
+    border-color: red;
+}
+
+.infotekst{
+    padding-top: 5%;
+    border-block-color:green;
+    border: dotted;
+    max-width: 50%;
+    background-color: white;
+}
