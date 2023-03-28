@@ -1,4 +1,20 @@
-﻿a.navbar-brand {
+﻿.meny {
+    background-color: #115073;
+    margin: 0 0 0 0;
+    padding: 1.5% 0;
+}
+
+.logoTekst {
+    color: #F5AA74;
+}
+
+.underBoks {
+    height: 0.4em;
+    background-color: #326987;
+}
+
+
+a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -7,6 +23,7 @@
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -15,4 +32,13 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.changeLanguage p {
+    color: #FFF;
+}
+
+.changeLanguage:hover p {
+    color: lightgrey;
+    cursor: pointer;
 }
