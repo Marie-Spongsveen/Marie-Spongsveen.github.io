@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Min_vei_Ny_i_Norge.Models;
 using System.Diagnostics;
 
@@ -73,44 +74,33 @@ namespace Min_vei_Ny_i_Norge.Data
                     {
                         Id = 1,
                         SvarAlternativId = 1,
-                        SvarAlternativTekst = "Austria"
+                        SvarAlternativTekst = "EU/EEA land"
                     },
                     new SvarAlternativ
                     {
                         Id = 1,
                         SvarAlternativId = 2,
-                        SvarAlternativTekst = "Belgia"
+                        SvarAlternativTekst = "Ikke EU/EEA land"
                     },
-                    new SvarAlternativ
-                    {
-                        Id = 1,
-                        SvarAlternativId = 3,
-                        SvarAlternativTekst = "Bulgaria"
-                    },
+                   
                     new SvarAlternativ
                     {
                         Id = 2,
-                        SvarAlternativId = 196,
-                        SvarAlternativTekst = "Croatia"
+                        SvarAlternativId = 3,
+                        SvarAlternativTekst = "EU/EEA land"
                     },
                      new SvarAlternativ
                      {
                          Id = 2,
-                         SvarAlternativId = 197,
-                         SvarAlternativTekst = "Denmark"
+                         SvarAlternativId = 4,
+                         SvarAlternativTekst = "Ikke EU/EEA land"
                      },
 
-                      new SvarAlternativ
-                      {
-                          Id = 2,
-                          SvarAlternativId = 198,
-                          SvarAlternativTekst = "Estonia"
-                      },
 
                     new SvarAlternativ
                     {
                         Id = 3,
-                        SvarAlternativId = 391,
+                        SvarAlternativId = 5,
                         SvarAlternativTekst = "Work or jobseeking"
 
                     },
@@ -118,14 +108,14 @@ namespace Min_vei_Ny_i_Norge.Data
                     new SvarAlternativ
                     {
                         Id = 3,
-                        SvarAlternativId = 392,
+                        SvarAlternativId = 6,
                         SvarAlternativTekst = "Education"
 
                     },
                     new SvarAlternativ
                     {
                         Id = 3,
-                        SvarAlternativId = 393,
+                        SvarAlternativId = 7,
                         SvarAlternativTekst = "Seeking asylum or refuge"
 
                     },
@@ -133,21 +123,21 @@ namespace Min_vei_Ny_i_Norge.Data
                     new SvarAlternativ
                     {
                         Id = 3,
-                        SvarAlternativId = 394,
+                        SvarAlternativId = 8,
                         SvarAlternativTekst = "Family immigration or moving to family living in Norway"
 
                     },
                     new SvarAlternativ
                     {
                         Id = 3,
-                        SvarAlternativId = 395,
+                        SvarAlternativId = 9,
                         SvarAlternativTekst = "Stay at your own expense"
 
                     },
                     new SvarAlternativ
                     {
                         Id = 4,
-                        SvarAlternativId = 396,
+                        SvarAlternativId = 10,
                         SvarAlternativTekst = "I  have received a job offer in Norway"
 
                     },
@@ -155,7 +145,7 @@ namespace Min_vei_Ny_i_Norge.Data
                      new SvarAlternativ
                      {
                          Id = 4,
-                         SvarAlternativId = 397,
+                         SvarAlternativId = 11,
                          SvarAlternativTekst = "I am being sent by my employer to Norway to work"
 
                      },
@@ -163,7 +153,7 @@ namespace Min_vei_Ny_i_Norge.Data
                       new SvarAlternativ
                       {
                           Id = 4,
-                          SvarAlternativId = 398,
+                          SvarAlternativId = 12,
                           SvarAlternativTekst = "I am coming as a job seeker"
 
                       },
@@ -171,41 +161,81 @@ namespace Min_vei_Ny_i_Norge.Data
                     new SvarAlternativ
                     {
                         Id = 5,
-                        SvarAlternativId = 399,
+                        SvarAlternativId = 13,
                         SvarAlternativTekst = "01.01.2023"
                     },
                     new SvarAlternativ
                     {
                         Id = 6,
-                        SvarAlternativId = 400,
+                        SvarAlternativId = 14,
                         SvarAlternativTekst = "Less than 3 months"
                     },
 
                       new SvarAlternativ
                       {
                           Id = 6,
-                          SvarAlternativId = 401,
+                          SvarAlternativId = 15,
                           SvarAlternativTekst = "More than 3 months"
                       },
                     new SvarAlternativ
                     {
                         Id = 7,
-                        SvarAlternativId = 402,
+                        SvarAlternativId = 16,
                         SvarAlternativTekst = "Yes, I have applied, or my employer has applied on my behalf"
 
                     },
                      new SvarAlternativ
                      {
                          Id = 7,
-                         SvarAlternativId = 403,
+                         SvarAlternativId = 17,
                          SvarAlternativTekst = "No"
 
                      });
             });
 
+
+            modelBuilder.Entity<AnonymBruker>(entity =>
+            {
+                entity.HasKey(e => e.AnonymBrukerId);
+                entity.Property(e => e.AnonymBrukerId);
+              
+            });
+
+            modelBuilder.Entity<Resultat>(entity =>
+            {
+                entity.HasKey(e => e.ResultatId);
+                entity.Property(e => e.ResultatId);
+                entity.Property(e => e.ResultatTekst);
+
+                entity.HasData(
+                     new Resultat
+                     {
+                         ResultatId = 1,
+                         ResultatTekst = "Report a move to Norway"
+                     },
+                     new Resultat
+                     {
+                         ResultatId = 2,
+                         ResultatTekst = "Register as an EU/EEA citizen with the police"
+                     },
+                     new Resultat
+                     {
+                         ResultatId = 3,
+                         ResultatTekst = "National identification number"
+                     },
+                     new Resultat
+                     {
+                         ResultatId = 4,
+                         ResultatTekst = "Tax deduction card"
+                     });
+
+            });
+
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
         public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
+        public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
+        public DbSet<Resultat> Resultat => Set<Resultat>();
     }
 
 

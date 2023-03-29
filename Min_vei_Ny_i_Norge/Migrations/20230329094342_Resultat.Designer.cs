@@ -10,14 +10,62 @@ using Min_vei_Ny_i_Norge.Data;
 namespace Min_vei_Ny_i_Norge.Migrations
 {
     [DbContext(typeof(MinVeiContekts))]
-    [Migration("20230327132615_SvarAlternativer")]
-    partial class SvarAlternativer
+    [Migration("20230329094342_Resultat")]
+    partial class Resultat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
+
+            modelBuilder.Entity("Min_vei_Ny_i_Norge.Models.AnonymBruker", b =>
+                {
+                    b.Property<int>("AnonymBrukerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("AnonymBrukerId");
+
+                    b.ToTable("AnonymBruker");
+                });
+
+            modelBuilder.Entity("Min_vei_Ny_i_Norge.Models.Resultat", b =>
+                {
+                    b.Property<int>("ResultatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ResultatTekst")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ResultatId");
+
+                    b.ToTable("Resultat");
+
+                    b.HasData(
+                        new
+                        {
+                            ResultatId = 1,
+                            ResultatTekst = "Report a move to Norway"
+                        },
+                        new
+                        {
+                            ResultatId = 2,
+                            ResultatTekst = "Register as an EU/EEA citizen with the police"
+                        },
+                        new
+                        {
+                            ResultatId = 3,
+                            ResultatTekst = "National identification number"
+                        },
+                        new
+                        {
+                            ResultatId = 4,
+                            ResultatTekst = "Tax deduction card"
+                        });
+                });
 
             modelBuilder.Entity("Min_vei_Ny_i_Norge.Models.Sporsmal", b =>
                 {
@@ -95,113 +143,101 @@ namespace Min_vei_Ny_i_Norge.Migrations
                         {
                             SvarAlternativId = 1,
                             Id = 1,
-                            SvarAlternativTekst = "Austria"
+                            SvarAlternativTekst = "EU/EEA land"
                         },
                         new
                         {
                             SvarAlternativId = 2,
                             Id = 1,
-                            SvarAlternativTekst = "Belgia"
+                            SvarAlternativTekst = "Ikke EU/EEA land"
                         },
                         new
                         {
                             SvarAlternativId = 3,
-                            Id = 1,
-                            SvarAlternativTekst = "Bulgaria"
-                        },
-                        new
-                        {
-                            SvarAlternativId = 196,
                             Id = 2,
-                            SvarAlternativTekst = "Croatia"
+                            SvarAlternativTekst = "EU/EEA land"
                         },
                         new
                         {
-                            SvarAlternativId = 197,
+                            SvarAlternativId = 4,
                             Id = 2,
-                            SvarAlternativTekst = "Denmark"
+                            SvarAlternativTekst = "Ikke EU/EEA land"
                         },
                         new
                         {
-                            SvarAlternativId = 198,
-                            Id = 2,
-                            SvarAlternativTekst = "Estonia"
-                        },
-                        new
-                        {
-                            SvarAlternativId = 391,
+                            SvarAlternativId = 5,
                             Id = 3,
                             SvarAlternativTekst = "Work or jobseeking"
                         },
                         new
                         {
-                            SvarAlternativId = 392,
+                            SvarAlternativId = 6,
                             Id = 3,
                             SvarAlternativTekst = "Education"
                         },
                         new
                         {
-                            SvarAlternativId = 393,
+                            SvarAlternativId = 7,
                             Id = 3,
                             SvarAlternativTekst = "Seeking asylum or refuge"
                         },
                         new
                         {
-                            SvarAlternativId = 394,
+                            SvarAlternativId = 8,
                             Id = 3,
                             SvarAlternativTekst = "Family immigration or moving to family living in Norway"
                         },
                         new
                         {
-                            SvarAlternativId = 395,
+                            SvarAlternativId = 9,
                             Id = 3,
                             SvarAlternativTekst = "Stay at your own expense"
                         },
                         new
                         {
-                            SvarAlternativId = 396,
+                            SvarAlternativId = 10,
                             Id = 4,
                             SvarAlternativTekst = "I  have received a job offer in Norway"
                         },
                         new
                         {
-                            SvarAlternativId = 397,
+                            SvarAlternativId = 11,
                             Id = 4,
                             SvarAlternativTekst = "I am being sent by my employer to Norway to work"
                         },
                         new
                         {
-                            SvarAlternativId = 398,
+                            SvarAlternativId = 12,
                             Id = 4,
                             SvarAlternativTekst = "I am coming as a job seeker"
                         },
                         new
                         {
-                            SvarAlternativId = 399,
+                            SvarAlternativId = 13,
                             Id = 5,
                             SvarAlternativTekst = "01.01.2023"
                         },
                         new
                         {
-                            SvarAlternativId = 400,
+                            SvarAlternativId = 14,
                             Id = 6,
                             SvarAlternativTekst = "Less than 3 months"
                         },
                         new
                         {
-                            SvarAlternativId = 401,
+                            SvarAlternativId = 15,
                             Id = 6,
                             SvarAlternativTekst = "More than 3 months"
                         },
                         new
                         {
-                            SvarAlternativId = 402,
+                            SvarAlternativId = 16,
                             Id = 7,
                             SvarAlternativTekst = "Yes, I have applied, or my employer has applied on my behalf"
                         },
                         new
                         {
-                            SvarAlternativId = 403,
+                            SvarAlternativId = 17,
                             Id = 7,
                             SvarAlternativTekst = "No"
                         });
