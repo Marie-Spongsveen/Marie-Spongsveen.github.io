@@ -1,4 +1,4 @@
-﻿/* https://stackoverflow.com/questions/53388003/select-country-dropdown-in-html-page */
+﻿/* https://www.html-code-generator.com/html/drop-down/country-names */
 
 export const LandNedtrekksliste = () => {
     return (
