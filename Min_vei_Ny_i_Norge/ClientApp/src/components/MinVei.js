@@ -1,19 +1,20 @@
 import { useState } from "react";
 import axios from 'axios';
 import { LandNedtrekksliste } from './landNedtrekksliste'
+import { ResultatKnapp } from './Knapper/ResultatKnapp'
 
 export const MinVei = () => {
-    let [id, setId] = useState(1);
-    const [sporsmal, setSporsmal] = useState();
     const [landSynlighet, setLandSynlighet] = useState(false)
+    const [resultatKnappSynlighet, setResultatKnappSynlighet] = useState(false)
+    let counter = 0;
+    let id;
+    var q = 'a'
 
-    const visibility = landSynlighet ? 'visible' : 'hidden';
-
-
-    const hentSporsmal = () => {
-        axios.get('hent/' + id)
+    const hentSporsmal = (c) => {
+        axios.get('hent/' + c)
             .then((response: AxiosResponse<any>) => {
-                setSporsmal(response.data)
+                q += response.data
+                console.log(q)
             });
     }
 
@@ -25,62 +26,56 @@ export const MinVei = () => {
             });
     }
 
-    const neste = () => {
-        id = parseInt(id);
-        setId(i => Math.min(i + 1, 9));
-        console.log(id)
-
-        axios.get('hent/' + id)
-            .then((response: AxiosResponse<any>) => {
-                setSporsmal(response.data)
-            });
-
-        fikseSvar();
+    const neste = async () => {
+        counter++;
+        console.log(counter)
+        hentSporsmal(counter)
+        q += '!!!!!!!!!!'
+        console.log(q)
     }
 
     const forrige = () => {
-        id = parseInt(id);
-        setId(i => Math.max(i - 1, 1));
-        console.log(id)
-
-        axios.get('hent/' + id)
-            .then((response: AxiosResponse<any>) => {
-                setSporsmal(response.data)
-            });
-
-        fikseSvar();
-    }
+        counter--;
+        console.log(counter)
+        hentSporsmal(counter)
+ }
 
     const fikseSvar = () => {
+        console.log(id);
         switch (id) {
             case 1:
                 setLandSynlighet(true);
-            case 2: console.log('id2')
+                setResultatKnappSynlighet(false)
+                break
+            case 2:
+                setResultatKnappSynlighet(true)
+                setLandSynlighet(false);
+                break
+                
         }
-
-
-        // eller bedre å bruke en switch??
-        if (id == 1) {
-        }
-        else setLandSynlighet(false);
         //hentSvaralternativer;
 
         console.log(landSynlighet)
-
-        
     }
-    
+
+    const a = () => {
+        return q;
+    }
 
     return (
         <div>
-            <button onClick={hentSporsmal}>Hent spørsmål {id}</button>
-            <div>Spørsmålet: {sporsmal}</div>
+            <p>{id}</p>
+            <div>Spørsmålet: {a}</div>  
 
             <button onClick={forrige}>Back</button>
             <button onClick={neste}>Next</button>
 
-            <div style={{ visibility }}>
+            <div style={{ visibility: landSynlighet ? 'visible' : 'hidden' }}>
                 <LandNedtrekksliste />
+            </div>
+
+            <div style={{ visibility: resultatKnappSynlighet ? 'visible' : 'hidden' }}>
+                <ResultatKnapp />
             </div>
         </div>
     );
