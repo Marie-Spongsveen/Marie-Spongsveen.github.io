@@ -1,5 +1,5 @@
 import { Home } from "./components/Home";
-import { Innlogging } from "./components/Innlogging";
+import  Innlogging  from "./components/Innlogging";
 
 const AppRoutes = [
   {
@@ -7,8 +7,8 @@ const AppRoutes = [
     element: <Home />
     },
     {
-        path: 'Innlogging',
-        element: < Innlogging />
+        path: '/innlogging',
+        element: <Innlogging/>
     }
 ];
 

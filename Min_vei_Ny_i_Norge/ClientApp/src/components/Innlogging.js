@@ -1,11 +1,12 @@
 ﻿import React, { Component, useState } from 'react';
 import { StyleSheet, View } from 'react';
+import ReactDOM from "react-dom";
 
 
 //basert på https://contactmentor.com/login-form-react-js-code/?utm_content=cmp-true
 
 //export class Innlogging extends Component {
- //   static displayName = Innlogging.name;
+//   static displayName = Innlogging.name;
 
 function Innlogging() {
     //react states
@@ -50,50 +51,49 @@ function Innlogging() {
             // Username not found
             setErrorMessages({ name: "uname", message: errors.uname });
         }
-    };
+    }
 
-    //Generate JSX code for error message
-    const renderErrorMessage = (name) =>
-        name == errorMessages.name && (
-            <div className='error'>{errorMessages.message}</div>
-        );
+        //Generate JSX code for error message
+        const renderErrorMessage = (name) =>
+            name === errorMessages.name && (
+                <div className='error'>{errorMessages.message}</div>
+            );
 
 
-    const renderForm = (
-        <div className='form'>
-            <form onSumbit={handleSumbit}>
-                <div className='input-container'>
-                <label> usename</label>
-                <input type='text' name='uname' required></input>
-                {this.renderErrorMessage("uname")}
+        const renderForm = (
+            <div className='form'>
+                <form onSubmit={handleSubmit}>
+                    <div className='input-container'>
+                        <label> usename</label>
+                        <input type='text' name='uname' required></input>
+                        {renderErrorMessage("uname")}
+                    </div>
+                    <div className='input-container'>
+                        <label> passpwrd</label>
+                        <input type='password' name='pass' required></input>
+                        {renderErrorMessage('pass')}
+                    </div>
+                    <div className='button-container'>
+                        <input type='submit'></input>
+                    </div>
+                </form>
+            </div>
+        )
+
+        //const handleSumbit = (event) => {
+            //prevents page relead
+        //    event.preventDefault();
+        //};
+
+        return (
+            <div className="Innlogging" >
+                <div className="login-form">
+                    <div className="title">Sign In</div>
+                    {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
                 </div>
-            <div className='input-container'>
-                <label> passpwrd</label>
-                <input type='password' name='pass' required></input>
-                {this.renderErrorMessage('pass')}
             </div>
-            <div className='button-container'>
-                <input type='submit'></input>
-            </div>
-            </form>
-           </div>
-    )
-
-const handleSumbit = (event) => {
-    //prevents page relead
-    event.preventDefault();
-};
-
-    return(
-        <div className= "Innlogging" >
-            <div className="login-form">
-                <div className="title">Sign In</div>
-                {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-            </div>
-    </div>
-  );
-}
-
+        );
+    }
 
 
 export default Innlogging;
