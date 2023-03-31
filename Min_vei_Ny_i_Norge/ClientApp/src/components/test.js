@@ -10,16 +10,20 @@ import { ResultatKnapp } from './Knapper/ResultatKnapp'
 export const Test = () => {
     const [sporsmal, setSporsmal] = useState('')
     const [idTeller, setIdTeller] = useState(1)
+
+    const htmlArray = []
+
     useEffect(() => {
         hentSporsmal();
         //hentSvaralternativ()
+        
         switch (idTeller) {
             case 1:
+                htmlArray.push(<LandNedtrekksliste />)
                 setLandSynlighet(true);
                 break
             case 2:
-                a.push('heu')
-                a.push('<LandNedtrekksliste />')
+                htmlArray.push(<ResultatKnapp />)
                 setLandSynlighet(false);
                 break
             case 6:
@@ -29,11 +33,9 @@ export const Test = () => {
                 setResultatKnappSynlighet(true)
                 break
         }
+        console.log(htmlArray)
+        
     }, [idTeller])
-
-
-    let a = ['teast', '<LandNedtrekksliste />', '<b>s</b>'];
-    const landliste = '<LandNedtrekksliste />'
 
     const hentSporsmal = () => {
         axios.get('hent/' + idTeller)
@@ -70,18 +72,11 @@ export const Test = () => {
     }
 
 
-    const testen = [
-        a.map((x) => (
-            <div key={String(x)}>
-                {x}
-            </div>
-        ))
-    ]
-
-
-
     return (
         <div>
+            {htmlArray}
+
+
             <button onClick={begynn}>Begynn veiledered</button>
             <p>Spørsmålet: {sporsmal}</p>
 
@@ -103,36 +98,6 @@ export const Test = () => {
                 <NesteKnapp />
             </div>
 
-            {a.map((x) => (
-                <div key={String(x) }>{x }</div>
-            ))}
-
-            <div>{testen }</div>
-            <div dangerouslySetInnerHTML={{
-                __html: ReactDOMServer.renderToStaticMarkup(testen)
-            }} />
-
-            <Avatar />
         </div>
     );
-
-    /*
-    <div style={{ visibility: landSynlighet ? 'visible' : 'hidden' }}>
-                <LandNedtrekksliste />
-            </div>
-
-
-            <div style={{ visibility: resultatKnappSynlighet ? 'visible' : 'hidden' }}>
-                <ResultatKnapp />
-            </div>
-            */
-}
-
-function Avatar() {
-    if (landSynlighet = 'visible') {
-        return (
-            <LandNedtrekksliste />
-        );
-    }
-   
 }
