@@ -1,0 +1,13 @@
+﻿.Infobox {
+    display:flex;
+    border: solid;
+    border-color: red;
+    background-color: red;
+    color: black;
+    flex-direction:column;
+    width: 50%;
+}
+
+.text-test{
+    color:black;
+}
