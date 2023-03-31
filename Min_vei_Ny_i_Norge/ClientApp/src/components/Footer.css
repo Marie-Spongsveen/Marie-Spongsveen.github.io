@@ -44,6 +44,10 @@
 }
 
 @media (max-width: 767px) {
+    .footer-description {
+        max-width: 40%;
+    }
+
     .footer-info {
         flex-direction: column;
     }
