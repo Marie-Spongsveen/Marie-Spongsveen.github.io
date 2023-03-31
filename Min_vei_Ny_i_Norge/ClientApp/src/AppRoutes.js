@@ -8,13 +8,13 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/counter',
-    element: <Counter />
-  },
-  {
     path: '/min-vei',
     element: <MinVei />
-  }
+    },
+    {
+        path: '/velg-livssituasjon',
+        element: <VelgLivssituasjon />
+    }
 ];
 
 export default AppRoutes;
