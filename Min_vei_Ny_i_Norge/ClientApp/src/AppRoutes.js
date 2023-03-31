@@ -1,5 +1,6 @@
 import { Home } from "./components/Home";
 import { MinVei } from "./components/MinVei";
+import { FrontPage } from "./components/frontPage";
 import { VelgLivssituasjon } from "./components/VelgLivssituasjon";
 
 const AppRoutes = [
@@ -8,6 +9,13 @@ const AppRoutes = [
     element: <Home />
   },
   {
+    path: '/min-vei',
+    element: <MinVei />
+    },
+    {
+        path: '/frontPage',
+        element: <FrontPage/>
+    }
     path: '/min-vei',
     element: <MinVei />
     },
