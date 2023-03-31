@@ -15,7 +15,8 @@ const AppRoutes = [
     {
         path: '/frontPage',
         element: <FrontPage/>
-    }
+    },
+    {
     path: '/min-vei',
     element: <MinVei />
     },

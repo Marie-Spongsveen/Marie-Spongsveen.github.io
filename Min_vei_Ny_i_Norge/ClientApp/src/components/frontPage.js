@@ -9,7 +9,7 @@ export class FrontPage extends Component {
     render() {
         return (
 <div>
-            <div class="container">
+            <div class="boks">
                 <div class= 'headline'>
                     <h1>My digital Guide</h1>
                 </div>
