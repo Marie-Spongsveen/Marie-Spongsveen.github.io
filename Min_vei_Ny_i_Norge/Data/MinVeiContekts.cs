@@ -210,7 +210,15 @@ namespace Min_vei_Ny_i_Norge.Data
 
             });
 
-            
+            modelBuilder.Entity<ValgteSvar>(entity =>
+            {
+                entity.HasKey(e => e.ValgteSvarId);
+                entity.Property(e => e.ValgteSvarId);
+                entity.Property(e => e.AnonymBrukerId);
+                entity.Property(e => e.SvarAlternativId);
+
+            });
+
 
 
         }
@@ -218,7 +226,8 @@ namespace Min_vei_Ny_i_Norge.Data
         public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
         public DbSet<Resultat> Resultat => Set<Resultat>();
         public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
-        
+        public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();
+
 
     }
 

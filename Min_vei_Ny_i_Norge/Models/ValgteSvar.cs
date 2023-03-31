@@ -11,9 +11,10 @@ namespace Min_vei_Ny_i_Norge.Models
         // Foreign key 
         public virtual int AnonymBrukerId { get; set; }
         [ForeignKey("AnonymBrukerId")]
+        public virtual AnonymBruker AnonymBruker { get; set; }
         public virtual int SvarAlternativId { get; set; }
         [ForeignKey("SvarAlternativId")]
-        public virtual AnonymBruker AnonymBruker{ get; set; }
+      
         public virtual SvarAlternativ SvarAlternativer { get; set; }
     }
 }
