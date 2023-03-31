@@ -205,37 +205,21 @@ namespace Min_vei_Ny_i_Norge.Data
             {
                 entity.HasKey(e => e.ResultatId);
                 entity.Property(e => e.ResultatId);
+                entity.Property(e => e.ResultatNavn);
                 entity.Property(e => e.ResultatTekst);
 
-                entity.HasData(
-                     new Resultat
-                     {
-                         ResultatId = 1,
-                         ResultatTekst = "Report a move to Norway"
-                     },
-                     new Resultat
-                     {
-                         ResultatId = 2,
-                         ResultatTekst = "Register as an EU/EEA citizen with the police"
-                     },
-                     new Resultat
-                     {
-                         ResultatId = 3,
-                         ResultatTekst = "National identification number"
-                     },
-                     new Resultat
-                     {
-                         ResultatId = 4,
-                         ResultatTekst = "Tax deduction card"
-                     });
-
             });
+
+            
+
 
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
         public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
-        public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
         public DbSet<Resultat> Resultat => Set<Resultat>();
+        public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
+        
+
     }
 
 

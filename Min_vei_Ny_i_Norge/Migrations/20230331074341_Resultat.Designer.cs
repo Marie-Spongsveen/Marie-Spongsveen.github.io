@@ -10,7 +10,7 @@ using Min_vei_Ny_i_Norge.Data;
 namespace Min_vei_Ny_i_Norge.Migrations
 {
     [DbContext(typeof(MinVeiContekts))]
-    [Migration("20230329094342_Resultat")]
+    [Migration("20230331074341_Resultat")]
     partial class Resultat
     {
         /// <inheritdoc />
@@ -36,6 +36,10 @@ namespace Min_vei_Ny_i_Norge.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ResultatNavn")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ResultatTekst")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -43,28 +47,6 @@ namespace Min_vei_Ny_i_Norge.Migrations
                     b.HasKey("ResultatId");
 
                     b.ToTable("Resultat");
-
-                    b.HasData(
-                        new
-                        {
-                            ResultatId = 1,
-                            ResultatTekst = "Report a move to Norway"
-                        },
-                        new
-                        {
-                            ResultatId = 2,
-                            ResultatTekst = "Register as an EU/EEA citizen with the police"
-                        },
-                        new
-                        {
-                            ResultatId = 3,
-                            ResultatTekst = "National identification number"
-                        },
-                        new
-                        {
-                            ResultatId = 4,
-                            ResultatTekst = "Tax deduction card"
-                        });
                 });
 
             modelBuilder.Entity("Min_vei_Ny_i_Norge.Models.Sporsmal", b =>
