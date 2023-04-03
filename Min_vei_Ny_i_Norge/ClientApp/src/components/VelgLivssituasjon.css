@@ -1,9 +1,5 @@
-﻿h3 {
-    font-size: 1.5em;
-}
-
-.velg-livssituasjon-side {
-    margin: 5% 10%;
+﻿.velg-livssituasjon-side {
+    max-width: 80%
 }
 
 .livssituasjonene {
@@ -16,7 +12,7 @@
 
 .livssituasjon-boks {
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
-    padding: 2% 4%;
+    padding: 5% 4%;
     margin-bottom: 2em;
     height: 100%;
 }
