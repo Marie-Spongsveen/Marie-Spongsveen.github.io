@@ -219,6 +219,202 @@ namespace Min_vei_Ny_i_Norge.Data
 
             });
 
+            modelBuilder.Entity<EU_EEA_Land>(entity =>
+            {
+                entity.HasKey(e => e.LandId);
+                entity.Property(e => e.LandId);
+                entity.Property(e => e.Land);
+
+                entity.HasData(
+
+                    new EU_EEA_Land { 
+                        LandId = 1,
+                        Land = "Austria"
+                    },
+
+                    new EU_EEA_Land { 
+                        LandId = 2,
+                        Land = "Belgium"
+                    },
+
+                    new EU_EEA_Land
+                    {
+                        LandId = 3,
+                        Land = "Bulgaria"
+                    },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 4,
+                         Land = "Croatia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 5,
+                         Land = "Cyprus"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 6,
+                         Land = "Czech Republic"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 7,
+                         Land = "Denmark"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 8,
+                         Land = "Estonia"
+                     },
+
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 9,
+                         Land = "Finland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 10,
+                         Land = "France"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 11,
+                         Land = "Germany"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 12,
+                         Land = "Greece"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 13,
+                         Land = "Hungary"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 14,
+                         Land = "Ireland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 15,
+                         Land = "Italy"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 16,
+                         Land = "Latvia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 17,
+                         Land = "Lithuania"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 18,
+                         Land = "Luxembourg"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 19,
+                         Land = "Malta"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 20,
+                         Land = "Netherland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 21,
+                         Land = "Poland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 22,
+                         Land = "Portugal"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 23,
+                         Land = "Romania"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 24,
+                         Land = "Slovakia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 25,
+                         Land = "Slovenia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 26,
+                         Land = "Spain"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 27,
+                         Land = "Sweden"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 28,
+                         Land = "Iceland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 29,
+                         Land = "Liechtenstein"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 30,
+                         Land = "Norway"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 31,
+                         Land = "Switzerland"
+                     }
+
+                    );
+            });
+
 
 
         }
@@ -227,6 +423,8 @@ namespace Min_vei_Ny_i_Norge.Data
         public DbSet<Resultat> Resultat => Set<Resultat>();
         public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
         public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();
+
+        public DbSet<EU_EEA_Land> EU_EEA_Land => Set<EU_EEA_Land>();
 
 
     }
