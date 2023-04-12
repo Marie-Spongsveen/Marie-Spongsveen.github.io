@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 export const MinVei = () => {
-    const [id, setId] = useState();
+    const [id, setId] = useState(1);
     const [sporsmal, setSporsmal] = useState();
     const [svar, setSvar] = useState();
+
+    useEffect(() => {
+        hentSporsmal()
+    }, [id])
+
 
     const hentSporsmal = () => {
         axios.get('hent/' + id)
@@ -28,19 +33,48 @@ export const MinVei = () => {
                 </div>
             )
         });
+
+    
+    const neste = () => {
+        if (id < 7) setId(prevId => prevId + 1)
+    }
+
+    const forrige = () => {
+        if (id > 1) setId(prevId => prevId - 1)
+    }
+
+    const [visLand, setVisLand] = useState(false)
+
+    const visLandListe = () => {
+        setVisLand(prev => !prev)
+    }
     
     return (
         <div>
-            <div>
+            {
+                /*
+  <div>
                 <label>Hvilket spørsmål nummer vil du ha?</label>
                 <input
                     type="number"
                     onChange={(event) => setId(event.target.value)}>
                 </input>
             </div>
+            */
+            }
+          
+
+            {
+                //style = { visebility = visLand? "visible": "hidden" }
+            }
+            
+            <button onClick={forrige}>Forrige</button>
+            <button onClick={neste}>Neste</button>
+            
             <button onClick={hentSporsmal}>Hent spørsmål {id}</button>
 
-            <div>Spørsmålet: {sporsmal}</div>
+            <div>Question: {sporsmal}</div>
+
             {svarene}
         </div>
     );
