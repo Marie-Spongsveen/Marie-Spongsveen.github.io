@@ -1,20 +1,20 @@
 ﻿import { Livshendelse } from './Livshendelse'
-import { TilbakeKnapp } from './Knapper/TilbakeKnapp'
+import { Knapp } from './Knapper/TilbakeKnapp'
 
 import './VelgLivssituasjon.css'
 
-import barnIkon from '../Bilder/barn_ikon.png'
-import buisnessIkon from '../Bilder/business_ikon.png'
-import dødArvIkon from '../Bilder/død_arv_ikon.png'
-import frivilligIkon from '../Bilder/frivillig_ikon.png'
-import jobbIkon from '../Bilder/jobb_ikon.png'
-import nyINorgeIkon from '../Bilder/ny_norge_ikon.png'
-import syktBarnIkon from '../Bilder/sykt_barn_ikon.png'
+import barnIkon from '../bilder/barn_ikon.png'
+import buisnessIkon from '../bilder/business_ikon.png'
+import dødArvIkon from '../bilder/død_arv_ikon.png'
+import frivilligIkon from '../bilder/frivillig_ikon.png'
+import jobbIkon from '../bilder/jobb_ikon.png'
+import nyINorgeIkon from '../bilder/ny_norge_ikon.png'
+import syktBarnIkon from '../bilder/sykt_barn_ikon.png'
 
 export const VelgLivssituasjon = () => {
     return (
         <div>
-            <TilbakeKnapp />
+            <Knapp />
 
             <div className="velg-livssituasjon-side">
                 <h1>My Digital Guide</h1>
