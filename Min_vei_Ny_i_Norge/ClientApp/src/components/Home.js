@@ -9,12 +9,6 @@ export class Home extends Component {
         return (
             <div>
                 <h1>Hello, world!</h1>
-                <TilbakeKnapp />
-                <NesteKnapp />
-                <TilbakeGuideKnapp />
-                <LoggInnKnapp />
-                <IkkeLoggInnKnapp />
-                <ResultatKnapp />
             </div>
         );
     }
