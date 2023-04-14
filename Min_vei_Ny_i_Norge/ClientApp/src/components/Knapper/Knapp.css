@@ -23,31 +23,6 @@
     border-color: #F5AA74;
 }
 
-.resultatKnapp {
-    background-color: #C4DFE0;
-    padding: 0.2% 2%;
-    border-style: solid;
-    border-color: #C4DFE0;
-    border-width: medium;
-}
-
-.resultatKnapp:hover {
-    background-color: #F5AA74;
-    border-color: #F5AA74;
-}
-
-.tilbakeGuideKnapp {
-    background-color: #FFF;
-    padding: 0.2% 2%;
-    border-style: solid;
-    border-color: #C4DFE0;
-    border-width: medium;
-}
-
-.tilbakeGuideKnapp:hover {
-    border-color: #F5AA74;
-}
-
 .ikkeLoggInnKnapp {
     background-color: #C4DFE0;
     padding: 1% 2%;

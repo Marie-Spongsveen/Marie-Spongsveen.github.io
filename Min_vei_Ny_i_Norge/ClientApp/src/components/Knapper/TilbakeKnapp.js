@@ -1,9 +1,9 @@
 ﻿import './Knapp.css'
 
-export const TilbakeKnapp = () => {
+export const Knapp = (props) => {
     return (
         <div>
-            <button className="tilbakeKnapp">Back</button>
+            <button onClick={props.handleClick} style={props.handleStyle} className={ props.handleClassName }>{ props.navn }</button>
         </div>
         );
 }
