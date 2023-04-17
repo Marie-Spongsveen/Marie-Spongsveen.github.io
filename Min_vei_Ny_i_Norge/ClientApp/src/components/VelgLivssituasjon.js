@@ -1,5 +1,5 @@
 ﻿import { Livshendelse } from './Livshendelse'
-import { Knapp } from './Knapper/TilbakeKnapp'
+import { Knapp } from './Knapp'
 
 import './VelgLivssituasjon.css'
 

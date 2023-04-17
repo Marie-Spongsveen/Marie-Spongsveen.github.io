@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+
 import { LandNedtrekksliste } from './landNedtrekksliste'
-import { ResultatKnapp } from './Knapper/ResultatKnapp'
-import { Knapp } from './Knapper/TilbakeKnapp'
+import { Knapp } from './Knapp'
 
 export const MinVei = () => {
     const [id, setId] = useState(1);
@@ -15,13 +15,17 @@ export const MinVei = () => {
     const [landlisteSynlighet, setLandlisteSynlighet] = useState(false);
     const [resultKnappSynlighet, setResultatKnappSynlighet] = useState(false);
 
+    // hook som inneholder JSONobjekter med hva brukeren svarer på spørsmålene
+    const [svartData, setSvartData] = useState({});
+
     useEffect(() => {
         hentSporsmal()
+        console.log(svartData)
 
         // sjekker hvilket spørsmål man er på, 
         // og gjør de riktige elemtene synlige/usynlige
         switch (id) {
-            case 1:
+            case 1: 
                 setLandlisteSynlighet(true)
                 setForrigeSynlighet(false)
                 break
@@ -35,6 +39,8 @@ export const MinVei = () => {
                 break
             case 7:
                 setNesteSynlighet(false)
+                // vi vet jo egt ikke at siste spørsmål er spørsåml 7,
+                // med tanke på at spørsmålene skal kunne endres ut i fra hva man svarer
                 setResultatKnappSynlighet(true)
                 break
         }
@@ -55,11 +61,20 @@ export const MinVei = () => {
             });
     }
 
+    const handleChange = (event) => {
+        setSvartData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
     const svarene =
         svaralternativ?.map(data => {
             return (
                 <div key={data.svarAlternativId}>
-                    <input type="radio" value={data.svarAlternativId} name="spørsmål"></input>
+                    <input type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
                     <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
                 </div>
             )
@@ -73,47 +88,45 @@ export const MinVei = () => {
         if (id > 1) setId(prevId => prevId - 1)
     }
 
+    // denne er ikke testet
+    const gaTilResultat = () => {
+        axios.post('svar/', svartData)
+            .then((response: AxiosResponse<any>) => {
+                console.log(response)
+            });
+    }
+
     return (
         <div>
-            {
-                /*
-            <div>
-                <label>Hvilket spørsmål nummer vil du ha?</label>
-                <input
-                    type="number"
-                    onChange={(event) => setId(event.target.value)}>
-                </input>
-            </div>
-            */
-            }
+            <div>Question: { sporsmal }</div>
+            { svarene }
 
-            <div>Question: {sporsmal}</div>
-            {svarene}
-
-            <div style={{ visibility: landlisteSynlighet ? "visible" : "hidden" }}>
-                <LandNedtrekksliste />
-            </div>
+            { landlisteSynlighet && <LandNedtrekksliste /> } 
 
             <div>
-                <Knapp
-                    navn="Tilbake"
-                    handleClick={forrige}
-                    handleStyle={{ visibility: forrigeSynlighet ? "visible" : "hidden" }}
-                    handleClassName="tilbakeKnapp"
-                />
+                { forrigeSynlighet && 
+                    <Knapp
+                        navn="Tilbake"
+                        handleClick={ forrige }
+                        handleClassName="tilbakeKnapp"
+                    />
+                }
 
-                <Knapp
-                    navn="Neste"
-                    handleClick={neste}
-                    handleStyle={{ visibility: nesteSynlighet ? "visible" : "hidden" }}
-                    handleClassName="nesteKnapp"
-                />
+                { nesteSynlighet &&
+                    <Knapp
+                        navn="Neste"
+                        handleClick={ neste }
+                        handleClassName="nesteKnapp"
+                    />
+                }
 
-                <Knapp
-                    navn="Go to my results"
-                    handleStyle={{ visibility: resultKnappSynlighet ? "visible" : "hidden" }}
-                    handleClassName="nesteKnapp"
-                />
+                { resultKnappSynlighet &&
+                    <Knapp
+                        navn="Go to my results"
+                        handleClick={ gaTilResultat }
+                        handleClassName="nesteKnapp"
+                    />
+                }
             </div>
         </div>
     );
