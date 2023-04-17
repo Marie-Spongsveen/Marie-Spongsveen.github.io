@@ -2,7 +2,7 @@
 
 export const LandNedtrekksliste = () => {
     return (
-        <select name="country" class="form-control" id="country">
+        <select name="country" className="form-control" id="country">
             <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Aland Islands">Aland Islands</option>
