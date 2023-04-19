@@ -1,8 +1,10 @@
 ﻿/* https://www.html-code-generator.com/html/drop-down/country-names */
 
+import "./LandNedtrekksliste.css"
+
 export const LandNedtrekksliste = () => {
     return (
-        <select name="country" className="form-control" id="country">
+        <select name="country" className="form-control liste" id="country">
             <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Aland Islands">Aland Islands</option>
