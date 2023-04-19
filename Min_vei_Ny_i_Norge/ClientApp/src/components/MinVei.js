@@ -120,7 +120,7 @@ export const MinVei = () => {
         naviger("/resultat")
     }
 
-    const hei = () => { setAndreLandListe(prev => !prev) }
+    const check = () => { setAndreLandListe(prev => !prev) }
 
     return (
         <div className="minVei">
@@ -138,7 +138,7 @@ export const MinVei = () => {
                     <div>
                         <LandNedtrekksliste />
                         <label>
-                            <input type="checkbox" value={andreLandListe}></input>
+                            <input type="checkbox" onClick={ check }></input>
                             I have multiple citizenships
                         </label>
                     </div>
