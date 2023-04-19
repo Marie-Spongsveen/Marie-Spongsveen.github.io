@@ -19,9 +19,10 @@ export const MinVei = () => {
 
     const [landlisteSynlighet, setLandlisteSynlighet] = useState(true);
     const [resultKnappSynlighet, setResultatKnappSynlighet] = useState(false);
-    const [tilbakeLivshendelseKnappSynlighet, setTilbakeLivshendelseKnappSynlighet] = useState(true)
 
     const [andreLandListe, setAndreLandListe] = useState(false)
+
+    const [svar, setSvar] = useState()
 
     // hook som inneholder JSONobjekter med hva brukeren svarer på spørsmålene
     const [svarData, setSvarData] = useState({});
@@ -30,24 +31,20 @@ export const MinVei = () => {
         hentSporsmal()
 
         console.log(svarData)
-        for (let i in svarData) {
-            console.log(i + "    " + svarData[i])
-        }
-
+        
         // sjekker hvilket spørsmål man er på, 
         // og gjør de riktige elemtene synlige/usynlige
         switch (id) {
             case 1: 
                 setLandlisteSynlighet(true)
-                setTilbakeLivshendelseKnappSynlighet(true)
                 setForrigeSynlighet(true)
                 break
             case 2:
                 setForrigeSynlighet(true)
-                setTilbakeLivshendelseKnappSynlighet(false)
                 break
             case 3:
                 setLandlisteSynlighet(false)
+                setAndreLandListe(false)
                 break
             case 6:
                 setNesteSynlighet(true)
@@ -63,14 +60,14 @@ export const MinVei = () => {
     }, [id])
 
     const hentSporsmal = () => {
-        // henter spørsmålet med id fra hook
-        // henter også svaralternativene til spørsmålet
+        // Henter spørsmålet med rikitg ID fra hook
 
         axios.get('hent/' + id)
             .then((response: AxiosResponse<any>) => {
                 setSporsmal(response.data)
             });
 
+        // Henter svaralternativene til samme spørsmålsID
         axios.get('hentSvaralternativ/' + id)
             .then((response: AxiosResponse<any>) => {
                 setSvaralternativ(response.data)
@@ -78,14 +75,16 @@ export const MinVei = () => {
     }
 
     const handleChange = (event) => {
+        const { name, value } = event.target
         setSvarData(prevFormData => {
             return {
                 ...prevFormData,
-                [event.target.name]: event.target.value
+                [name]: value
             }
         })
     }
 
+    /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
     const svarene =
         svaralternativ?.map(data => {
             return (
