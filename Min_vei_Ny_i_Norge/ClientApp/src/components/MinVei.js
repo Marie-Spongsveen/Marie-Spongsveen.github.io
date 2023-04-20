@@ -26,12 +26,13 @@ export const MinVei = () => {
     const [svarDataJSX, setSvarDataJSX] = useState([])
 
     useEffect(() => {
+        // Henter spørsmål til id-en
         hentSporsmal()
-        formaterBesvart()
 
-        console.log(svarData)
+        // Formaterer og viser de besvarte spørsmålene
+        formaterBesvart()
         
-        // sjekker hvilket spørsmål man er på, 
+        // Sjekker hvilket spørsmål man er på, 
         // og gjør de riktige elemtene synlige/usynlige
         switch (id) {
             case 1: 
@@ -60,7 +61,6 @@ export const MinVei = () => {
 
     const hentSporsmal = () => {
         // Henter spørsmålet med rikitg ID fra hook
-
         axios.get('hent/' + id)
             .then((response: AxiosResponse<any>) => {
                 setSporsmal(response.data)
@@ -76,8 +76,12 @@ export const MinVei = () => {
     const formaterBesvart = () => {
         const array = []
         for (let i in svarData) {
-            // formaterer svar daten til JSX og legger det til i array
-            let string = <div className="besvarBoks"><p>{i} {svarData[i]}</p> <p>edit</p></div>
+            // formaterer svardaten til JSX og legger det til i array
+            let string =
+                <div className="besvarBoks">
+                    <p>{i} {svarData[i]}</p>
+                    <p onClick={{ apneEdit }}>edit</p>
+                </div>
             array.push(string)
         }
         setSvarDataJSX(array)
@@ -85,6 +89,7 @@ export const MinVei = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target
+        console.log("Value: ", value)
 
         setSvarData(prevFormData => {
             return {
@@ -92,6 +97,12 @@ export const MinVei = () => {
                 [name]: value
             }
         })
+    }
+
+    const apneEdit = () => {
+        // må finne id til spørsmålet
+        // så hente spørsmålet
+        // så vise spørsmålet
     }
 
     /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */  
@@ -118,10 +129,10 @@ export const MinVei = () => {
         else if (id == 1) naviger("/velg-livssituasjon")
     }
 
-
     // denne er ikke testet
     const gaTilResultat = () => {
         /* Sender brukerens svar til bakcken og navigerer brukeren til resultatsiden */
+        // event.preventDefault() hva gjør denne? brude jeg ha den?
         axios.post('svar/', svarData)
             .then((response: AxiosResponse<any>) => {
                 console.log(response)
@@ -144,7 +155,11 @@ export const MinVei = () => {
             { /* Viser nedtrekkslisten med land kun om hooken landlisteSynlighet er true */
                 landlisteSynlighet &&
                     <div>
-                        <LandNedtrekksliste />
+                        <LandNedtrekksliste
+                            onChange={handleChange}
+                            name="land1"
+                            value="land1"
+                        />
                         <label>
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
                             I have multiple citizenships
@@ -156,7 +171,11 @@ export const MinVei = () => {
                 andreLandListe &&
                     <div>
                         <h3>What is your second citizenship?</h3>
-                        <LandNedtrekksliste />
+                        <LandNedtrekksliste
+                            onChange={handleChange}
+                            name="land2"
+                            value="land2"
+                        />
                     </div>
             }
 
