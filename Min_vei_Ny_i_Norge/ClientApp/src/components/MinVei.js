@@ -74,13 +74,14 @@ export const MinVei = () => {
     }
 
     const formaterBesvart = () => {
+        // hele metoden kan legges inn i handle change
         const array = []
         for (let i in svarData) {
             // formaterer svardaten til JSX og legger det til i array
             let string =
                 <div className="besvarBoks">
                     <p>{i} {svarData[i]}</p>
-                    <p onClick={{ apneEdit }}>edit</p>
+                    <p onClick={ apneEdit }>edit</p>
                 </div>
             array.push(string)
         }
@@ -97,12 +98,14 @@ export const MinVei = () => {
                 [name]: value
             }
         })
+        // setSvarDataJSX
     }
 
     const apneEdit = () => {
         // må finne id til spørsmålet
         // så hente spørsmålet
         // så vise spørsmålet
+        console.log("edit")
     }
 
     /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */  
@@ -140,6 +143,8 @@ export const MinVei = () => {
         naviger("/resultat")
     }
 
+    const test = (event) => { console.log(event.target.value) }
+
     return (
         <div className="minVei">
             <h1>My Digital Guide</h1>
@@ -156,9 +161,9 @@ export const MinVei = () => {
                 landlisteSynlighet &&
                     <div>
                         <LandNedtrekksliste
-                            onChange={handleChange}
-                            name="land1"
-                            value="land1"
+                            handleChange={handleChange}
+                            handleName="What is your citizenship?"
+                            handleValue="land1"
                         />
                         <label>
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
@@ -172,9 +177,9 @@ export const MinVei = () => {
                     <div>
                         <h3>What is your second citizenship?</h3>
                         <LandNedtrekksliste
-                            onChange={handleChange}
-                            name="land2"
-                            value="land2"
+                            handleChange={handleChange}
+                            handleName="What is your second citizenship?"
+                            handleValue="land2"
                         />
                     </div>
             }
