@@ -14,21 +14,20 @@ export const MinVei = () => {
     const [sporsmal, setSporsmal] = useState();
     const [svaralternativ, setSvaralternativ] = useState();
 
+    // Synlighet for elmenter som ikke alltid skal være synlige
     const [forrigeSynlighet, setForrigeSynlighet] = useState(false);
     const [nesteSynlighet, setNesteSynlighet] = useState(true);
-
     const [landlisteSynlighet, setLandlisteSynlighet] = useState(true);
-    const [resultKnappSynlighet, setResultatKnappSynlighet] = useState(false);
-
     const [andreLandListe, setAndreLandListe] = useState(false)
-
-    const [svar, setSvar] = useState()
+    const [resultKnappSynlighet, setResultatKnappSynlighet] = useState(false);
 
     // hook som inneholder JSONobjekter med hva brukeren svarer på spørsmålene
     const [svarData, setSvarData] = useState({});
+    const [svarDataJSX, setSvarDataJSX] = useState([])
 
     useEffect(() => {
         hentSporsmal()
+        formaterBesvart()
 
         console.log(svarData)
         
@@ -74,8 +73,19 @@ export const MinVei = () => {
             });
     }
 
+    const formaterBesvart = () => {
+        const array = []
+        for (let i in svarData) {
+            // formaterer svar daten til JSX og legger det til i array
+            let string = <div className="besvarBoks"><p>{i} {svarData[i]}</p> <p>edit</p></div>
+            array.push(string)
+        }
+        setSvarDataJSX(array)
+    }
+
     const handleChange = (event) => {
         const { name, value } = event.target
+
         setSvarData(prevFormData => {
             return {
                 ...prevFormData,
@@ -84,7 +94,7 @@ export const MinVei = () => {
         })
     }
 
-    /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
+    /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */  
     const svarene =
         svaralternativ?.map(data => {
             return (
@@ -119,14 +129,13 @@ export const MinVei = () => {
         naviger("/resultat")
     }
 
-    const check = () => { setAndreLandListe(prev => !prev) }
-
     return (
         <div className="minVei">
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
 
-            { /* Må legge inn det brukeren har svart her */ }
+            { /* Brukerens svar */}
+            { svarDataJSX }
 
             { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
             <h3>{ sporsmal }</h3>
@@ -137,7 +146,7 @@ export const MinVei = () => {
                     <div>
                         <LandNedtrekksliste />
                         <label>
-                            <input type="checkbox" onClick={ check }></input>
+                            <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
                             I have multiple citizenships
                         </label>
                     </div>

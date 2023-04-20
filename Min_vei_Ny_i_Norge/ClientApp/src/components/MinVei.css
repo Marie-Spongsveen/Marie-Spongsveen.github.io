@@ -1,6 +1,6 @@
 ﻿.minVei {
     margin: 0;
-    width: 80%;
+    width: 60%;
 }
 
 
@@ -9,4 +9,18 @@
     display: flex;
     width: 60%;
     justify-content: space-between;
+}
+
+.besvarBoks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C4DFE0;
+    padding: 1% 2%;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    height: auto;
+}
+
+.besvarBoks p {
+    margin: 0;
 }
