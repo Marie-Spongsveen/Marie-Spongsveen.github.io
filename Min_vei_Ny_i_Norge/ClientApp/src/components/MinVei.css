@@ -1,8 +1,7 @@
 ﻿.minVei {
     margin: 0;
-    width: 60%;
+    width: 70%;
 }
-
 
 .knapper {
     padding-top: 2em;
@@ -11,7 +10,11 @@
     justify-content: space-between;
 }
 
-.besvarBoks {
+.besvar-container {
+    margin: 5% 0;
+}
+
+.besvar-boks {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,8 +22,49 @@
     padding: 1% 2%;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     height: auto;
+    margin: 2% 0;
 }
 
-.besvarBoks p {
+.besvar-boks p {
     margin: 0;
+}
+
+.edit {
+    border: none;
+    background-color: transparent;
+}
+
+
+
+.radioknapp-rad {
+    display: flex;
+    align-items: center;
+    padding: 0.5% 0;
+}
+
+.radioknapp-rad label {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    width: 1em;
+    height: 1em;
+    margin-right: 2%;
+    accent-color: #0067C5;
+    cursor: pointer;
+}
+
+.sjekkboks {
+    display: flex;
+    align-items: center;
+    padding: 0.5% 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 1em;
+    height: 1em;
+    margin-right: 2%;
+    accent-color: #0067C5;
+    cursor: pointer;
 }

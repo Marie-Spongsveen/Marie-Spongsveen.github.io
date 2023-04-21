@@ -79,9 +79,9 @@ export const MinVei = () => {
         for (let i in svarData) {
             // formaterer svardaten til JSX og legger det til i array
             let string =
-                <div className="besvarBoks">
+                <div className="besvar-boks">
                     <p>{i} {svarData[i]}</p>
-                    <p onClick={ apneEdit }>edit</p>
+                    <button onClick={ apneEdit } className="edit">edit</button>
                 </div>
             array.push(string)
         }
@@ -102,9 +102,10 @@ export const MinVei = () => {
     }
 
     const apneEdit = () => {
-        // må finne id til spørsmålet
+        // må finne id til spørsmålet som skal edites
         // så hente spørsmålet
-        // så vise spørsmålet
+        // så vise spørsmålet med svaralternativer
+        
         console.log("edit")
     }
 
@@ -112,8 +113,8 @@ export const MinVei = () => {
     const svarene =
         svaralternativ?.map(data => {
             return (
-                <div key={data.svarAlternativId}>
-                    <input type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                <div key={data.svarAlternativId} className="radioknapp-rad">
+                    <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
                     <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
                 </div>
             )
@@ -143,15 +144,15 @@ export const MinVei = () => {
         naviger("/resultat")
     }
 
-    const test = (event) => { console.log(event.target.value) }
-
     return (
         <div className="minVei">
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
 
             { /* Brukerens svar */}
-            { svarDataJSX }
+            <div className="besvar-container">
+                { svarDataJSX }
+            </div>
 
             { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
             <h3>{ sporsmal }</h3>
@@ -164,7 +165,7 @@ export const MinVei = () => {
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
                         />
-                        <label>
+                        <label className="sjekkboks">
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
                             I have multiple citizenships
                         </label>
@@ -178,7 +179,6 @@ export const MinVei = () => {
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your second citizenship?"
-                            handleValue="land2"
                         />
                     </div>
             }
