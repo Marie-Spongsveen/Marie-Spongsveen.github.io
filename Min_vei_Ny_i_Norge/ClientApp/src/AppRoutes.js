@@ -2,6 +2,8 @@ import { Home } from "./components/Home";
 import { MinVei } from "./components/MinVei";
 import { MeldeFlytte } from "./components/MeldeFlytte";
 import { Resultater } from "./components/Resultater";
+import { VelgLivssituasjon } from "./components/VelgLivssituasjon";
+
 
 const AppRoutes = [
     {
@@ -20,8 +22,11 @@ const AppRoutes = [
     {
         path: '/resulater',
         element: <Resultater />
+    },
+    {
+        path: '/velg-livssituasjon',
+        element: <VelgLivssituasjon />
     }
 ];
-
 
 export default AppRoutes;
