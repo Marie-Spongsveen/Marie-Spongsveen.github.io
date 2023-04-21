@@ -36,6 +36,7 @@
 
 .livssituasjon-boks p {
     padding-top: 1%;
+    margin: auto;
 }
 
 @media (max-width: 767px) {
