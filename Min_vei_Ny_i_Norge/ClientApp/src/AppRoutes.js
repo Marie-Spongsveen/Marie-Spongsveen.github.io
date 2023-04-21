@@ -20,7 +20,7 @@ const AppRoutes = [
         element: <MeldeFlytte />
     },
     {
-        path: '/resulater',
+        path: '/resultater',
         element: <Resultater />
     },
     {
