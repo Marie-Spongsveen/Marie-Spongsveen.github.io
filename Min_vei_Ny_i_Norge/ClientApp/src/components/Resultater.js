@@ -201,7 +201,17 @@ const IdentitetsNummer = () => {
 
             />
         </div>
-    )}
+    )
+}
+
+//Vet ikke im dette er rett måte å få bilder til å bli brukt flere ganger
+const navLogo = () => {
+    return (
+        <div>
+            < img src="navLogo.png"/>
+        </div>
+    )
+}
 
 //dynamisk komponent
 const Skattekort = () => {
