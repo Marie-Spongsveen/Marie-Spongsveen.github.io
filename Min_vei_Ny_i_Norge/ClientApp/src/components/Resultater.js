@@ -3,7 +3,7 @@
 import React from 'react';
 
 //bygger resultatsiden ved hjelp av komponentene under denne
-export default const Resultater = () => {
+export const Resultater = () => {
     return (
         <div>
             <TilbakeKnapp />
@@ -136,7 +136,7 @@ const VidereFremover = () => {
 }
 
 //dynamisk komponent
-function MeldeFlytte = () => {
+const MeldeFlytte = () => {
     return (
         <div>
 
@@ -158,10 +158,11 @@ function MeldeFlytte = () => {
 
         />
         </div>
-}
+    )}
+
 
 //dynamisk komponent
-function RegHosPolitiet = () => {
+const RegHosPolitiet = () => {
     return (
         <div>
 
@@ -181,10 +182,10 @@ function RegHosPolitiet = () => {
 
             />
         </div>
-}
+    )}
 
 //dynamisk komponent
-function IdentitetsNummer = () => {
+const IdentitetsNummer = () => {
     return (
         <div>
 
@@ -200,10 +201,10 @@ function IdentitetsNummer = () => {
 
             />
         </div>
-}
+    )}
 
 //dynamisk komponent
-function Skattekort = () => {
+const Skattekort = () => {
     return (
         <div>
 
@@ -225,5 +226,5 @@ function Skattekort = () => {
 
             />
         </div>
-}
+    )}
 

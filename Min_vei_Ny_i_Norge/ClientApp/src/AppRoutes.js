@@ -1,6 +1,7 @@
 import { Home } from "./components/Home";
 import { MinVei } from "./components/MinVei";
 import { MeldeFlytte } from "./components/MeldeFlytte";
+import { Resultater } from "./components/Resultater";
 
 const AppRoutes = [
     {
@@ -15,6 +16,10 @@ const AppRoutes = [
     {
         path: '/meldeFytte',
         element: <MeldeFlytte />
+    },
+    {
+        path: '/resulater',
+        element: <Resultater />
     }
 ];
 
