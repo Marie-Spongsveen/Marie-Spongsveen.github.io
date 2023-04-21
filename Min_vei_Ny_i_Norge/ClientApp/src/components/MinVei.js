@@ -163,7 +163,6 @@ export const MinVei = () => {
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
-                            handleValue="land1"
                         />
                         <label>
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
