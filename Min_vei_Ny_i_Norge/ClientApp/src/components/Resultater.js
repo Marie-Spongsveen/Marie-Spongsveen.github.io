@@ -1,7 +1,7 @@
-﻿
+﻿import './Resultater.css'
 import './Knapp.css'
 
-import React from 'react';
+
 
 import navLogo from '../bilder/navLogo.png'
 import arbeidstilsynetLogo from '../bilder/arbeidstilsynetLogo.png'
@@ -13,7 +13,7 @@ import skatteetatenLogo from '../bilder/skatteetatenLogo.svg'
 import politietLogo from '../bilder/politietLogo.jpg'
 import tollLogo from '../bilder/tollLogo.jpg'
 
-//funksjon for knappen "Back to My Guide"
+//knappen "Back to my guide"
 const TilbakeKnapp = (props) => {
     return (
         <div>
@@ -29,19 +29,25 @@ const TilbakeKnapp = (props) => {
 }
 
 
-//bygger selve layouten av resultatene ved hjelp av komponentene under denne
+//bygger selve layouten av resultatene ved hjelp av komponentene nedenfor
 export const Resultater = () => {
     return (
         <div>
             <TilbakeKnapp
-                tekst="Back to My Guide"
+                tekst="Back to my guide"
                 handleClassName="tilbakeKnapp"
             />
 
-            <div className="mine-plikter-del">
+            <div className="resultater-h1">
                 <h1>My Results</h1>
-                <h2>My Duties</h2>
+            </div>
 
+            <div className="resultater-h2">
+                <h2>My Duties</h2>
+            </div>
+
+            <div className="mine-plikter-del">
+                
                 <MeldeFlytte />
 
                 <RegHosPolitiet />
@@ -116,7 +122,10 @@ const MineRettigheter = () => {
     return (
         
         <div className="mine-rettigheter-del">
-            <h2>My Benefits</h2>
+
+            <div className="resultater-h2">
+                <h2>My Benefits</h2>
+            </div>
 
             <div className="mine-rettigheter">
                 <Rettigheter
@@ -150,7 +159,11 @@ const NyttigInformasjon = () => {
     return (
 
         <div className="informasjon-relevant-del">
-            <h2>Information we think may be relevant for you</h2>
+
+            <div className="resultater-h2">
+                <h2>Information we think may be relevant for you</h2>
+            </div>
+            
 
             <div className="informasjon-relevant">
                 <Informasjon
@@ -184,7 +197,11 @@ const VidereFremover = () => {
     return (
 
         <div className="videre-fremover-del">
-            <h2>The years ahead</h2>
+
+            <div className="resultater-h2">
+                <h2>The years ahead</h2>
+            </div>
+            
 
             <div className="videre-fremover">
                 <Fremover
@@ -216,7 +233,9 @@ const Flytte = (props) => {
                 <h3>{props.overskrift}</h3>
                 <img src={props.ikon}></img>
             </div>
-            <p>{props.hvorfor}</p>
+            <div className="hvorfor-boks">
+                <p>{props.hvorfor}</p>
+            </div>
             <p>{props.tekst}</p>
         </div>
     );
@@ -256,7 +275,9 @@ const RegPoliti = (props) => {
                 <h3>{props.overskrift}</h3>
                 <img src={props.ikon}></img>
             </div>
-            <p>{props.hvorfor}</p>
+            <div className="hvorfor-boks">
+                <p>{props.hvorfor}</p>
+            </div>
             <p>{props.tekst}</p>
         </div>
     );
@@ -294,7 +315,9 @@ const IdNummer = (props) => {
                 <h3>{props.overskrift}</h3>
                 <img src={props.ikon}></img>
             </div>
-            <p>{props.hvorfor}</p>
+            <div className="hvorfor-boks">
+                <p>{props.hvorfor}</p>
+            </div>
             <p>{props.tekst}</p>
         </div>
     );
@@ -339,7 +362,9 @@ const Skatt = (props) => {
                 <h3>{props.overskrift}</h3>
                 <img src={props.ikon}></img>
             </div>
-            <p>{props.hvorfor}</p>
+            <div className="hvorfor-boks">
+                <p>{props.hvorfor}</p>
+            </div>
             <p>{props.tekst}</p>
         </div>
     );

@@ -1,0 +1,78 @@
+﻿body {
+
+}
+
+.resultater-h1 {
+    margin-bottom: 2%;
+    margin-top: 1%
+}
+
+.resultater-h2 {
+    margin-bottom: 2%;
+    margin-top: 1%
+}
+
+
+/*boksen med alle pliktene*/
+.mine-plikter-del {
+    
+    background-color: #C4DFE0;
+}
+
+
+
+/*boksen med alle rettighetene*/
+.mine-rettigheter-del {
+}
+
+/*for komponentene*/
+.mine-rettigheter {
+}
+
+
+/*boksen med all informasjonen*/
+.informasjon-relevant-del {
+}
+
+/*komponentene*/
+.informasjon-relevant {
+}
+
+
+/*boksen med all informasjon om tiden fremover*/
+.videre-fremover-del {
+}
+
+/*komponentene*/
+.videre-fremover {
+}
+
+
+.resultat-boks {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+    padding: 5% 4%;
+    margin-bottom: 2em;
+    height: 100%;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+}
+
+.resultat-boks-overskrift {
+    display: flex;
+    align-items: center;
+}
+
+
+.resultat-boks img {
+    max-width: 10%;
+    float: right;
+}
+
+
+.hvorfor-boks {
+    color: #0067C5;
+}
