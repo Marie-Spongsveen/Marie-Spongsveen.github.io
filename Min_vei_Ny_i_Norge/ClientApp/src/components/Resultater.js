@@ -1,12 +1,42 @@
-﻿//bør vurdere om komponentene skal splittes ut i flere filer i en ny mappe??
+﻿
+import './Knapp.css'
 
 import React from 'react';
 
-//bygger resultatsiden ved hjelp av komponentene under denne
+import navLogo from '../bilder/navLogo.png'
+import arbeidstilsynetLogo from '../bilder/arbeidstilsynetLogo.png'
+import udiLogo from '../bilder/udiLogo.svg'
+import norgeskart from '../bilder/norgeskart.png'
+import statensVegvesenLogo from '../bilder/statensVegvesenLogo.webp'
+import riksVåpen from '../bilder/riksVåpen.png'
+import skatteetatenLogo from '../bilder/skatteetatenLogo.svg'
+import politietLogo from '../bilder/politietLogo.jpg'
+import tollLogo from '../bilder/tollLogo.jpg'
+
+//funksjon for knappen "Back to My Guide"
+const TilbakeKnapp = (props) => {
+    return (
+        <div>
+            <button
+                onClick={props.handleClick}
+                style={props.handleStyle}
+                className={props.handleClassName}
+            >
+                {props.tekst}
+            </button>
+        </div>
+    );
+}
+
+
+//bygger selve layouten av resultatene ved hjelp av komponentene under denne
 export const Resultater = () => {
     return (
         <div>
-            <TilbakeKnapp />
+            <TilbakeKnapp
+                tekst="Back to My Guide"
+                handleClassName="tilbakeKnapp"
+            />
 
             <div className="mine-plikter-del">
                 <h1>My Results</h1>
@@ -16,7 +46,7 @@ export const Resultater = () => {
 
                 <RegHosPolitiet />
 
-                <Identitetsnummer />
+                <IdentitetsNummer />
 
                 <Skattekort />
 
@@ -37,6 +67,49 @@ export const Resultater = () => {
         </div>
     );
 }
+
+//må endres slik at komponenter med mer enn ett ikon og/eller flere lenker vises riktig
+//lenker må åpnes i nytt vindu/fane
+
+const Rettigheter = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.tekst}</p>
+            <p>{props.lenke}</p>
+        </div>
+    );
+}
+
+const Informasjon = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.tekst}</p>
+            <p>{props.lenke}</p>
+        </div>
+    );
+}
+
+const Fremover = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.tekst}</p>
+            <p>{props.lenke}</p>
+        </div>
+    );
+}
+
 
 //statisk del for "My benefits"
 const MineRettigheter = () => {
@@ -135,6 +208,20 @@ const VidereFremover = () => {
     )
 }
 
+//må få inn egen className på "hvorfor"-props
+const Flytte = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.hvorfor}</p>
+            <p>{props.tekst}</p>
+        </div>
+    );
+}
+
 //dynamisk komponent
 const MeldeFlytte = () => {
     return (
@@ -161,6 +248,20 @@ const MeldeFlytte = () => {
     )}
 
 
+//må få inn egen className på "hvorfor"-props
+const RegPoliti = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.hvorfor}</p>
+            <p>{props.tekst}</p>
+        </div>
+    );
+}
+
 //dynamisk komponent
 const RegHosPolitiet = () => {
     return (
@@ -184,6 +285,21 @@ const RegHosPolitiet = () => {
         </div>
     )}
 
+
+//må få inn egen className på "hvorfor"-props
+const IdNummer = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.hvorfor}</p>
+            <p>{props.tekst}</p>
+        </div>
+    );
+}
+
 //dynamisk komponent
 const IdentitetsNummer = () => {
     return (
@@ -204,6 +320,7 @@ const IdentitetsNummer = () => {
     )
 }
 
+/*
 //Vet ikke im dette er rett måte å få bilder til å bli brukt flere ganger
 const navLogo = () => {
     return (
@@ -211,6 +328,21 @@ const navLogo = () => {
             < img src="navLogo.png"/>
         </div>
     )
+}
+*/
+
+//må få inn egen className på "hvorfor"-props
+const Skatt = (props) => {
+    return (
+        <div className="resultat-boks">
+            <div className="resultat-boks-overskrift">
+                <h3>{props.overskrift}</h3>
+                <img src={props.ikon}></img>
+            </div>
+            <p>{props.hvorfor}</p>
+            <p>{props.tekst}</p>
+        </div>
+    );
 }
 
 //dynamisk komponent
