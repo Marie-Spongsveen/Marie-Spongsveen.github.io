@@ -19,7 +19,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         //Get : api/Alternativ
         [HttpGet("/hent/{id}")]
-        public async Task<string> hent(int id)
+        public async Task<string> GetAlternativers(int id)
         {
             //if (_db.Alternativers == null)
             //{
@@ -32,7 +32,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
             //    return NotFound();
             //}
 
-            var alternativ = new Alternativ()
+            var alternativ = new Alternativers()
             {
                 Id = etAlternativ.Id,
                 Alternativet = etAlternativ.Alternativet
@@ -41,6 +41,15 @@ namespace Min_vei_Ny_i_Norge.Controllers
             return alternativ.Alternativet;
         }
 
+        //Vet ikke om den funker, men jaja
+        [HttpPost]
+        public async Task<ActionResult<Alternativers>> PostAlternativers(Alternativers alternativ)
+        {
+            _db.Alternativers.Add(alternativ);
+            await _db.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAlternativers), new { id = alternativ.Id }, alternativ);
+        }
     }
 }
 
