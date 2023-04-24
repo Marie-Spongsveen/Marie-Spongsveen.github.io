@@ -101,7 +101,7 @@ namespace Min_vei_Ny_i_Norge.Data
                     {
                         Id = 3,
                         SvarAlternativId = 5,
-                        SvarAlternativTekst = "Work or jobseeking"
+                        SvarAlternativTekst = "Work or job seeking"
 
                     },
 
@@ -138,7 +138,7 @@ namespace Min_vei_Ny_i_Norge.Data
                     {
                         Id = 4,
                         SvarAlternativId = 10,
-                        SvarAlternativTekst = "I  have received a job offer in Norway"
+                        SvarAlternativTekst = "I have received a job offer in Norway"
 
                     },
 
@@ -189,6 +189,118 @@ namespace Min_vei_Ny_i_Norge.Data
                          Id = 7,
                          SvarAlternativId = 17,
                          SvarAlternativTekst = "No"
+
+                     });
+            });
+
+
+            modelBuilder.Entity<BrukerSvarAlternativ>(entity =>
+
+            {
+
+                entity.HasKey(e => e.BrukerSvarAlternativId);
+                entity.Property(e => e.Id);
+                entity.Property(e => e.BrukerSvarAlternativId);
+                entity.Property(e => e.BrukerSvarAlternativTekst);
+
+
+                entity.HasData(
+                   
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 1,
+                        BrukerSvarAlternativTekst = "Work or job seeking"
+
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 2,
+                        BrukerSvarAlternativTekst = "Education"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 3,
+                        BrukerSvarAlternativTekst = "Seeking asylum or refuge"
+
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 4,
+                        BrukerSvarAlternativTekst = "Family immigration or moving to family living in Norway"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 5,
+                        BrukerSvarAlternativTekst = "Stay at your own expense"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 4,
+                        BrukerSvarAlternativId = 6,
+                        BrukerSvarAlternativTekst = "I have received a job offer in Norway"
+
+                    },
+
+                     new BrukerSvarAlternativ
+                     {
+                         Id = 4,
+                         BrukerSvarAlternativId = 7,
+                         BrukerSvarAlternativTekst = "I am being sent by my employer to Norway to work"
+
+                     },
+
+                      new BrukerSvarAlternativ
+                      {
+                          Id = 4,
+                          BrukerSvarAlternativId = 8,
+                          BrukerSvarAlternativTekst = "I am coming as a job seeker"
+
+                      },
+
+                    
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 6,
+                        BrukerSvarAlternativId = 9,
+                        BrukerSvarAlternativTekst = "Less than 3 months"
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 6,
+                        BrukerSvarAlternativId = 10,
+                        BrukerSvarAlternativTekst = "Between 3 months and 6 months"
+                    },
+
+                    new BrukerSvarAlternativ
+                      {
+                          Id = 6,
+                          BrukerSvarAlternativId = 11,
+                          BrukerSvarAlternativTekst = "More than 3 months"
+                      },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 7,
+                        BrukerSvarAlternativId = 12,
+                        BrukerSvarAlternativTekst = "Yes, I have applied, or my employer has applied on my behalf"
+
+                    },
+                     new BrukerSvarAlternativ
+                     {
+                         Id = 7,
+                         BrukerSvarAlternativId = 13,
+                         BrukerSvarAlternativTekst = "No"
 
                      });
             });
@@ -420,6 +532,7 @@ namespace Min_vei_Ny_i_Norge.Data
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
         public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
+        public DbSet<BrukerSvarAlternativ> BrukerSvarAlternativer => Set<BrukerSvarAlternativ>();
         public DbSet<Resultat> Resultat => Set<Resultat>();
         public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
         public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();
