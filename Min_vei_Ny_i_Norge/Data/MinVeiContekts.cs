@@ -9,7 +9,7 @@ namespace Min_vei_Ny_i_Norge.Data
     {
         public MinVeiContekts(DbContextOptions<MinVeiContekts> option) : base(option)
         { }
-        public DbSet<SvarAlternativ> SvarAlternativer { get; set; }
+        //public DbSet<SvarAlternativ> SvarAlternativer { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity <Sporsmal>(entity =>
@@ -537,8 +537,9 @@ namespace Min_vei_Ny_i_Norge.Data
 
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
 
-       // public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
-       
+       public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
+        public DbSet<BrukerSvarAlternativ> BrukerSvarAlternativer => Set<BrukerSvarAlternativ>();
+
         public DbSet<Resultat> Resultat => Set<Resultat>();
         public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
         public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();

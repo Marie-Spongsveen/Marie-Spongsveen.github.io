@@ -35,24 +35,23 @@ namespace Min_vei_Ny_i_Norge.Controllers
         {
             var svarAlternativer = new List<String>();
 
-            var svarAlternativList = new List<SvarAlternativ>();
+            var svarAlternativList = new List<BrukerSvarAlternativ>();
 
-            svarAlternativList = await _db.SvarAlternativer.ToListAsync();
+            svarAlternativList = await _db.BrukerSvarAlternativer.ToListAsync();
 
             foreach (var etSvarAlternativ in svarAlternativList) {
 
-                if (etSvarAlternativ.Id == id && !etSvarAlternativ.SvarAlternativTekst.Equals("Ikke besvart"))
-                {
+               
                     
-                    {
+                    
 
-                        var svarAlternativ = (string)etSvarAlternativ.SvarAlternativTekst;
+                        var svarAlternativ = (string)etSvarAlternativ.BrukerSvarAlternativTekst;
 
                         svarAlternativer.Add(svarAlternativ);
-                    }
+                    
 
 
-                }
+                
 
 
             }
