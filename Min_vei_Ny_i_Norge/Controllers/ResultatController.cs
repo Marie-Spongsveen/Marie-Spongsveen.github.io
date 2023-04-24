@@ -37,7 +37,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
             var resultat = new Resultat()
             {
                 Id = etResultat.Id,
-                Resultatet = etResultat.Resultatet
+                Resultatet = etResultat.Resultatet,
+                ResultatetTekst = etResultat.ResultatetTekst
             };
 
             return resultat.Resultatet;

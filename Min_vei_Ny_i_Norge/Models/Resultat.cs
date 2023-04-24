@@ -5,6 +5,7 @@ namespace Min_vei_Ny_i_Norge.Models
 	{
         public int Id { get; set; }
         public string Resultatet { get; set; } = string.Empty;
+        public string ResultatetTekst { get; set; } = string.Empty;
     }
 }
 
