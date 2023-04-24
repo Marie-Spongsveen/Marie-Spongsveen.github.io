@@ -19,7 +19,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         //Get : api/Resultat
         [HttpGet("/hent/{id}")]
-        public async Task<string> hent(int id)
+        public async Task<string> GetResultat(int id)
         {
             //if (_db.Resultat == null)
             //{
@@ -42,6 +42,16 @@ namespace Min_vei_Ny_i_Norge.Controllers
             };
 
             return resultat.Resultatet;
+        }
+
+        //Vet ikke om den funker, men jaja
+        [HttpPost]
+        public async Task<ActionResult<Resultat>> PostResultat(Resultat resultat)
+        {
+            _db.Resultater.Add(resultat);
+            await _db.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetResultat), new { id = resultat.Id }, resultat);
         }
 
     }
