@@ -59,6 +59,7 @@
     height: 100%;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     background-color: #FFFFFF;
+ 
 }
 
 .resultat-boks-overskrift {
@@ -68,8 +69,13 @@
 
 
 .resultat-boks img {
-    max-width: 10%;
-    float: right;
+    max-width: 10%; 
+    min-width: 50px;
+    /*sikkert ikke optimalt måte å løse at bildene ikke blir for små */
+    float: right; /*Denne ser ikke ut til å ha en effekt*/
+    align-self:end;
+    place-self: end;
+   
 }
 
 
