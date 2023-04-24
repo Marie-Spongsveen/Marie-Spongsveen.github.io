@@ -78,14 +78,29 @@ export const Resultater = () => {
 //lenker må åpnes i nytt vindu/fane
 
 const Rettigheter = (props) => {
+
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
             </div>
-            <p>{props.tekst}</p>
-            <p>{props.lenke}</p>
+
+            <div className="resultat-boks-hvorfor">
+                <p>{props.hvorfor}</p>
+            </div>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
+            <a href={props.lenke} target="_blank" rel="noopener noreferrer">
+                {props.lenkeBeskrivelse}
+            </a>
+            <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
+                {props.lenke2Beskrivelse}
+            </a>
         </div>
     );
 }
@@ -94,11 +109,25 @@ const Informasjon = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
             </div>
-            <p>{props.tekst}</p>
-            <p>{props.lenke}</p>
+
+            <div className="resultat-boks-hvorfor">
+                <p>{props.hvorfor}</p>
+            </div>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
+            <a href={props.lenke} target="_blank" rel="noopener noreferrer">
+                {props.lenkeBeskrivelse}
+            </a>
+            <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
+                {props.lenke2Beskrivelse}
+            </a>
         </div>
     );
 }
@@ -107,11 +136,26 @@ const Fremover = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
+                <img src={props.ikon2} alt={props.ikon2Beskrivelse} className="resultat-boks-ikon2" />
             </div>
-            <p>{props.tekst}</p>
-            <p>{props.lenke}</p>
+
+            <div className="resultat-boks-hvorfor">
+                <p>{props.hvorfor}</p>
+            </div>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
+            <a href={props.lenke} target="_blank" rel="noopener noreferrer">
+                {props.lenkeBeskrivelse}
+            </a>
+            <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
+                {props.lenke2Beskrivelse}
+            </a>
         </div>
     );
 }
@@ -130,22 +174,29 @@ const MineRettigheter = () => {
             <div className="mine-rettigheter">
                 <Rettigheter
                     ikon={navLogo}
+                    ikonBeskrivelse="Logo of the Norwegian Labour and Welfare Administration"
                     overskrift="National insurance scheme"
                     tekst="You will be a member of the scheme because you are working in Norway. Membership in the National Insurance Scheme is the key to eligibility for rights to services from NAV. The scheme covers among other things health benefits, pension and parental benefits."
-                    lenke="Membership of the National Insurance Scheme - nav.no"
-                    lenke="Information about NAV's services and benefits - nav.no"
+                    lenke="https://www.nav.no/en/home/rules-and-regulations/membership-of-the-national-insurance-scheme"
+                    lenkeBeskrivelse="Membership of the National Insurance Scheme - nav.no"
+                    lenke2="https://www.nav.no/en/home/benefits-and-services/information-about-nav-s-services-and-benefits"
+                    lenke2Beskrivelse="Information about NAV's services and benefits - nav.no"
                 />
                 <Rettigheter
                     ikon={arbeidstilsynetLogo}
+                    ikonBeskrivelse="Logo of the The Norwegian Labour Inspection Authority"
                     overskrift="Labor rights"
                     tekst="When you work in Norway you will have multiple rights for example about working hours, tax or safe working environments."
-                    lenke="Working in Norway: Your rights and obligations (arbeidstilsynet.no)"
+                    lenke="https://www.arbeidstilsynet.no/en/knowyourrights/"
+                    lenkeBeskrivelse="Working in Norway: Your rights and obligations (arbeidstilsynet.no)"
                 />
                 <Rettigheter
                     ikon={navLogo}
+                    ikonBeskrivelse="Logo of the Norwegian Labour and Welfare Administration"
                     overskrift="Pension rights"
                     tekst="Norwegian pension is a part of the national insurance scheme. The government will start saving up for you when you are paying tax to Norway."
-                    lenke="Pensions and pension applications from outside Norway - nav.no"
+                    lenke="https://www.nav.no/en/home/benefits-and-services/pensions-and-pension-application-from-outside-norway"
+                    lenkeBeskrivelse="Pensions and pension applications from outside Norway - nav.no"
                 />
 
             </div>
@@ -170,6 +221,8 @@ const NyttigInformasjon = () => {
                     ikon={udiLogo}
                     overskrift="Bringing your family with you"
                     tekst="As an EU or EEA citizen you have the right to bring your family to Norway, but they may have to apply to move themselves."
+                    lenke="https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/?resetguide=1"
+                    lenkeBeskrivelse="Want to apply: Family immigration with a Norwegian or Nordic citizen - UDI"
                 />
                 <Informasjon
                     ikon={norgeskart}
@@ -186,6 +239,10 @@ const NyttigInformasjon = () => {
                     ikon2={tollLogo}
                     overskrift="Bringing your vehicle"
                     tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
+                    lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
+                    lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs - (toll.no)"
+                    lenke2="https://www.vegvesen.no/en/vehicles/buy-and-sell/import/import-of-vehicles/"
+                    lenke2Beskrivelse="Import of vehicles - Statens vegvesen"
                 />
             </div>
         </div>
@@ -213,11 +270,15 @@ const VidereFremover = () => {
                     ikon={udiLogo}
                     overskrift="Permanent residency"
                     tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
+                    lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
+                    lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals"
                 />
                 <Fremover
                     ikon={udiLogo}
                     overskrift="Norwegian citizenship"
                     tekst="The requirements for Norwegian citizenship are not the same for everyone. You have to have permanent recidency in Norway. A Norwegian citizenship can give you more rights."
+                    lenke="https://www.udi.no/en/want-to-apply/citizenship/citizenship-for-eueea-nationals-who-have-held-a-residence-permit-in-norway/"
+                    lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway"
                 />
 
             </div>
@@ -225,18 +286,24 @@ const VidereFremover = () => {
     )
 }
 
-//må få inn egen className på "hvorfor"-props
+//endre tag på hvorfor-boks
 const Flytte = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
             </div>
-            <div className="hvorfor-boks">
+            
+            <div className="resultat-boks-hvorfor">
                 <p>{props.hvorfor}</p>
             </div>
-            <p>{props.tekst}</p>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
         </div>
     );
 }
@@ -272,13 +339,19 @@ const RegPoliti = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt="Logo of the Norwegian Police" className="resultat-boks-ikon" />
             </div>
-            <div className="hvorfor-boks">
+
+            <div className="resultat-boks-hvorfor">
                 <p>{props.hvorfor}</p>
             </div>
-            <p>{props.tekst}</p>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
         </div>
     );
 }
@@ -312,13 +385,19 @@ const IdNummer = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
             </div>
-            <div className="hvorfor-boks">
+
+            <div className="resultat-boks-hvorfor">
                 <p>{props.hvorfor}</p>
             </div>
-            <p>{props.tekst}</p>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
         </div>
     );
 }
@@ -354,18 +433,23 @@ const navLogo = () => {
 }
 */
 
-//må få inn egen className på "hvorfor"-props
 const Skatt = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <h3>{props.overskrift}</h3>
-                <img src={props.ikon}></img>
+                <span className="resultat-boks-overskrift-tittel">
+                    <h3>{props.overskrift}</h3>
+                </span>
+                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
             </div>
-            <div className="hvorfor-boks">
+
+            <div className="resultat-boks-hvorfor">
                 <p>{props.hvorfor}</p>
             </div>
-            <p>{props.tekst}</p>
+
+            <p className="resultat-boks-tekst">
+                {props.tekst}
+            </p>
         </div>
     );
 }

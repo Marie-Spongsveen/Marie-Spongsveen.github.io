@@ -4,12 +4,13 @@
 
 .resultater-h1 {
     margin-bottom: 2%;
-    margin-top: 1%
+    margin-top: 1%;
 }
 
 .resultater-h2 {
     margin-bottom: 2%;
-    margin-top: 1%
+    margin-top: 1%;
+    
 }
 
 
@@ -47,38 +48,49 @@
 .videre-fremover {
 }
 
-
+/*selve resultat-containeren*/
 .resultat-boks {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: left;
-    align-items: flex-start;
     padding: 5% 4%;
     margin-bottom: 2em;
     height: 100%;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     background-color: #FFFFFF;
- 
+    width: 80%;
+    max-width: 800em;
+    margin: 0 auto;
 }
 
 .resultat-boks-overskrift {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 80%;
+    align-items: center;
+}
+
+.resultat-boks-tittel {
+    margin-right: 2em;
+}
+
+.resultat-boks-ikon {
+    max-width: 6em;
+    max-height: 6em;
+    object-fit: contain;
+    margin-left: auto;
 }
 
 
-.resultat-boks img {
-    max-width: 10%; 
-    min-width: 50px;
-    /*sikkert ikke optimalt måte å løse at bildene ikke blir for små */
-    float: right; /*Denne ser ikke ut til å ha en effekt*/
-    align-self:end;
-    place-self: end;
-   
-}
 
 
-.hvorfor-boks {
+.resultat-boks-hvorfor {
     color: #0067C5;
+}
+
+.resultat-boks-tekst {
+    
 }
