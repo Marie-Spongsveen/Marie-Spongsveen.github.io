@@ -8,7 +8,7 @@ export const Footer = () => {
             <div className="blue-box"></div>
             <div className="footer-box">
                 <div className="footer-description">
-                    <p>Norge.no is a guide developed by the Norwegian Digitalisation Agency</p>
+                    <p>This digital guide is a bachelor project developed by group 27</p>
                 </div>
                 <div className="footer-info">
                     <div>
