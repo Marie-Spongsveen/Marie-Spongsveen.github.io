@@ -3,7 +3,6 @@
 import "./LandNedtrekksliste.css"
 
 export const LandNedtrekksliste = (props) => {
-    const a = (event) => { console.log(event.target.value) }
     return (
         <select className="form-control liste" id="country" name={props.handleName} onChange={props.handleChange}>
             <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>

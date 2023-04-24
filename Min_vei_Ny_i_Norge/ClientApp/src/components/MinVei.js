@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import { LandNedtrekksliste } from './landNedtrekksliste'
 import { Knapp } from './Knapp'
@@ -27,10 +27,13 @@ export const MinVei = () => {
 
     useEffect(() => {
         // Henter spørsmål til id-en
-        hentSporsmal()
+        hentSporsmal(id)
 
         // Formaterer og viser de besvarte spørsmålene
         formaterBesvart()
+
+        // Sender brukerens svar til backend
+        // sendSvar()
         
         // Sjekker hvilket spørsmål man er på, 
         // og gjør de riktige elemtene synlige/usynlige
@@ -51,20 +54,31 @@ export const MinVei = () => {
                 setResultatKnappSynlighet(false)
                 break
             case 7:
-                setNesteSynlighet(false)
                 // vi vet jo egt ikke at siste spørsmål er spørsåml 7,
                 // med tanke på at spørsmålene skal kunne endres ut i fra hva man svarer
+                setNesteSynlighet(false)
                 setResultatKnappSynlighet(true)
                 break
         }
     }, [id])
 
-    const hentSporsmal = () => {
+    const[idSporsmal, setIdSporsmal] = useState([])
+
+    const hentSporsmal = (id) => {
         // Henter spørsmålet med rikitg ID fra hook
         axios.get('hent/' + id)
             .then((response: AxiosResponse<any>) => {
                 setSporsmal(response.data)
+
+            // denne kan kanskje fjernes
+            setIdSporsmal(prev => {
+                return {
+                        ...prev,
+                        [id]: response.data
+                    }
+                })
             });
+       console.log(idSporsmal)
 
         // Henter svaralternativene til samme spørsmålsID
         axios.get('hentSvaralternativ/' + id)
@@ -73,52 +87,79 @@ export const MinVei = () => {
             });
     }
 
-    const formaterBesvart = () => {
-        // hele metoden kan legges inn i handle change
-        const array = []
-        for (let i in svarData) {
-            // formaterer svardaten til JSX og legger det til i array
-            let string =
-                <div className="besvar-boks">
-                    <p>{i} {svarData[i]}</p>
-                    <button onClick={ apneEdit } className="edit">edit</button>
-                </div>
-            array.push(string)
-        }
-        setSvarDataJSX(array)
-    }
-
     const handleChange = (event) => {
         const { name, value } = event.target
-        console.log("Value: ", value)
-
+        /*[name]: {
+                    ["spørsmål"]: name,
+                    ["svar"]: value
+                }*/
         setSvarData(prevFormData => {
             return {
                 ...prevFormData,
                 [name]: value
             }
         })
+        console.log(svarData)
         // setSvarDataJSX
     }
 
-    const apneEdit = () => {
+    const formaterBesvart = () => {
+        // hele metoden kan legges inn i handle change
+        const array = []
+        for (let i in svarData) {
+            // formaterer svardaten til JSX og legger det til i array
+            let boks =
+                <div>
+                    <div className="besvar-boks">
+                        <p>{i} {svarData[i]}</p>
+                        <button onClick={() => apneEdit({ i })} className="edit">edit</button>
+                    </div>
+                    {editboks}
+                </div>
+               
+            array.push(boks)
+        }
+        setSvarDataJSX(array)
+    }
+
+    const [editboks, setEditboks] = useState()
+    const[test, setTest] = useState()
+
+    const apneEdit = (sporsmal) => {
         // må finne id til spørsmålet som skal edites
         // så hente spørsmålet
         // så vise spørsmålet med svaralternativer
-        
-        console.log("edit")
+        console.log("edit:", sporsmal.i)
+
+        axios.get('hentnoe/' + sporsmal.i)
+            .then((response: AxiosResponse<any>) => {
+                console.log(response.data)
+                setTest(response.data)
+            });
+
+
+        setEditboks(
+            <div className="editApen">
+                <h3>{sporsmal.i}</h3>
+                {
+                    test?.map(data => {
+                        return (
+                            <div key={data.svarAlternativId} className="radioknapp-rad">
+                                <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                                <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
+                            </div>
+                        )
+                    })
+                }
+                <Knapp
+                    navn="close"
+                    handleClick={() => setEditboks()} 
+                    handleClassName="tilbakeKnapp"
+                />
+            </div>
+        )
     }
 
-    /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */  
-    const svarene =
-        svaralternativ?.map(data => {
-            return (
-                <div key={data.svarAlternativId} className="radioknapp-rad">
-                    <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
-                    <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
-                </div>
-            )
-        });
 
     const neste = () => {
         /* Setter id til 1 større for å gå til neste spørsmål */
@@ -133,7 +174,7 @@ export const MinVei = () => {
         else if (id == 1) naviger("/velg-livssituasjon")
     }
 
-    // denne er ikke testet
+    // DENNE ER IKKE TESTET
     const gaTilResultat = () => {
         /* Sender brukerens svar til bakcken og navigerer brukeren til resultatsiden */
         // event.preventDefault() hva gjør denne? brude jeg ha den?
@@ -151,12 +192,22 @@ export const MinVei = () => {
 
             { /* Brukerens svar */}
             <div className="besvar-container">
-                { svarDataJSX }
+                {svarDataJSX}
             </div>
 
             { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
-            <h3>{ sporsmal }</h3>
-            { svarene }
+            <h3>{sporsmal}</h3>
+
+            { /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
+                svaralternativ?.map(data => {
+                    return (
+                        <div key={data.svarAlternativId} className="radioknapp-rad">
+                            <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                            <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
+                        </div>
+                    )
+                })
+            }
 
             { /* Viser nedtrekkslisten med land kun om hooken landlisteSynlighet er true */
                 landlisteSynlighet &&

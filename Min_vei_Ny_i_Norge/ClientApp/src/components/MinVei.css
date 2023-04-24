@@ -22,7 +22,7 @@
     padding: 1% 2%;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     height: auto;
-    margin: 2% 0;
+    margin: 2% 0 0 0;
 }
 
 .besvar-boks p {
@@ -32,6 +32,13 @@
 .edit {
     border: none;
     background-color: transparent;
+}
+
+.editApen {
+    border: 10px solid #C4DFE0;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    padding: 2%;
 }
 
 

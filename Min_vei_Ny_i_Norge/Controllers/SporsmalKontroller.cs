@@ -32,6 +32,24 @@ namespace Min_vei_Ny_i_Norge.Controllers
         }
 
         [HttpGet]
+        [Route("/hentnoe/{q}")]
+        public async Task<List<SvarAlternativ>> hentNoe(string q)
+        {
+            Console.WriteLine(q);
+            q = q + "?";
+            List<SvarAlternativ> s = await _db.SvarAlternativer.Where(x => x.Sporsmals.Sporsmalet == q)
+                .Select(x => new SvarAlternativ
+                {
+                    Id = x.Id,
+                    Sporsmals = x.Sporsmals,
+                    SvarAlternativId = x.SvarAlternativId,
+                    SvarAlternativTekst = x.SvarAlternativTekst,
+                }).ToListAsync();
+            Console.WriteLine(s);
+            return s;
+        }
+
+        [HttpGet]
         [Route("/hentSvaralternativ/{id}")]
         public async Task<List<SvarAlternativ>> hentSvaralternativ(int id)
         {
