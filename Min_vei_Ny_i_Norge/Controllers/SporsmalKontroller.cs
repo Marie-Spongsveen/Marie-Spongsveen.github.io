@@ -16,9 +16,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
             _db = db;
         }
 
-        //hey
-        //hey
-
         [HttpGet]
         [Route("/hent/{id}")]
         public async Task<string> hent(int id)

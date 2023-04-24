@@ -56,5 +56,10 @@ namespace Min_vei_Ny_i_Norge.Data
             });
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
+
+        public DbSet<Alternativ> Alternativers { get; set; } = null!;
+
+        public DbSet<Resultat> Resultater { get; set; } = null!;
+
     }
 }
