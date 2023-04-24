@@ -8,6 +8,12 @@ namespace Min_vei_Ny_i_Norge.Data
         public MinVeiContekts(DbContextOptions<MinVeiContekts> option) : base(option)
         { }
 
+        public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
+
+        public DbSet<Alternativ> Alternativers { get; set; } = null!;
+
+        public DbSet<Resultat> Resultater { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Sporsmal>(entity =>
@@ -54,12 +60,12 @@ namespace Min_vei_Ny_i_Norge.Data
                     }
                     );
             });
+
+            modelBuilder.Entity<Alternativ>().ToTable("Alternativ");
+
+            modelBuilder.Entity<Resultat>().ToTable("Resultat");
+
         }
-        public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
-
-        public DbSet<Alternativ> Alternativers { get; set; } = null!;
-
-        public DbSet<Resultat> Resultater { get; set; } = null!;
 
     }
 }
