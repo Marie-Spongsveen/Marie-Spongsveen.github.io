@@ -7,15 +7,19 @@ import { NesteKnapp } from './Knapper/NesteKnapp'
 import { TilbakeKnapp } from './Knapper/TilbakeKnapp'
 import { ResultatKnapp } from './Knapper/ResultatKnapp'
 
-export const Test = () => {
+export const Test = (props) => {
     const [sporsmal, setSporsmal] = useState('')
     const [idTeller, setIdTeller] = useState(1)
+    const [svarAlternativer, setSvarAlternativer] = useState([]);
 
     const htmlArray = []
 
     useEffect(() => {
+
+        console.log("idTeller", idTeller);
+
         hentSporsmal();
-        //hentSvaralternativ()
+        hentSvaralternativer(idTeller);
         
         switch (idTeller) {
             case 1:
@@ -44,12 +48,29 @@ export const Test = () => {
             });
     }
 
-    const hentSvaralternativ = () => {
-        axios.get('hentsvaralternativer/' + idTeller)
-            .then((res: AxiosResponse<any>) => {
-                console.log(res.data)
-            });
-    }
+    const hentSvaralternativer = (idTeller) => {
+
+
+        if (idTeller !== undefined) {
+
+            if (idTeller === 3 || idTeller === 4 || idTeller === 6 || idTeller === 7) {
+
+                axios.get(`hentSvarAlternativ/${idTeller}`).then((response) => {
+                    setSvarAlternativer(response.data);
+
+
+                });
+
+            } else {
+                setSvarAlternativer([]);
+
+            }
+        }
+    };
+
+    const handleCheckboxChange = (event) => {
+        // TODO: Handle checkbox change
+    };
 
     const [landSynlighet, setLandSynlighet] = useState(false)
     const [resultatKnappSynlighet, setResultatKnappSynlighet] = useState(false)
@@ -69,6 +90,8 @@ export const Test = () => {
 
     const neste = () => {
         if (idTeller < 7) setIdTeller(x => x + 1)
+        
+
     }
 
 
@@ -79,6 +102,23 @@ export const Test = () => {
 
             <button onClick={begynn}>Begynn veiledered</button>
             <p>Spørsmålet: {sporsmal}</p>
+
+
+
+            <p></p>
+            <div>
+                {svarAlternativer.map((svarAlternativ) => (
+                    <div key={svarAlternativ}>
+                        <input
+                            type="checkbox"
+                            value={svarAlternativ}
+                            onChange={handleCheckboxChange}
+                        />
+                        <label>{svarAlternativ}</label>
+                    </div>
+                ))}
+            </div>
+            <p></p>
 
      
             <div style={{ visibility: landSynlighet ? 'visible' : 'hidden' }}>

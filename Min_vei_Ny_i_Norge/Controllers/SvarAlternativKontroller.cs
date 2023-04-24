@@ -39,31 +39,25 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             svarAlternativList = await _db.SvarAlternativer.ToListAsync();
 
-
-
-            foreach (var etSvarAlternativ in svarAlternativList)
-            {
-                /* var svarAlternativ = new SvarAlternativ()
-                 {
-                     Id = etSvarAlternativ.Id,
-                      = etSporsmal.Sporsmalet
-                 };
-                */
-
-
-
+            foreach (var etSvarAlternativ in svarAlternativList) {
 
                 if (etSvarAlternativ.Id == id && !etSvarAlternativ.SvarAlternativTekst.Equals("Ikke besvart"))
                 {
                     
+                    {
+
                         var svarAlternativ = (string)etSvarAlternativ.SvarAlternativTekst;
 
                         svarAlternativer.Add(svarAlternativ);
-                   
-                     
+                    }
+
 
                 }
+
+
             }
+
+
 
             return svarAlternativer;
 
@@ -77,19 +71,4 @@ namespace Min_vei_Ny_i_Norge.Controllers
 }
 
 
-    /* public async Task<List<string>> HentSvar(int id)
-
-     {
-         var svarAlternativer = new List<String>();
-
-
-         var result = await _db.QueryAsync<string>("SELECT SvarAlternativTekst FROM SvarAlternativer WHERE Id = @id", new { id });
-         foreach (var row in result)
-         {
-             var svarAlternativ = (string)row;
-             svarAlternativer.Add(svarAlternativ);
-         }
-
-
-         return svarAlternativer;
-     }*/
+    

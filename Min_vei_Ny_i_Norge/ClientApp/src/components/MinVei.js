@@ -1,14 +1,20 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { LandNedtrekksliste } from './landNedtrekksliste'
 import { ResultatKnapp } from './Knapper/ResultatKnapp'
 
-export const MinVei = () => {
+export const MinVei = (props) => {
     const [landSynlighet, setLandSynlighet] = useState(false)
     const [resultatKnappSynlighet, setResultatKnappSynlighet] = useState(false)
+    
+
+    
+
     let counter = 0;
     let id;
     var q = 'a'
+
+   
 
     const hentSporsmal = (c) => {
         axios.get('hent/' + c)
@@ -30,6 +36,7 @@ export const MinVei = () => {
         counter++;
         console.log(counter)
         hentSporsmal(counter)
+        hentSvaralternativer(counter)
         q += '!!!!!!!!!!'
         console.log(q)
     }
@@ -38,7 +45,8 @@ export const MinVei = () => {
         counter--;
         console.log(counter)
         hentSporsmal(counter)
- }
+        hentSvaralternativer(counter)
+    }
 
     const fikseSvar = () => {
         console.log(id);
@@ -51,7 +59,7 @@ export const MinVei = () => {
                 setResultatKnappSynlighet(true)
                 setLandSynlighet(false);
                 break
-                
+
         }
         //hentSvaralternativer;
 
@@ -64,8 +72,10 @@ export const MinVei = () => {
 
     return (
         <div>
+       
             <p>{id}</p>
-            <div>Spørsmålet: {a}</div>  
+            <div>Spørsmålet: {a}</div>
+
 
             <button onClick={forrige}>Back</button>
             <button onClick={neste}>Next</button>
@@ -79,4 +89,4 @@ export const MinVei = () => {
             </div>
         </div>
     );
-}
+}  
