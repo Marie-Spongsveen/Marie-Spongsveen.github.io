@@ -2,17 +2,20 @@
 
 }
 
-.resultater-h1 {
+h1 {
     margin-bottom: 2%;
     margin-top: 1%;
 }
 
-.resultater-h2 {
+h2 {
     margin-bottom: 2%;
     margin-top: 1%;
     
 }
 
+h3 {
+
+}
 
 /*boksen med alle pliktene*/
 .mine-plikter-del {
@@ -68,23 +71,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
-    height: 80%;
-    align-items: center;
+    
 }
 
 .resultat-boks-tittel {
     margin-right: 2em;
+    justify-content: flex-start;
 }
 
 .resultat-boks-ikon {
     max-width: 6em;
     max-height: 6em;
     object-fit: contain;
-    margin-left: auto;
+    
 }
 
-
+.resultat-boks-ikon2 {
+    max-width: 6em;
+    max-height: 6em;
+    object-fit: contain;
+    margin-left: 0;
+}
 
 
 .resultat-boks-hvorfor {

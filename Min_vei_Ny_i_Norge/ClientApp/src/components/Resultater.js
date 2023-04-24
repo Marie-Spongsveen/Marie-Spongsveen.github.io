@@ -38,11 +38,11 @@ export const Resultater = () => {
                 handleClassName="tilbakeKnapp"
             />
 
-            <div className="resultater-h1">
+            <div>
                 <h1>My Results</h1>
             </div>
 
-            <div className="resultater-h2">
+            <div>
                 <h2>My Duties</h2>
             </div>
 
