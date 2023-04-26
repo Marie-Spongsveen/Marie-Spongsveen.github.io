@@ -12,12 +12,12 @@ import nyINorgeIkon from '../bilder/ny_norge_ikon.png'
 import syktBarnIkon from '../bilder/sykt_barn_ikon.png'
 
 export const VelgLivssituasjon = () => {
+
     return (
         <div>
             <Knapp
                 navn="Back"
-                handleClassName="tilbakeKnapp"
-            />
+                handleClassName="tilbakeKnapp"/>
 
             <div className="velg-livssituasjon-side">
                 <h1>My Digital Guide</h1>
