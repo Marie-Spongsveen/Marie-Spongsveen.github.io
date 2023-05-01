@@ -9,6 +9,48 @@ namespace Min_vei_Ny_i_Norge.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
+    public class ValgtSvarController : ControllerBase
+    {
+        public readonly MinVeiContekts _db;
+
+        public ValgtSvarController(MinVeiContekts db)
+        {
+            _db = db;
+        }
+
+
+        public async Task<IActionResult> LagreValgtSvar([FromBody] ValgtSvar valgtSvar)
+        {
+            try
+            {
+                //Sjekker om det valgte svaret allerede finnes i databasen
+                var eksiterendeSvar = await _db.ValgteSvar.FindAsync(valgtSvar.ValgteSvarId);
+
+                if (eksiterendeSvar != null)
+                {
+                    //Hvis det finnes, oppdateres det med det nye
+                    eksiterendeSvar.ValgteSvarId = valgtSvar.ValgteSvarId;
+                }
+                else
+                {
+                    //Hvis ikke, blir den lagt til
+                    _db.ValgteSvar.Add(valgtSvar);
+                }
+
+                //Lagre endringen i databasen
+                await _db.SaveChangesAsync();
+
+                //Returnerer en statuskode 200 for å vise suksess
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                //HVis det skulle være en error
+                return StatusCode(500, ex.Message);
+            }
+        }
+    }
+
     public class ResultatController : ControllerBase
     {
         public readonly MinVeiContekts _db;
@@ -34,60 +76,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             return resultat.Resultatet;
         }
-
-
-
-        //Vet ikke om den funker, men jaja
-        [HttpPost("/hent")]
-        public async Task<ActionResult<Resultat>> PostResultat(Resultat resultat)
-        {
-            _db.Resultater.Add(resultat);
-            await _db.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetResultat), new { id = resultat.Id }, resultat);
-        }
-
     }
 
-    public class ValgtSvarController : ControllerBase
-    {
-        public readonly MinVeiContekts _db;
 
-        public ValgtSvarController(MinVeiContekts db)
-        {
-            _db = db;
-        }
-
-
-        public async Task<IActionResult> LagreValgtSvar([FromBody] ValgtSvar valgtSvar)
-        {
-            try
-            {
-                // Check if the chosen answer already exists in the database
-                var eksiterendeSvar = await _db.ValgteSvar.FindAsync(valgtSvar.Id);
-
-                if (eksiterendeSvar != null)
-                {
-                    // If the answer already exists, update it with the new choice
-                    eksiterendeSvar.Id = valgtSvar.Id;
-                }
-                else
-                {
-                    // If the answer doesn't exist, add a new record for it
-                    _db.ValgteSvar.Add(valgtSvar);
-                }
-
-                // Save the changes to the database
-                await _db.SaveChangesAsync();
-
-                // Return a 200 OK response indicating success
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                // If an error occurs, return a 500 Internal Server Error response
-                return StatusCode(500, ex.Message);
-            }
-        }
-    }
 }

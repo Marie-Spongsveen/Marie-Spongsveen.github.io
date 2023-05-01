@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Min_vei_Ny_i_Norge.Models
 {
-    public class ValgteSvar
+    public class ValgtSvar
     {
         [Key]
         public int ValgteSvarId { get; set; }
