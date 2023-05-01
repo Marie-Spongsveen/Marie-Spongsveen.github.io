@@ -33,18 +33,55 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         [HttpGet]
         [Route("/hentSvaralternativ/{id}")]
-        public async Task<List<SvarAlternativ>> hentSvaralternativ(int id)
-        {
-            List<SvarAlternativ> s = await _db.BrukerSvarAlternativer.Where(x => x.Sporsmals.Id == id)
-                .Select(x => new BrukerSvarAlternativ
-                {
-                    Id = x.Id,
-                    Sporsmals = x.Sporsmals,
-                    BrukerSvarAlternativId = x.BrukerSvarAlternativId,
-                    SvarAlternativTekst = x.BrukerSvarAlternativTekst,
-                }).ToListAsync();
 
-            return s;
-        }
+        // Marie versjon
+        public async Task<List<BrukerSvarAlternativ>> hentSvaralternativ(int id)
+         {   
+             List<BrukerSvarAlternativ> s = await _db.BrukerSvarAlternativer.Where(x => x.Sporsmals.Id == id)
+                  .Select(x => new BrukerSvarAlternativ
+                  {
+                      Id = x.Id,
+                      Sporsmals = x.Sporsmals,
+                      BrukerSvarAlternativId = x.BrukerSvarAlternativId,
+                       BrukerSvarAlternativTekst = x.BrukerSvarAlternativTekst,
+                  }).ToListAsync();
+
+              return s;
+         }
+
+        //Olga Versjon
+
+        /*public async Task<List<String>> hentSvaralternativ(int id)
+        { 
+            var svarAlternativer = new List<String>();
+
+            var svarAlternativList = new List<BrukerSvarAlternativ>();
+
+            svarAlternativList = await _db.BrukerSvarAlternativer.ToListAsync();
+
+            foreach (var etSvarAlternativ in svarAlternativList)
+            {
+
+
+                if (etSvarAlternativ.Id == id)
+                {
+
+                    var svarAlternativ = (string)etSvarAlternativ.BrukerSvarAlternativTekst;
+
+                    svarAlternativer.Add(svarAlternativ);
+
+                }
+
+
+
+            }
+
+
+
+            return svarAlternativer;
+
+        }*/
+
+
     }
 }
