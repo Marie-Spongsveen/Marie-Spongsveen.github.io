@@ -112,10 +112,13 @@ export const MinVei = () => {
     /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */  
     const svarene =
         svaralternativ?.map(data => {
+
+            console.log("data", data);
+
             return (
-                <div key={data.svarAlternativId} className="radioknapp-rad">
-                    <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
-                    <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
+                <div key={data.brukerSvarAlternativId} className="radioknapp-rad">
+                    <input id={data.brukerSvarAlternativId} type="radio" value={data.brukerSvarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                    <label htmlFor={data.brukerSvarAlternativId}>{data.brukerSvarAlternativTekst}</label>
                 </div>
             )
         });

@@ -47,7 +47,9 @@ namespace Min_vei_Ny_i_Norge.Controllers
                   }).ToListAsync();
 
               return s;
-         }
+            
+            Console.WriteLine("Her er SvarList:");
+        }
 
         //Olga Versjon
 
