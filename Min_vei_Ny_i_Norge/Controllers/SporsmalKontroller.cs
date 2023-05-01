@@ -35,13 +35,13 @@ namespace Min_vei_Ny_i_Norge.Controllers
         [Route("/hentSvaralternativ/{id}")]
         public async Task<List<SvarAlternativ>> hentSvaralternativ(int id)
         {
-            List<SvarAlternativ> s = await _db.SvarAlternativer.Where(x => x.Sporsmals.Id == id)
-                .Select(x => new SvarAlternativ
+            List<SvarAlternativ> s = await _db.BrukerSvarAlternativer.Where(x => x.Sporsmals.Id == id)
+                .Select(x => new BrukerSvarAlternativ
                 {
                     Id = x.Id,
                     Sporsmals = x.Sporsmals,
-                    SvarAlternativId = x.SvarAlternativId,
-                    SvarAlternativTekst = x.SvarAlternativTekst,
+                    BrukerSvarAlternativId = x.BrukerSvarAlternativId,
+                    SvarAlternativTekst = x.BrukerSvarAlternativTekst,
                 }).ToListAsync();
 
             return s;
