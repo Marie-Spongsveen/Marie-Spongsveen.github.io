@@ -14,6 +14,8 @@ namespace Min_vei_Ny_i_Norge.Data
 
         public DbSet<Resultat> Resultater { get; set; } = null!;
 
+        public DbSet<ValgtSvar> ValgteSvar { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Sporsmal>(entity =>
@@ -65,6 +67,7 @@ namespace Min_vei_Ny_i_Norge.Data
 
             modelBuilder.Entity<Resultat>().ToTable("Resultat");
 
+            modelBuilder.Entity<ValgtSvar>().ToTable("ValgtSvar");
         }
 
     }

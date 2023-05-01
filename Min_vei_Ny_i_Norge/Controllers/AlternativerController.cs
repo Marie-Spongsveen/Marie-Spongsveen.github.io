@@ -21,16 +21,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
         [HttpGet("/hent/{id}")]
         public async Task<string> GetAlternativers(int id)
         {
-            //if (_db.Alternativers == null)
-            //{
-            //     return NotFound();
-            //}
-            var etAlternativ = await _db.Alternativers.FindAsync(id);
 
-            //if (etAlternativ == null)
-            //{
-            //    return NotFound();
-            //}
+            var etAlternativ = await _db.Alternativers.FindAsync(id);
 
             var alternativ = new Alternativers()
             {
