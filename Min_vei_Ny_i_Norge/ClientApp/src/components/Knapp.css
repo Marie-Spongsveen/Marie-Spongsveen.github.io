@@ -1,0 +1,50 @@
+﻿.tilbakeKnapp {
+    background-color: #FFF;
+    padding: 0.5% 5%;
+    border-style: solid;
+    border-color: #C4DFE0;
+    border-width: medium;
+}
+
+.tilbakeKnapp:hover {
+    border-color: #F5AA74;
+}
+
+.nesteKnapp {
+    background-color: #C4DFE0;
+    padding: 0.5% 5%;
+    border-style: solid;
+    border-color: #C4DFE0;
+    border-width: medium;
+}
+
+.nesteKnapp:hover {
+    background-color: #F5AA74;
+    border-color: #F5AA74;
+}
+
+.ikkeLoggInnKnapp {
+    background-color: #C4DFE0;
+    padding: 1% 2%;
+    border-style: solid;
+    border-color: #C4DFE0;
+    border-width: medium;
+}
+
+.ikkeLoggInnKnapp:hover {
+    background-color: #F5AA74;
+    border-color: #F5AA74;
+}
+
+.loggInnKnapp {
+    background-color: #C4DFE0;
+    padding: 1% 2%;
+    border-style: solid;
+    border-color: #C4DFE0;
+    border-width: medium;
+}
+
+.loggInnKnapp:hover {
+    background-color: #F5AA74;
+    border-color: #F5AA74;
+}

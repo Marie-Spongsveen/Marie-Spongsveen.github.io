@@ -1,28 +1,14 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import './styleFrontPage.css'
+// logo login-icon hentet fra https://fonts.google.com/icons?selected=Material+Symbols+Outlined:login:FILL@0;wght@400;GRAD@0;opsz@48&icon.query=log+&icon.platform=web
 
 export class Home extends Component {
     static displayName = Home.name;
 
-    constructor(props) {
-        super(props);
-        this.sayHello = this.sayHello.bind(this);
-      }
-    
-      sayHello() {
-        alert('Hello!');
-      }
-
     render() {
         return (
             <div>
-                <h1>Min Vei</h1>
-                <p>lorem ipsum bla bla bla</p>
-                <div>
-                    <button>
-                        <Link to="/choseEvent.js">To hey</Link>
-                    </button>
-                </div>
+                <h1>Hello, world!</h1>
             </div>
         );
     }
