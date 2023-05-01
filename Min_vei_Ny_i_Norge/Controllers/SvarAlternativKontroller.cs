@@ -41,17 +41,20 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             foreach (var etSvarAlternativ in svarAlternativList) {
 
-               
-                    
-                    
 
-                        var svarAlternativ = (string)etSvarAlternativ.BrukerSvarAlternativTekst;
+                if (etSvarAlternativ.Id == id) {
 
-                        svarAlternativer.Add(svarAlternativ);
-                    
+                    var svarAlternativ = (string)etSvarAlternativ.BrukerSvarAlternativTekst;
+
+                    svarAlternativer.Add(svarAlternativ);
+
+                }
 
 
-                
+
+
+
+
 
 
             }
