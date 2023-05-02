@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Min_vei_Ny_i_Norge.Data;
 using Min_vei_Ny_i_Norge.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace Min_vei_Ny_i_Norge.Controllers
 {
@@ -47,9 +50,27 @@ namespace Min_vei_Ny_i_Norge.Controllers
                   }).ToListAsync();
 
               return s;
-            
-            Console.WriteLine("Her er SvarList:");
         }
+
+        [HttpPost]
+        [Route("/hentSvar/")]
+        public async Task hentSvar()
+        {
+            String body;
+            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                body = await reader.ReadToEndAsync();
+            }
+
+            Dictionary<string, object> dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(body);
+
+            return;
+        }
+        
+
+
+
+
 
         //Olga Versjon
 

@@ -287,7 +287,7 @@ namespace Min_vei_Ny_i_Norge.Data
                       {
                           Id = 6,
                           BrukerSvarAlternativId = 11,
-                          BrukerSvarAlternativTekst = "More than 3 months"
+                          BrukerSvarAlternativTekst = "More than 6 months"
                       },
                     new BrukerSvarAlternativ
                     {
