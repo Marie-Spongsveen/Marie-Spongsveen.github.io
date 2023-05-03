@@ -1,5 +1,6 @@
 ﻿import { Livshendelse } from './Livshendelse'
 import { Knapp } from './Knapp'
+import { useNavigate } from "react-router-dom";
 
 import './VelgLivssituasjon.css'
 
@@ -12,12 +13,23 @@ import nyINorgeIkon from '../bilder/ny_norge_ikon.png'
 import syktBarnIkon from '../bilder/sykt_barn_ikon.png'
 
 export const VelgLivssituasjon = () => {
+    const naviger = useNavigate()
+
+    const navigerHjem = () => {
+        naviger("/");
+    }
+
+    const navigerGuide = () => {
+        naviger("/min-vei")
+    }
 
     return (
         <div>
             <Knapp
                 navn="Back"
-                handleClassName="tilbakeKnapp"/>
+                handleClassName="tilbakeKnapp"
+                handleClick={navigerHjem}
+            />
 
             <div className="velg-livssituasjon-side">
                 <h1>My Digital Guide</h1>
@@ -28,6 +40,7 @@ export const VelgLivssituasjon = () => {
                         ikon={nyINorgeIkon}
                         overskrift="New in Norway"
                         tekst="You are moving to Norway temporarily or permanently due to work, studies, family or other reasons."
+                        handleClick={navigerGuide}
                     />
                     <Livshendelse
                         ikon={barnIkon}

@@ -1,6 +1,6 @@
 ﻿.tilbakeKnapp {
     background-color: #FFF;
-    padding: 0.2% 2%;
+    padding: 0.5% 5%;
     border-style: solid;
     border-color: #C4DFE0;
     border-width: medium;
@@ -12,7 +12,7 @@
 
 .nesteKnapp {
     background-color: #C4DFE0;
-    padding: 0.2% 2%;
+    padding: 0.5% 5%;
     border-style: solid;
     border-color: #C4DFE0;
     border-width: medium;

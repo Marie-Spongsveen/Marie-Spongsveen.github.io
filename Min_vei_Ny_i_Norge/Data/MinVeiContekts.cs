@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Min_vei_Ny_i_Norge.Models;
+using System.Diagnostics;
 
 namespace Min_vei_Ny_i_Norge.Data
 {
@@ -10,7 +12,7 @@ namespace Min_vei_Ny_i_Norge.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Sporsmal>(entity =>
+            modelBuilder.Entity <Sporsmal>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id);
@@ -30,12 +32,12 @@ namespace Min_vei_Ny_i_Norge.Data
                     new Sporsmal
                     {
                         Id = 3,
-                        Sporsmalet = "What is the main purpose of your stay in Norway?"
+                        Sporsmalet = "What is the main purpose of your stay in norway?"
                     },
                     new Sporsmal
                     {
                         Id = 4,
-                        Sporsmalet = "Do you have a job offer in Norway or do you plan to come as a job seeker?"
+                        Sporsmalet = "Do you have a job offer in norway or do you plan to come as a job seeker?"
                     },
                     new Sporsmal
                     {
@@ -45,16 +47,192 @@ namespace Min_vei_Ny_i_Norge.Data
                     new Sporsmal
                     {
                         Id = 6,
-                        Sporsmalet = "How long do you plan to stay in Norway?"
+                        Sporsmalet = "How long do you plan to stay in norway?"
                     },
                     new Sporsmal
                     {
                         Id = 7,
-                        Sporsmalet = "Have you applied for a tax deduction card in Norway?"
+                        Sporsmalet = "Have you applied for a tax deduction card in norway?"
                     }
                     );
             });
+
+
+
+            modelBuilder.Entity<SvarAlternativ>(entity =>
+
+            {
+               
+                entity.HasKey(e => e.SvarAlternativId);
+                entity.Property(e => e.Id);
+                entity.Property(e => e.SvarAlternativId);
+                entity.Property(e => e.SvarAlternativTekst);
+
+
+                entity.HasData(
+                    new SvarAlternativ
+                    {
+                        Id = 1,
+                        SvarAlternativId = 1,
+                        SvarAlternativTekst = "EU/EEA land"
+                    },
+                    new SvarAlternativ
+                    {
+                        Id = 1,
+                        SvarAlternativId = 2,
+                        SvarAlternativTekst = "Ikke EU/EEA land"
+                    },
+                   
+                    new SvarAlternativ
+                    {
+                        Id = 2,
+                        SvarAlternativId = 3,
+                        SvarAlternativTekst = "EU/EEA land"
+                    },
+                     new SvarAlternativ
+                     {
+                         Id = 2,
+                         SvarAlternativId = 4,
+                         SvarAlternativTekst = "Ikke EU/EEA land"
+                     },
+
+
+                    new SvarAlternativ
+                    {
+                        Id = 3,
+                        SvarAlternativId = 5,
+                        SvarAlternativTekst = "Work or jobseeking"
+
+                    },
+
+                    new SvarAlternativ
+                    {
+                        Id = 3,
+                        SvarAlternativId = 6,
+                        SvarAlternativTekst = "Education"
+
+                    },
+                    new SvarAlternativ
+                    {
+                        Id = 3,
+                        SvarAlternativId = 7,
+                        SvarAlternativTekst = "Seeking asylum or refuge"
+
+                    },
+
+                    new SvarAlternativ
+                    {
+                        Id = 3,
+                        SvarAlternativId = 8,
+                        SvarAlternativTekst = "Family immigration or moving to family living in Norway"
+
+                    },
+                    new SvarAlternativ
+                    {
+                        Id = 3,
+                        SvarAlternativId = 9,
+                        SvarAlternativTekst = "Stay at your own expense"
+
+                    },
+                    new SvarAlternativ
+                    {
+                        Id = 4,
+                        SvarAlternativId = 10,
+                        SvarAlternativTekst = "I  have received a job offer in Norway"
+
+                    },
+
+                     new SvarAlternativ
+                     {
+                         Id = 4,
+                         SvarAlternativId = 11,
+                         SvarAlternativTekst = "I am being sent by my employer to Norway to work"
+
+                     },
+
+                      new SvarAlternativ
+                      {
+                          Id = 4,
+                          SvarAlternativId = 12,
+                          SvarAlternativTekst = "I am coming as a job seeker"
+
+                      },
+
+                    new SvarAlternativ
+                    {
+                        Id = 5,
+                        SvarAlternativId = 13,
+                        SvarAlternativTekst = "01.01.2023"
+                    },
+                    new SvarAlternativ
+                    {
+                        Id = 6,
+                        SvarAlternativId = 14,
+                        SvarAlternativTekst = "Less than 3 months"
+                    },
+
+                      new SvarAlternativ
+                      {
+                          Id = 6,
+                          SvarAlternativId = 15,
+                          SvarAlternativTekst = "More than 3 months"
+                      },
+                    new SvarAlternativ
+                    {
+                        Id = 7,
+                        SvarAlternativId = 16,
+                        SvarAlternativTekst = "Yes, I have applied, or my employer has applied on my behalf"
+
+                    },
+                     new SvarAlternativ
+                     {
+                         Id = 7,
+                         SvarAlternativId = 17,
+                         SvarAlternativTekst = "No"
+
+                     });
+            });
+
+
+            modelBuilder.Entity<AnonymBruker>(entity =>
+            {
+                entity.HasKey(e => e.AnonymBrukerId);
+                entity.Property(e => e.AnonymBrukerId);
+              
+            });
+
+            modelBuilder.Entity<Resultat>(entity =>
+            {
+                entity.HasKey(e => e.ResultatId);
+                entity.Property(e => e.ResultatId);
+                entity.Property(e => e.ResultatNavn);
+                entity.Property(e => e.ResultatTekst);
+
+            });
+
+            modelBuilder.Entity<ValgteSvar>(entity =>
+            {
+                entity.HasKey(e => e.ValgteSvarId);
+                entity.Property(e => e.ValgteSvarId);
+                entity.Property(e => e.AnonymBrukerId);
+                entity.Property(e => e.SvarAlternativId);
+
+            });
+
+
+
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
+        public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
+        public DbSet<Resultat> Resultat => Set<Resultat>();
+        public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
+        public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();
+
+
     }
+
+
+   
+
+       
 }

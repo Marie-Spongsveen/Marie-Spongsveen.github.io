@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Min_vei_Ny_i_Norge.Data;
 using Min_vei_Ny_i_Norge.Models;
 
@@ -28,6 +29,40 @@ namespace Min_vei_Ny_i_Norge.Controllers
             };
 
             return sporsmal.Sporsmalet;
+        }
+
+        [HttpGet]
+        [Route("/hentnoe/{q}")]
+        public async Task<List<SvarAlternativ>> hentNoe(string q)
+        {
+            Console.WriteLine(q);
+            q = q + "?";
+            List<SvarAlternativ> s = await _db.SvarAlternativer.Where(x => x.Sporsmals.Sporsmalet == q)
+                .Select(x => new SvarAlternativ
+                {
+                    Id = x.Id,
+                    Sporsmals = x.Sporsmals,
+                    SvarAlternativId = x.SvarAlternativId,
+                    SvarAlternativTekst = x.SvarAlternativTekst,
+                }).ToListAsync();
+            Console.WriteLine(s);
+            return s;
+        }
+
+        [HttpGet]
+        [Route("/hentSvaralternativ/{id}")]
+        public async Task<List<SvarAlternativ>> hentSvaralternativ(int id)
+        {
+            List<SvarAlternativ> s = await _db.SvarAlternativer.Where(x => x.Sporsmals.Id == id)
+                .Select(x => new SvarAlternativ
+                {
+                    Id = x.Id,
+                    Sporsmals = x.Sporsmals,
+                    SvarAlternativId = x.SvarAlternativId,
+                    SvarAlternativTekst = x.SvarAlternativTekst,
+                }).ToListAsync();
+
+            return s;
         }
     }
 }
