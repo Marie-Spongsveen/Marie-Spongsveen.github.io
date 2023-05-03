@@ -1,5 +1,6 @@
 ﻿import './Resultater.css'
 import './Knapp.css'
+import { useState } from "react";
 
 
 
@@ -118,7 +119,6 @@ const Informasjon = (props) => {
                     <h3>{props.overskrift}</h3>
                 </span>
                 <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
-                <img src={props.ikon2} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
             </div>
 
             <div className="resultat-boks-hvorfor">
@@ -241,8 +241,7 @@ const NyttigInformasjon = () => {
                     tekst="If you have a driving license issued in another EU/EEA country, it is valid for driving in Norway providing the licence is still valid. If you are living permanently in Norway, you can use your driving license for driving in Norway or exchange it for a Norwegian driving license."
                 />
                 <Informasjon
-                    ikon={statensVegvesenLogo}
-                    ikon2={tollLogo}
+                    ikon={tollLogo}
                     overskrift="Bringing your vehicle"
                     tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
                     lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
@@ -294,6 +293,8 @@ const VidereFremover = () => {
 
 //endre tag på hvorfor-boks
 const Plikter = (props) => {
+    const [hvorforForklaring, setHvorforForklaring] = useState(false)
+
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
@@ -307,15 +308,22 @@ const Plikter = (props) => {
                         </span>
                     </div>
                     <div className="resultat-boks-hvorfor">
-                        <p>{props.hvorfor}</p>
+                        <button className="resultat-hvorfor-knapp" onClick={() => setHvorforForklaring(prev => !prev)}>
+                            <span class="material-symbols-outlined">
+                                expand_more
+                            </span>
+                            {props.hvorfor}
+                        </button>
+                        { hvorforForklaring && <p>Heo test</p> }
                     </div>
                 </div>
-                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
             </div>
             
             <p className="resultat-boks-tekst">
                 {props.tekst}
             </p>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         </div>
     );
 }
@@ -323,26 +331,40 @@ const Plikter = (props) => {
 //dynamisk komponent
 const MeldeFlytte = () => {
     return (
-        <div>
-
         <Plikter
             ikon={skatteetatenLogo}
             overskrift="Report a move to Norway"
-            hvorfor="Why? overskrift med tekstString hentet fra databasen"
-            tekst="tekstString fra databasen med URLer - 
-                When?
-                You should have a tax deduction card before your receive your first salary.
-                The tax deduction card is normally ready within five working days after you have applied.
-
-                How?
-                Application for tax deduction card for foreign employee - The Norwegian Tax Administration (skatteetaten.no)
-
-                You must choose how to pay tax, there are two different ways; simplified tax scheme and general tax rules. Most new foreign workers in Norway automatically become part of a simplified tax scheme PAYE (Pay As You Earn). Under this scheme, you are taxed at a fixed percentage that your employer deducts from your salary. 
-
-                Your employer automatically retrieves your tax deduction card electronically from the Norwegian Tax Administration."
-
+            hvorfor="Why do I get this information?"
+            tekst={
+                <p>
+                    <b>When?</b>
+                    <br/>
+                    You should report a move to Norway at earliest 31 days before your arrival
+                    and at latest 8 days after your arrival.
+                    <br /><br />
+                    <b>How?</b>
+                    <br />
+                    <ol>
+                        <li>
+                            You must <a href="https://www.udi.no/en/want-to-apply/residence-under-the-eueeu-regulations/" target="_blank" rel="noopener noreferrer">
+                            register with the police as an EU/EEA citizen
+                            </a>
+                            . You must do it within your first 3 months in Norway.
+                        </li>
+                        <li>
+                            You must book an appointment with the Tax Administration for an ID check. This applies even if you have lived in Norway before.
+                        </li>
+                        <li>
+                            You must bring the following:
+                        </li>
+                        <ul>
+                            <li>The completed form <a href="https://www.skatteetaten.no/globalassets/skjema/alltid/rf1401_2020e_kodet.pdf" target="_blank" rel="noopener noreferrer">RF-1401: Report a move to Norway from abroad</a></li>
+                            <li>Passport or national ID card</li>
+                            <li>Documentation showing that: you are going to live in Norway for at least 6 months</li>
+                        </ul>
+                    </ol>
+                </p>}
         />
-        </div>
     )}
 
 
@@ -371,24 +393,27 @@ const RegPoliti = (props) => {
 //dynamisk komponent
 const RegHosPolitiet = () => {
     return (
-        <div>
-
             <Plikter
                 ikon={politietLogo}
                 overskrift="Register as an EU/EEA citizen with the police"
-                hvorfor="Why? overskrift med tekstString hentet fra databasen"
-                tekst="tekstString fra databasen med URLer - 
-                    When?
-                    You have to register with the police within 3 months after your arrival to Norway.
-                    You are allowed to start working before the registration is completed.
-
-                    How?
-                    You have to fill out an application form.
-                    If you meet the requirements for registering, the police will issue you a registration certificate
-                    Some municipalities have long waiting time."
-
+                hvorfor="Why do I get this information?"
+                tekst={
+                    <p>
+                        <b>When?</b>
+                        <br/>
+                        You have to register with the police within 3 months after your arrival to Norway.
+                        <br/>
+                        You are allowed to start working before the registration is completed.
+                        <br /><br />
+                        <b>How?</b>
+                        <br />
+                        You have to fill out an <a href="https://forms.udi.no/en/formNext/f5cfe46d-6851-43b4-9b88-0d892189ecd1/kiohmm85_4v5dcbbt/e8dc8249287d" target="_blank" rel="noopener noreferrer">application form</a>.
+                        <br/>
+                        If you meet the requirements for registering, the police will issue you a <a href="https://www.udi.no/en/word-definitions/registration-certificate-for-eueea-nationals/" target="_blank" rel="noopener noreferrer">registration certificate</a>.
+                        <br/>
+                        Some municipalities have long <a href="https://www.politiet.no/en/tjenester/residence-permits-and-protection/waiting-times/to-get-an-appointment-to-register-as-an-EU-EEA-citizen/" target="_blank" rel="noopener noreferrer">waiting time</a>.
+                    </p>}
             />
-        </div>
     )}
 
 
@@ -417,20 +442,20 @@ const IdNummer = (props) => {
 //dynamisk komponent
 const IdentitetsNummer = () => {
     return (
-        <div>
-
-            <Plikter
-                ikon={skatteetatenLogo}
-                overskrift="National identity number"
-                hvorfor="Why? overskrift med tekstString hentet fra databasen"
-                tekst="tekstString fra databasen med URLer - 
-                    How?
+        <Plikter
+            ikon={skatteetatenLogo}
+            overskrift="National identity number"
+            hvorfor="Why do I get this information?"
+            tekst={
+                <p>
+                    <b>How?</b>
+                    <br/>
                     If you have reported a move to Norway and meet the criteria, you will be assigned a national identity number.
-
-                    You will receive your identification number in the mail."
-
-            />
-        </div>
+                    <br/><br/>
+                    You will receive your identification number in the mail.
+                </p>
+                }
+        />
     )
 }
 
@@ -469,25 +494,25 @@ const Skatt = (props) => {
 //dynamisk komponent
 const Skattekort = () => {
     return (
-        <div>
-
             <Plikter
                 ikon={skatteetatenLogo}
                 overskrift="Tax deduction card"
-                hvorfor="Why? overskrift med tekstString hentet fra databasen"
-                tekst="tekstString fra databasen med URLer - 
-                    When?
-                    You should have a tax deduction card before your receive your first salary.
-                    The tax deduction card is normally ready within five working days after you have applied.
-
-                    How?
-                    Application for tax deduction card for foreign employee - The Norwegian Tax Administration (skatteetaten.no)
-
-                    You must choose how to pay tax, there are two different ways; simplified tax scheme and general tax rules. Most new foreign workers in Norway automatically become part of a simplified tax scheme PAYE (Pay As You Earn). Under this scheme, you are taxed at a fixed percentage that your employer deducts from your salary. 
-
-                    Your employer automatically retrieves your tax deduction card electronically from the Norwegian Tax Administration."
-
+                hvorfor="Why do I get this information?"
+                tekst={
+                    <p>
+                        <b>When?</b>
+                        <br/>
+                        You should have a tax deduction card before your receive your first salary.
+                        The tax deduction card is normally ready within five working days after you have applied.
+                        <br/><br/>
+                        <b>How?</b>
+                        <br/>
+                        <a href="https://www.skatteetaten.no/en/forms/tax-deduction-card-for-foreign-citizens/" target="_blank" rel="noopener noreferrer">Application for tax deduction card for foreign employee - The Norwegian Tax Administration (skatteetaten.no)</a>
+                        <br/><br/>
+                        You must choose how to pay tax, there are two different ways; simplified tax scheme and general tax rules. Most new foreign workers in Norway automatically become part of a simplified tax scheme <a href="https://www.skatteetaten.no/en/person/foreign/are-you-intending-to-work-in-norway/tax-deduction-cards/paye/" target="_blank" rel="noopener noreferrer">PAYE (Pay As You Earn)</a>. Under this scheme, you are taxed at a fixed percentage that your employer deducts from your salary.
+                        <br /><br />
+                        Your employer automatically retrieves your tax deduction card electronically from the Norwegian Tax Administration.
+                    </p>}
             />
-        </div>
     )}
 
