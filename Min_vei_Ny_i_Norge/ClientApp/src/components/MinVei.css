@@ -41,6 +41,10 @@
     padding: 2%;
 }
 
+.landliste {
+    width: 60%
+}
+
 
 
 .radioknapp-rad {
@@ -74,4 +78,33 @@ input[type="checkbox"] {
     margin-right: 2%;
     accent-color: #0067C5;
     cursor: pointer;
+}
+
+.skattforklaringKnapp {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #f9f9f9;
+    color: #0067C5;
+}
+
+.skattforklaringTekstStrek {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.skattforklaringTekst {
+    margin-left: 5%;
+    width: 50%;
+    font-size: 0.85em;
+}
+
+.strek {
+    margin: 0;
+    padding: 0;
+    color: #CACACA;
+    transform: rotate(90deg) scaleX(3);
 }

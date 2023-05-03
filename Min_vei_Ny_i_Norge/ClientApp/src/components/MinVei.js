@@ -20,6 +20,8 @@ export const MinVei = () => {
     const [landlisteSynlighet, setLandlisteSynlighet] = useState(true);
     const [andreLandListe, setAndreLandListe] = useState(false)
     const [resultKnappSynlighet, setResultatKnappSynlighet] = useState(false);
+    const [skattForklaring, setSkattForklaring] = useState(false)
+    const [skattForklringTekst, setSkattForklaringTekst] = useState(false)
 
     // hook som inneholder JSONobjekter med hva brukeren svarer på spørsmålene
     const [svarData, setSvarData] = useState({});
@@ -52,12 +54,15 @@ export const MinVei = () => {
             case 6:
                 setNesteSynlighet(true)
                 setResultatKnappSynlighet(false)
+                setSkattForklaring(false)
+                setSkattForklaringTekst(false)
                 break
             case 7:
                 // vi vet jo egt ikke at siste spørsmål er spørsåml 7,
                 // med tanke på at spørsmålene skal kunne endres ut i fra hva man svarer
                 setNesteSynlighet(false)
                 setResultatKnappSynlighet(true)
+                setSkattForklaring(true)
                 break
         }
     }, [id])
@@ -160,7 +165,6 @@ export const MinVei = () => {
         )
     }
 
-
     const neste = () => {
         /* Setter id til 1 større for å gå til neste spørsmål */
         if (id < 7) setId(prevId => prevId + 1) // 7 må byttes ut med en maks id, eller si når gå til resultat knappen ikke er der
@@ -198,6 +202,26 @@ export const MinVei = () => {
             { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
             <h3>{sporsmal}</h3>
 
+            {
+                skattForklaring &&
+                <button className="skattforklaringKnapp" onClick={() => setSkattForklaringTekst(prev => !prev)}>
+                    <span class="material-symbols-outlined">
+                        expand_more
+                    </span>
+                    What is a tax deduction card?
+                </button>
+            }
+            {
+                // TODO: Fiks strek
+                skattForklringTekst &&
+                <div className="skattforklaringTekstStrek">
+                    <span className="material-symbols-outlined strek">
+                        horizontal_rule
+                    </span>
+                    <p className="skattforklaringTekst">A tax deduction card is an electronic document that shows how much tax your employer must deduct or set aside before they pay your salary.</p>
+                </div>
+            }
+
             { /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
                 svaralternativ?.map(data => {
                     return (
@@ -211,7 +235,7 @@ export const MinVei = () => {
 
             { /* Viser nedtrekkslisten med land kun om hooken landlisteSynlighet er true */
                 landlisteSynlighet &&
-                    <div>
+                <div className="landliste">
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
@@ -264,6 +288,9 @@ export const MinVei = () => {
                         />
                 }
             </div>
+
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         </div>
     );
 }
