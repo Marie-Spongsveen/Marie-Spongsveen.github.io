@@ -2,28 +2,41 @@
 
 }
 
-h1 {
-    margin-bottom: 2%;
+.overskrift1 {
     margin-top: 1%;
+    margin-left: 10%;
+    padding-bottom: 3%;
 }
 
-h2 {
-    margin-bottom: 2%;
-    margin-top: 1%;
-    
+.overskrift2 {
+    margin: 1% 10% 2% 10%;
+    padding-bottom: 1%;
+    border-bottom: solid 2px #645F5F;
 }
 
-h3 {
+.resultatside {
+    padding: 0;
+    margin: 0;
+}
 
+.resultatInnhold {
+    padding: 5%;
+}
+
+.tilbakeKnappResultat {
+    padding: 2% 5%
 }
 
 /*boksen med alle pliktene*/
 .mine-plikter-del {
-    
     background-color: #C4DFE0;
+    padding: 2% 0;
 }
 
-
+.plikter {
+    margin-left: 15%;
+    border-left: 7px solid #F5AA74;
+}
 
 /*boksen med alle rettighetene*/
 .mine-rettigheter-del {
@@ -31,6 +44,7 @@ h3 {
 
 /*for komponentene*/
 .mine-rettigheter {
+    margin-left: 15%;
 }
 
 
@@ -40,6 +54,7 @@ h3 {
 
 /*komponentene*/
 .informasjon-relevant {
+    margin-left: 15%;
 }
 
 
@@ -49,6 +64,7 @@ h3 {
 
 /*komponentene*/
 .videre-fremover {
+    margin-left: 15%;
 }
 
 /*selve resultat-containeren*/
@@ -57,21 +73,33 @@ h3 {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: left;
-    padding: 5% 4%;
-    margin-bottom: 2em;
+    padding: 2%;
+    margin: 2em 5%;
     height: 100%;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     background-color: #FFFFFF;
-    width: 80%;
+    width: 60%;
     max-width: 800em;
-    margin: 0 auto;
 }
 
 .resultat-boks-overskrift {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: start;
     justify-content: space-between;
-    
+}
+
+.resultat-boks-overskrift-rad {
+    grid-template-rows: 1fr 1fr;
+}
+
+.resultat-boks-overskrift-dott {
+    display: inline-flex;
+}
+
+.resultat-boks-overskrift-dott svg {
+    position: relative;
+    left: -10%;
 }
 
 .resultat-boks-tittel {
@@ -83,7 +111,7 @@ h3 {
     max-width: 6em;
     max-height: 6em;
     object-fit: contain;
-    
+    justify-self: end;
 }
 
 .resultat-boks-ikon2 {

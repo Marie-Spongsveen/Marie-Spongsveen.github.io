@@ -7,7 +7,7 @@ export class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className='forside'>
                 <div className='boks'>
                     <div className='headline'>
                         <h1>My digital guide</h1>

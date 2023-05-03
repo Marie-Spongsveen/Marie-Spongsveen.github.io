@@ -32,29 +32,33 @@ const TilbakeKnapp = (props) => {
 //bygger selve layouten av resultatene ved hjelp av komponentene nedenfor
 export const Resultater = () => {
     return (
-        <div>
-            <TilbakeKnapp
-                tekst="Back to my guide"
-                handleClassName="tilbakeKnapp"
-            />
-
-            <div>
+        <div className="resultatside">
+            <div className="tilbakeKnappResultat">
+                <TilbakeKnapp
+                    tekst="Back to my guide"
+                    handleClassName="tilbakeKnapp"
+                />
+            </div>
+            
+            <div className="overskrift1">
                 <h1>My Results</h1>
             </div>
 
-            <div>
-                <h2>My Duties</h2>
-            </div>
-
             <div className="mine-plikter-del">
+                <div className="overskrift2">
+                    <h2>My Duties</h2>
+                </div>
+
+                <div className="plikter">
+                    <MeldeFlytte />
+
+                    <RegHosPolitiet />
+
+                    <IdentitetsNummer />
+
+                    <Skattekort />
+                </div>
                 
-                <MeldeFlytte />
-
-                <RegHosPolitiet />
-
-                <IdentitetsNummer />
-
-                <Skattekort />
 
             </div>
 
@@ -70,6 +74,7 @@ export const Resultater = () => {
                 <VidereFremover />
             </div>
 
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         </div>
     );
 }
@@ -113,6 +118,7 @@ const Informasjon = (props) => {
                     <h3>{props.overskrift}</h3>
                 </span>
                 <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
+                <img src={props.ikon2} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
             </div>
 
             <div className="resultat-boks-hvorfor">
@@ -167,7 +173,7 @@ const MineRettigheter = () => {
         
         <div className="mine-rettigheter-del">
 
-            <div className="resultater-h2">
+            <div className="resultater-h2 overskrift2">
                 <h2>My Benefits</h2>
             </div>
 
@@ -211,7 +217,7 @@ const NyttigInformasjon = () => {
 
         <div className="informasjon-relevant-del">
 
-            <div className="resultater-h2">
+            <div className="resultater-h2 overskrift2">
                 <h2>Information we think may be relevant for you</h2>
             </div>
             
@@ -255,7 +261,7 @@ const VidereFremover = () => {
 
         <div className="videre-fremover-del">
 
-            <div className="resultater-h2">
+            <div className="resultater-h2 overskrift2">
                 <h2>The years ahead</h2>
             </div>
             
@@ -287,20 +293,26 @@ const VidereFremover = () => {
 }
 
 //endre tag på hvorfor-boks
-const Flytte = (props) => {
+const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <span className="resultat-boks-overskrift-tittel">
-                    <h3>{props.overskrift}</h3>
-                </span>
+                <div className="resultat-boks-overskrift-rad">
+                    <div className="resultat-boks-overskrift-dott">
+                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.5 10.5843C19.5 15.5652 15.4685 19.5994 10.5 19.5994C5.53147 19.5994 1.5 15.5652 1.5 10.5843C1.5 5.6033 5.53147 1.56912 10.5 1.56912C15.4685 1.56912 19.5 5.6033 19.5 10.5843Z" fill="#115073" stroke="#F5AA74" stroke-width="3" />
+                        </svg>
+                        <span className="resultat-boks-overskrift-tittel">
+                            <h3>{props.overskrift}</h3>
+                        </span>
+                    </div>
+                    <div className="resultat-boks-hvorfor">
+                        <p>{props.hvorfor}</p>
+                    </div>
+                </div>
                 <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
             </div>
             
-            <div className="resultat-boks-hvorfor">
-                <p>{props.hvorfor}</p>
-            </div>
-
             <p className="resultat-boks-tekst">
                 {props.tekst}
             </p>
@@ -313,7 +325,7 @@ const MeldeFlytte = () => {
     return (
         <div>
 
-        <Flytte
+        <Plikter
             ikon={skatteetatenLogo}
             overskrift="Report a move to Norway"
             hvorfor="Why? overskrift med tekstString hentet fra databasen"
@@ -361,7 +373,7 @@ const RegHosPolitiet = () => {
     return (
         <div>
 
-            <RegPoliti
+            <Plikter
                 ikon={politietLogo}
                 overskrift="Register as an EU/EEA citizen with the police"
                 hvorfor="Why? overskrift med tekstString hentet fra databasen"
@@ -407,7 +419,7 @@ const IdentitetsNummer = () => {
     return (
         <div>
 
-            <IdNummer
+            <Plikter
                 ikon={skatteetatenLogo}
                 overskrift="National identity number"
                 hvorfor="Why? overskrift med tekstString hentet fra databasen"
@@ -459,7 +471,7 @@ const Skattekort = () => {
     return (
         <div>
 
-            <Skatt
+            <Plikter
                 ikon={skatteetatenLogo}
                 overskrift="Tax deduction card"
                 hvorfor="Why? overskrift med tekstString hentet fra databasen"
