@@ -1,4 +1,8 @@
-﻿.boks {
+﻿.forside {
+    margin: 2% auto 5% 20%;
+}
+
+.boks {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -8,7 +12,9 @@
 
 .headline{
     margin-bottom: 2%;
-    margin-top:5%
+    margin-top:1%;
+    margin-left: 0;
+    width: 100%;
 }
 
 .infotekst {

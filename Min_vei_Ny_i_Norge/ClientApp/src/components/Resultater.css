@@ -1,0 +1,136 @@
+﻿body {
+
+}
+
+.overskrift1 {
+    margin-top: 1%;
+    margin-left: 10%;
+    padding-bottom: 3%;
+    color: #433E3E;
+}
+
+.overskrift2 {
+    margin: 1% 10% 2% 10%;
+    padding-bottom: 1%;
+    border-bottom: solid 2px #645F5F;
+    color: #433E3E;
+}
+
+.resultatside {
+    padding: 0;
+    margin: 0;
+}
+
+.resultatInnhold {
+    padding: 5%;
+}
+
+.tilbakeKnappResultat {
+    padding: 2% 5%
+}
+
+/*boksen med alle pliktene*/
+.mine-plikter-del {
+    background-color: #C4DFE0;
+    padding: 2% 0;
+}
+
+.plikter {
+    margin-left: 15%;
+    border-left: 7px solid #F5AA74;
+}
+
+/*boksen med alle rettighetene*/
+.mine-rettigheter-del {
+}
+
+/*for komponentene*/
+.mine-rettigheter {
+    margin-left: 15%;
+}
+
+
+/*boksen med all informasjonen*/
+.informasjon-relevant-del {
+}
+
+/*komponentene*/
+.informasjon-relevant {
+    margin-left: 15%;
+}
+
+
+/*boksen med all informasjon om tiden fremover*/
+.videre-fremover-del {
+}
+
+/*komponentene*/
+.videre-fremover {
+    margin-left: 15%;
+}
+
+/*selve resultat-containeren*/
+.resultat-boks {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 2%;
+    margin: 2em 5%;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+    width: 60%;
+    max-width: 800em;
+}
+
+.resultat-boks-overskrift {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: start;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.resultat-boks-overskrift-rad {
+    grid-template-rows: 50% 50%;
+}
+
+.resultat-boks-overskrift-dott {
+    display: inline-flex;
+}
+
+.resultat-boks-overskrift-dott svg {
+    position: absolute;
+    left: 14.5%;
+}
+
+.resultat-boks-tittel {
+    margin-right: 2em;
+    justify-content: flex-start;
+}
+
+.resultat-boks-ikon {
+    max-width: 6em;
+    max-height: 6em;
+    object-fit: contain;
+    justify-self: end;
+}
+
+.resultat-boks-hvorfor {
+    color: #0067C5;
+}
+
+.resultat-hvorfor-knapp {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #FFF;
+    color: #0067C5;
+}
+
+.resultat-boks-tekst {
+    margin-right: 12%;
+}
