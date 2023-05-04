@@ -15,7 +15,7 @@ export const Home =() => {
         alert("It is currently not possible to log in, please select a different option")
     }
          return (
-            <div>
+            <div className="forside">
                 <div className='boks'>
                     <div className='headline'>
                         <h1>My digital guide</h1>

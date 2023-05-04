@@ -11,7 +11,7 @@
 
 .overskrift2 {
     margin: 1% 10% 2% 10%;
-    padding-bottom: 1%;
+    padding-top: 3%;
     border-bottom: solid 2px #645F5F;
     color: #433E3E;
 }
@@ -83,6 +83,7 @@
     max-width: 800em;
 }
 
+/*Her er det feil med bildet go sånt*/
 .resultat-boks-overskrift {
     display: grid;
     grid-template-columns: 70% 30%;
@@ -111,10 +112,10 @@
 }
 
 .resultat-boks-ikon {
+    float: right;
     max-width: 6em;
     max-height: 6em;
     object-fit: contain;
-    justify-self: end;
 }
 
 .resultat-boks-hvorfor {
@@ -131,6 +132,71 @@
     color: #0067C5;
 }
 
+.hvorfor-forklaring {
+    color: black;
+    font-size: 0.85em;
+    padding-left: 2%;
+    margin-left: 11px;
+    border-left: 2px solid #CFCFCF;
+}
+
 .resultat-boks-tekst {
     margin-right: 12%;
+}
+
+.fremover-boks {
+    padding: 2%;
+    margin: 2em 5%;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+    width: 60%;
+    max-width: 800em;
+}
+
+@media (max-width: 1023px) {
+    .plikter, .mine-rettigheter, .informasjon-relevant, .videre-fremover {
+        margin: 0 15%;
+    }
+
+    .resultat-boks, .fremover-boks {
+        width: 90%;
+    }
+
+    .resultat-boks-overskrift-dott svg {
+        left: 14.3%;
+    }
+}
+
+@media (max-width: 767px) {
+    .overskrift1 {
+        margin-left: 5%;
+    }
+
+    .overskrift2 {
+        margin-left: 5%;
+    }
+
+    .plikter, .mine-rettigheter, .informasjon-relevant, .videre-fremover {
+        margin-left: 10%;
+    }
+
+    .resultat-boks-overskrift-dott svg {
+        left: 9.1%;
+    }
+}
+
+@media (max-width: 479px) {
+    .mine-rettigheter, .informasjon-relevant, .videre-fremover {
+        margin-left: 0;
+    }
+    .plikter {
+        margin-left: 2%;
+    }
+    .resultat-boks, .fremover-boks {
+        width: 105%;
+    }
+
+    .resultat-boks-overskrift-dott svg {
+        left: 0.5%;
+    }
 }

@@ -186,7 +186,7 @@ export const MinVei = () => {
             .then((response: AxiosResponse<any>) => {
                 console.log(response)
             });
-        naviger("/resultat")
+        naviger("/resultater")
     }
 
     return (
@@ -205,21 +205,23 @@ export const MinVei = () => {
             {
                 skattForklaring &&
                 <button className="skattforklaringKnapp" onClick={() => setSkattForklaringTekst(prev => !prev)}>
-                    <span class="material-symbols-outlined">
-                        expand_more
-                    </span>
+                    {
+                        !skattForklringTekst &&
+                        <span class="material-symbols-outlined">
+                            expand_more
+                        </span>
+                    }
+                    { skattForklringTekst &&
+                        <span class="material-symbols-outlined">
+                            expand_less
+                        </span>
+                    }
                     What is a tax deduction card?
                 </button>
             }
             {
-                // TODO: Fiks strek
                 skattForklringTekst &&
-                <div className="skattforklaringTekstStrek">
-                    <span className="material-symbols-outlined strek">
-                        horizontal_rule
-                    </span>
-                    <p className="skattforklaringTekst">A tax deduction card is an electronic document that shows how much tax your employer must deduct or set aside before they pay your salary.</p>
-                </div>
+                <p className="skattforklaringTekst">A tax deduction card is an electronic document that shows how much tax your employer must deduct or set aside before they pay your salary.</p>
             }
 
             { /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
