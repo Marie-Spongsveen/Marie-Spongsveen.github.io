@@ -167,6 +167,9 @@ export const MinVei = () => {
     }
 
     const neste = () => {
+        if (id == 1 || id == 4) {
+            setId(prevId => prevId + 1)
+        }
         /* Setter id til 1 større for å gå til neste spørsmål */
         if (id < 7) setId(prevId => prevId + 1) // 7 må byttes ut med en maks id, eller si når gå til resultat knappen ikke er der
     }
@@ -175,6 +178,9 @@ export const MinVei = () => {
         /* Setter id til en midnre for å gå til forrige spørsmål eller forrige side
              Hvis id er større enn 1 blir 1 satt til en mindre, og man går til forrige spørsmål 
              Hvis id == 1 så er man på første spørsmål og går da tilbake til forrige side */
+        if (id == 3 || id == 6) {
+            setId(prevId => prevId - 1)
+        }
         if (id > 1) setId(prevId => prevId - 1)
         else if (id == 1) naviger("/velg-livssituasjon")
     }

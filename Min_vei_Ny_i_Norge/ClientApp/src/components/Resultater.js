@@ -54,7 +54,8 @@ export const Resultater = () => {
             });
     }
 
-    const a = resultatTekst[0]
+    //const parse = require('html-react-parser');
+    const myProp = resultatTekst[0]
     
     return (
         <div className="resultatside">
@@ -81,7 +82,7 @@ export const Resultater = () => {
                         overskrift="Report a move to Norway"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months"
-                        tekst={a}
+                        tekst={myProp}
                             /*<p>
                                 <b>When?</b>
                                 <br />
@@ -518,7 +519,7 @@ const Plikter = (props) => {
             </div>
             
             <p className="resultat-boks-tekst">
-                { props.tekst }
+                {props.tekst}
             </p>
 
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
