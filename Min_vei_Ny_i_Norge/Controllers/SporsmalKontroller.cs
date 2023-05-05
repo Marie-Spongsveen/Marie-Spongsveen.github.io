@@ -105,8 +105,11 @@ namespace Min_vei_Ny_i_Norge.Controllers
             }
 
             //var LagretValgtSvar =  await _db.ValgteSvar.ToListAsync();
-            var LagretValgtSvarId = await HentBrukerValgteSvar(nyBrukerId);
-            var brukerReultater = await HentBrukerResultat();
+
+
+
+            //var LagretValgtSvarId = await HentBrukerValgteSvar(nyBrukerId);
+            //var brukerReultater = await HentBrukerResultat();
 
             // Sjekker disse metodene
 
