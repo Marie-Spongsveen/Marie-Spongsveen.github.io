@@ -1,5 +1,6 @@
 ﻿import './Resultater.css'
 import './Knapp.css'
+
 import { useState, useEffect } from "react";
 import { Knapp } from './Knapp'
 import { useNavigate } from "react-router-dom";
@@ -79,7 +80,7 @@ export const Resultater = () => {
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months"
                         tekst={
-                            // resultatTekst[1]
+                            // resultatTekst[0]
                             <p>
                                 <b>When?</b>
                                 <br />
@@ -112,7 +113,7 @@ export const Resultater = () => {
 
                     <Plikter
                         ikon={politietLogo}
-                        overskrift="Register as an EU/EEA citizen with the police"
+                        overskrift="Register as an EU/EEA citizen"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months and are an EU or EEA citizen"
                         tekst={
@@ -483,35 +484,33 @@ const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <div className="resultat-boks-overskrift-rad">
-                    <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
 
-                    <div className="resultat-boks-overskrift-dott">
-                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.5 10.5843C19.5 15.5652 15.4685 19.5994 10.5 19.5994C5.53147 19.5994 1.5 15.5652 1.5 10.5843C1.5 5.6033 5.53147 1.56912 10.5 1.56912C15.4685 1.56912 19.5 5.6033 19.5 10.5843Z" fill="#115073" stroke="#F5AA74" stroke-width="3" />
-                        </svg>
-                        <span className="resultat-boks-overskrift-tittel">
-                            <h3>{props.overskrift}</h3>
-                        </span>
-                    </div>
-                    <div className="resultat-boks-hvorfor">
-                        <button className="resultat-hvorfor-knapp" onClick={() => setHvorforForklaring(prev => !prev)}>
-                            {
-                                !hvorforForklaring &&
-                                <span class="material-symbols-outlined">
-                                    expand_more
-                                </span>
-                            }
-                            {
-                                hvorforForklaring &&
-                                <span class="material-symbols-outlined">
-                                    expand_less
-                                </span>
-                            }
-                            {props.hvorfor}
-                        </button>
-                        {hvorforForklaring && <p className="hvorfor-forklaring">{props.hvorforForklaring}</p>}
-                    </div>
+                <div className="resultat-boks-overskrift-dott">
+                    <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5 10.5843C19.5 15.5652 15.4685 19.5994 10.5 19.5994C5.53147 19.5994 1.5 15.5652 1.5 10.5843C1.5 5.6033 5.53147 1.56912 10.5 1.56912C15.4685 1.56912 19.5 5.6033 19.5 10.5843Z" fill="#115073" stroke="#F5AA74" stroke-width="3" />
+                    </svg>
+                    <span className="resultat-boks-overskrift-tittel">
+                        <h3>{props.overskrift}</h3>
+                    </span>
+                </div>
+                <div className="resultat-boks-hvorfor">
+                    <button className="resultat-hvorfor-knapp" onClick={() => setHvorforForklaring(prev => !prev)}>
+                        {
+                            !hvorforForklaring &&
+                            <span class="material-symbols-outlined">
+                                expand_more
+                            </span>
+                        }
+                        {
+                            hvorforForklaring &&
+                            <span class="material-symbols-outlined">
+                                expand_less
+                            </span>
+                        }
+                        {props.hvorfor}
+                    </button>
+                    {hvorforForklaring && <p className="hvorfor-forklaring">{props.hvorforForklaring}</p>}
                 </div>
             </div>
             

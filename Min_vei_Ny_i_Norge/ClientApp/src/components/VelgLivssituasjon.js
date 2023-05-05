@@ -25,11 +25,14 @@ export const VelgLivssituasjon = () => {
 
     return (
         <div>
-            <Knapp
-                navn="Back"
-                handleClassName="tilbakeKnapp"
-                handleClick={navigerHjem}
-            />
+            <div className="tilbake-knapp">
+                <Knapp
+                    navn="Back"
+                    handleClassName="tilbakeKnapp"
+                    handleClick={navigerHjem}
+                />
+            </div>
+           
 
             <div className="velg-livssituasjon-side">
                 <h1>My Digital Guide</h1>

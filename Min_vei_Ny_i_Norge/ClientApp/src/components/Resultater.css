@@ -5,7 +5,7 @@
 .overskrift1 {
     margin-top: 1%;
     margin-left: 10%;
-    padding-bottom: 3%;
+    padding-bottom: 1%;
     color: #433E3E;
 }
 
@@ -71,9 +71,6 @@
 
 /*selve resultat-containeren*/
 .resultat-boks {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     justify-content: left;
     padding: 2%;
     margin: 2em 5%;
@@ -85,16 +82,8 @@
 
 /*Her er det feil med bildet go sånt*/
 .resultat-boks-overskrift {
-    display: grid;
-    grid-template-columns: 70% 30%;
     align-items: start;
     justify-content: space-between;
-    margin: 0;
-    padding: 0;
-}
-
-.resultat-boks-overskrift-rad {
-    grid-template-rows: 50% 50%;
 }
 
 .resultat-boks-overskrift-dott {
@@ -106,9 +95,8 @@
     left: 14.5%;
 }
 
-.resultat-boks-tittel {
-    margin-right: 2em;
-    justify-content: flex-start;
+.resultat-boks-overskrift-tittel {
+    overflow-wrap: break-word;
 }
 
 .resultat-boks-ikon {
@@ -141,7 +129,7 @@
 }
 
 .resultat-boks-tekst {
-    margin-right: 12%;
+    /*margin-right: 12%;*/
 }
 
 .fremover-boks {
