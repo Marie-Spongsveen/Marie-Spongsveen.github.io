@@ -187,4 +187,15 @@
     .resultat-boks-overskrift-dott svg {
         left: 0.5%;
     }
+
+    .resultat-boks-overskrift {
+        display: flex;
+        justify-content: start;
+    }
+
+
+    .resultat-boks-ikon {
+        margin-bottom: 4%;
+        margin-right: 2%;
+    }
 }

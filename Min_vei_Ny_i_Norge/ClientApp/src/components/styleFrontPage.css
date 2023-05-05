@@ -39,3 +39,17 @@
 .knapp:hover {
     background-color: #F5AA74;
 }
+
+@media (max-width: 479px) {
+    .forside {
+        margin: 2% auto 5% 10%;
+    }
+
+    .infotekst {
+        max-width: 85%;
+    }
+
+    .knappContainer {
+        max-width: 85%;
+    }
+}
