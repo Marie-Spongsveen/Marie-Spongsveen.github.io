@@ -45,11 +45,25 @@
         margin: 2% auto 5% 10%;
     }
 
+    .headline {
+        padding-top: 5%;
+    }
+
     .infotekst {
         max-width: 85%;
+        font-size: 1.4em;
     }
 
     .knappContainer {
         max-width: 85%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .knapp {
+        font-size: 1.4em;
+        margin: 7% 0;
+        height: 80%;
+        width: 100%;
     }
 }
