@@ -22,16 +22,26 @@ namespace Min_vei_Ny_i_Norge.Controllers
         [Route("/hent/{id}")]
         public async Task<string> hent(int id)
         {
-            var etSporsmal = await _db.Sporsmals.FindAsync(id);
 
-            var sporsmal = new Sporsmal()
+            string sporsmalTekst = "";
+
+            if (id == 1 || id == 3 || id==4 || id == 6 || id==7)
             {
-                Id = etSporsmal.Id,
-                Sporsmalet = etSporsmal.Sporsmalet
-            };
+                var etSporsmal = await _db.Sporsmals.FindAsync(id);
+                var sporsmal = new Sporsmal()
+                {
+                    Id = etSporsmal.Id,
+                    Sporsmalet = etSporsmal.Sporsmalet
+                };
 
-            return sporsmal.Sporsmalet;
-        }
+                sporsmalTekst = sporsmal.Sporsmalet;
+            }
+
+
+
+            return sporsmalTekst;
+
+        }    
 
 
 
@@ -119,8 +129,11 @@ namespace Min_vei_Ny_i_Norge.Controllers
             }
 
             //var LagretValgtSvar =  await _db.ValgteSvar.ToListAsync();
-            var LagretValgtSvarId = await HentBrukerValgteSvar(nyBrukerId);
-            var brukerReultater = await HentBrukerResultat();
+
+
+
+            //var LagretValgtSvarId = await HentBrukerValgteSvar(nyBrukerId);
+            //var brukerReultater = await HentBrukerResultat();
 
             // Sjekker disse metodene
 
