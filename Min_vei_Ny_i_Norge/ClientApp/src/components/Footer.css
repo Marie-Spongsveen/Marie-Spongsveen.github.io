@@ -34,7 +34,13 @@
     margin-left: 3em;
 }
 
-.footer-to-top {
+.til-topp {
+    display: flex;
+    align-items: center;
+}
+
+.til-topp:hover {
+    cursor: pointer;
 }
 
 .blue-box {
