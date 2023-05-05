@@ -320,6 +320,7 @@ const Informasjon = (props) => {
                     <a href={props.lenke} target="_blank" rel="noopener noreferrer">
                         {props.lenkeBeskrivelse}
                     </a>
+                    <br />
                     <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
                         {props.lenke2Beskrivelse}
                     </a>
