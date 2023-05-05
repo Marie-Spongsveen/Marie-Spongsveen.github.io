@@ -88,6 +88,7 @@ export const MinVei = () => {
         // Henter svaralternativene til samme spørsmålsID
         axios.get('hentSvaralternativ/' + id)
             .then((response: AxiosResponse<any>) => {
+                console.log(response.data)
                 setSvaralternativ(response.data)
             });
     }
@@ -184,7 +185,7 @@ export const MinVei = () => {
         // event.preventDefault() hva gjør denne? brude jeg ha den?
         axios.post('hentSvar/', svarData)
             .then((response: AxiosResponse<any>) => {
-                console.log(response)
+                console.log("sentSvar response: ", response)
             });
         naviger("/resultater")
     }
@@ -227,9 +228,9 @@ export const MinVei = () => {
             { /* Går igjennom svaralternativene til spørsmålet og formaterer den til JSX med riktige attributter */
                 svaralternativ?.map(data => {
                     return (
-                        <div key={data.svarAlternativId} className="radioknapp-rad">
-                            <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
-                            <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
+                        <div key={data.brukerSvarAlternativId} className="radioknapp-rad">
+                            <input id={data.brukerSvarAlternativId} type="radio" value={data.brukerSvarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                            <label htmlFor={data.brukerSvarAlternativId}>{data.brukerSvarAlternativTekst}</label>
                         </div>
                     )
                 })

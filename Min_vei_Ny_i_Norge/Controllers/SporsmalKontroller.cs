@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Min_vei_Ny_i_Norge.Data;
-using Min_vei_Ny_i_Norge.Migrations;
 using Min_vei_Ny_i_Norge.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Min_vei_Ny_i_Norge.Controllers
@@ -103,9 +99,9 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             // Lagrer valgte svaralternativ i tabell "ValgteSvar" med AnonymBrukerId som nyBrukerId
 
-            try 
+            try
             {
-                for (int i = 0; i < valgteSvaralternativListe.Count; i++) 
+                for (int i = 0; i < valgteSvaralternativListe.Count; i++)
                 {
                     int svaralternativId = valgteSvaralternativListe[i];
 
@@ -116,7 +112,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
                 Console.WriteLine("Ny anonymBruker valgte svaralternativer ble lagret.");
             }
-            catch (Exception )
+            catch (Exception)
             {
                 ok = false;
                 Console.WriteLine("Ny anonymBruker valgte svaralternativer ble ikke lagret.");
@@ -147,14 +143,14 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         // metode for konvertere dictionary List av type  <string, object> hentet fra frontend  to List <int> med valgte svaralternativID
         public async Task<List<int>> KonverterValgteSvar(Dictionary<string, object> dictionary)
-        { 
-            List <int> valgteSvarID = new();
+        {
+            List<int> valgteSvarID = new();
 
-            if (dictionary.Count != 0) 
+            if (dictionary.Count != 0)
             {
                 var sporsmalList = await HentAlleSporsmal();
 
-                string sporsmal1 = sporsmalList[0]; 
+                string sporsmal1 = sporsmalList[0];
                 string sporsmal2 = sporsmalList[1];
                 string sporsmal3 = sporsmalList[2];
                 string sporsmal4 = sporsmalList[3];
@@ -166,7 +162,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 {
                     string svar1 = dictionary[sporsmal1].ToString();
 
-                   string valgtsvar1 =await SjekkLand(svar1);
+                    string valgtsvar1 = await SjekkLand(svar1);
 
                     if (valgtsvar1.Equals("EU/EEA land"))
                     {
@@ -204,7 +200,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 {
                     string svar3 = dictionary[sporsmal3].ToString();
 
-                    
+
                     if (svar3.Equals("Work or job seeking"))
                     {
                         valgteSvarID.Add(7);
@@ -309,7 +305,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     }
 
                 }
-                
+
 
             }
 
@@ -318,7 +314,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
 
 
-        
+
         //metode for å hente list over alle spørsmål fra database
         public async Task<List<string>> HentAlleSporsmal()
         {
@@ -329,7 +325,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
             foreach (var etSporsmal in sporsmalList)
             {
 
-                    var sporsmalTekst  = (string)etSporsmal.Sporsmalet;
+                var sporsmalTekst = (string)etSporsmal.Sporsmalet;
 
                 sporsmalTekstList.Add(sporsmalTekst);
 
@@ -371,11 +367,12 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         public async Task<bool> LagreNyAnonymBruker(int anonymBrukerId)
         {
-            try {
+            try
+            {
 
                 var nyAnonymBruker = new Min_vei_Ny_i_Norge.Models.AnonymBruker()
                 {
-                    AnonymBrukerId = anonymBrukerId,  
+                    AnonymBrukerId = anonymBrukerId,
                 };
 
                 _db.AnonymBruker.Add(nyAnonymBruker);
@@ -385,13 +382,13 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 return true;
             }
 
-            catch (Exception )
+            catch (Exception)
             {
                 Console.WriteLine("Feil ved lagring av ny anonymBruker.");
                 return false;
-   
+
             }
-           
+
         }
 
 
@@ -399,14 +396,15 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
 
         // metode som sjekker verdi til siste bruker Idnummer og returnerer neste ledig idnummer for ny bruker  
-        public async Task<int> HentNyBrukerId() {
+        public async Task<int> HentNyBrukerId()
+        {
 
             int nyAnonymBrukerId = 0;
-            int sisteAnonymBrukerId =0;
+            int sisteAnonymBrukerId = 0;
             var sisteAnonymBruker = await _db.AnonymBruker.OrderByDescending(a => a.AnonymBrukerId).FirstOrDefaultAsync();
             if (sisteAnonymBruker != null)
             {
-                 sisteAnonymBrukerId = sisteAnonymBruker.AnonymBrukerId;
+                sisteAnonymBrukerId = sisteAnonymBruker.AnonymBrukerId;
 
             }
 
@@ -422,14 +420,14 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         //metode for å legge til valgte svare i database (i tabell "ValgteSvar")
 
-        public async Task<bool> LagreValgteSvar(int anonymBrukerId,int svarAlternativId)
+        public async Task<bool> LagreValgteSvar(int anonymBrukerId, int svarAlternativId)
         {
             try
             {
 
                 var nyValgteSvar = new Min_vei_Ny_i_Norge.Models.ValgteSvar()
                 {
-                    
+
                     AnonymBrukerId = anonymBrukerId,
                     SvarAlternativId = svarAlternativId
                 };
@@ -456,7 +454,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         public async Task<List<int>> HentBrukerValgteSvar(int anonymBrukerId)
         {
-            
+
             var brukerSvarAlternativIdList = new List<int>();
 
             var brukerValgteSvarList = await _db.ValgteSvar.ToListAsync();
@@ -473,7 +471,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     brukerSvarAlternativIdList.Add(svarAlternativID);
 
                 }
-             
+
             }
             return brukerSvarAlternativIdList;
 
@@ -487,7 +485,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
         [Route("/hentResultat")]
 
         public async Task<List<string>> HentBrukerResultat()
-        {   
+        {
             //oppretter list av type "string" hvor vi skal legge til aktuelle resultate til bruker
             var brukerResultatList = new List<string>();
 
@@ -496,8 +494,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
             // henter alle resultater fra database
             //var resultater = await _db.Resultat.ToListAsync();
 
-           
-            
+
+
             // inisialiserer strenger resultater og henter tilsvarende resultater fra database  :
 
 
@@ -525,11 +523,11 @@ namespace Min_vei_Ny_i_Norge.Controllers
             // henter siste bruker svaralternativer fra database (fra tabell "ValgteSvar")
 
 
-            List<int> brukerSvarAlternativIdList =await HentBrukerValgteSvar(sisteAnonymBrukerId);
+            List<int> brukerSvarAlternativIdList = await HentBrukerValgteSvar(sisteAnonymBrukerId);
 
-            
 
-            if (brukerSvarAlternativIdList.Count !=0)
+
+            if (brukerSvarAlternativIdList.Count != 0)
             {
                 //hvis EU/EØS-land
                 if (brukerSvarAlternativIdList.Contains(1) || brukerSvarAlternativIdList.Contains(4))
@@ -583,8 +581,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
                 }
 
-                
-                    // hvis ikke EU/EØS-land blir det ikke noe lagt til i  brukerResultatList : ingenting vises på resultat side
+
+                // hvis ikke EU/EØS-land blir det ikke noe lagt til i  brukerResultatList : ingenting vises på resultat side
 
             }
             else
@@ -600,8 +598,9 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 brukerResultatList.Add(idNummer);
                 brukerResultatList.Add(skattekort);
 
-            } 
+            }
 
+            Console.WriteLine("!!!!!!!!!!!!!!!!", brukerResultatList);
             return brukerResultatList;
         }
 
@@ -631,7 +630,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
         {
             var EU_EEA_Land_List = new List<String>();
 
-           
+
 
             var landList = await _db.EU_EEA_Land.ToListAsync();
 

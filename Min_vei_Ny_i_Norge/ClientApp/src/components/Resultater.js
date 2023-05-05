@@ -47,12 +47,14 @@ export const Resultater = () => {
     }
 
     const hentResultat = () => {
-        axios.get('hent-resultater/')
+        axios.get('hentResultat/')
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
                 setResultatTekst(response.data)
             });
     }
+
+    const a = resultatTekst[0]
     
     return (
         <div className="resultatside">
@@ -79,9 +81,8 @@ export const Resultater = () => {
                         overskrift="Report a move to Norway"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months"
-                        tekst={
-                            // resultatTekst[0]
-                            <p>
+                        tekst={a}
+                            /*<p>
                                 <b>When?</b>
                                 <br />
                                 You should report a move to Norway at earliest 31 days before your arrival
@@ -108,7 +109,7 @@ export const Resultater = () => {
                                         <li>Documentation showing that: you are going to live in Norway for at least 6 months</li>
                                     </ul>
                                 </ol>
-                            </p>}
+                            </p>*/
                     />
 
                     <Plikter
@@ -517,7 +518,7 @@ const Plikter = (props) => {
             </div>
             
             <p className="resultat-boks-tekst">
-                {props.tekst}
+                { props.tekst }
             </p>
 
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
