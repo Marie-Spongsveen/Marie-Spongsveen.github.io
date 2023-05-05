@@ -101,7 +101,7 @@ namespace Min_vei_Ny_i_Norge.Data
                     {
                         Id = 3,
                         SvarAlternativId = 5,
-                        SvarAlternativTekst = "Work or jobseeking"
+                        SvarAlternativTekst = "Work or job seeking"
 
                     },
 
@@ -138,7 +138,7 @@ namespace Min_vei_Ny_i_Norge.Data
                     {
                         Id = 4,
                         SvarAlternativId = 10,
-                        SvarAlternativTekst = "I  have received a job offer in Norway"
+                        SvarAlternativTekst = "I have received a job offer in Norway"
 
                     },
 
@@ -194,6 +194,118 @@ namespace Min_vei_Ny_i_Norge.Data
             });
 
 
+            modelBuilder.Entity<BrukerSvarAlternativ>(entity =>
+
+            {
+
+                entity.HasKey(e => e.BrukerSvarAlternativId);
+                entity.Property(e => e.Id);
+                entity.Property(e => e.BrukerSvarAlternativId);
+                entity.Property(e => e.BrukerSvarAlternativTekst);
+
+
+                entity.HasData(
+                   
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 1,
+                        BrukerSvarAlternativTekst = "Work or job seeking"
+
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 2,
+                        BrukerSvarAlternativTekst = "Education"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 3,
+                        BrukerSvarAlternativTekst = "Seeking asylum or refuge"
+
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 4,
+                        BrukerSvarAlternativTekst = "Family immigration or moving to family living in Norway"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 3,
+                        BrukerSvarAlternativId = 5,
+                        BrukerSvarAlternativTekst = "Stay at your own expense"
+
+                    },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 4,
+                        BrukerSvarAlternativId = 6,
+                        BrukerSvarAlternativTekst = "I have received a job offer in Norway"
+
+                    },
+
+                     new BrukerSvarAlternativ
+                     {
+                         Id = 4,
+                         BrukerSvarAlternativId = 7,
+                         BrukerSvarAlternativTekst = "I am being sent by my employer to Norway to work"
+
+                     },
+
+                      new BrukerSvarAlternativ
+                      {
+                          Id = 4,
+                          BrukerSvarAlternativId = 8,
+                          BrukerSvarAlternativTekst = "I am coming as a job seeker"
+
+                      },
+
+                    
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 6,
+                        BrukerSvarAlternativId = 9,
+                        BrukerSvarAlternativTekst = "Less than 3 months"
+                    },
+
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 6,
+                        BrukerSvarAlternativId = 10,
+                        BrukerSvarAlternativTekst = "Between 3 months and 6 months"
+                    },
+
+                    new BrukerSvarAlternativ
+                      {
+                          Id = 6,
+                          BrukerSvarAlternativId = 11,
+                          BrukerSvarAlternativTekst = "More than 6 months"
+                      },
+                    new BrukerSvarAlternativ
+                    {
+                        Id = 7,
+                        BrukerSvarAlternativId = 12,
+                        BrukerSvarAlternativTekst = "Yes, I have applied, or my employer has applied on my behalf"
+
+                    },
+                     new BrukerSvarAlternativ
+                     {
+                         Id = 7,
+                         BrukerSvarAlternativId = 13,
+                         BrukerSvarAlternativTekst = "No"
+
+                     });
+            });
+
+
             modelBuilder.Entity<AnonymBruker>(entity =>
             {
                 entity.HasKey(e => e.AnonymBrukerId);
@@ -219,14 +331,213 @@ namespace Min_vei_Ny_i_Norge.Data
 
             });
 
+            modelBuilder.Entity<EU_EEA_Land>(entity =>
+            {
+                entity.HasKey(e => e.LandId);
+                entity.Property(e => e.LandId);
+                entity.Property(e => e.Land);
+
+                entity.HasData(
+
+                    new EU_EEA_Land { 
+                        LandId = 1,
+                        Land = "Austria"
+                    },
+
+                    new EU_EEA_Land { 
+                        LandId = 2,
+                        Land = "Belgium"
+                    },
+
+                    new EU_EEA_Land
+                    {
+                        LandId = 3,
+                        Land = "Bulgaria"
+                    },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 4,
+                         Land = "Croatia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 5,
+                         Land = "Cyprus"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 6,
+                         Land = "Czech Republic"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 7,
+                         Land = "Denmark"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 8,
+                         Land = "Estonia"
+                     },
+
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 9,
+                         Land = "Finland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 10,
+                         Land = "France"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 11,
+                         Land = "Germany"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 12,
+                         Land = "Greece"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 13,
+                         Land = "Hungary"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 14,
+                         Land = "Ireland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 15,
+                         Land = "Italy"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 16,
+                         Land = "Latvia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 17,
+                         Land = "Lithuania"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 18,
+                         Land = "Luxembourg"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 19,
+                         Land = "Malta"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 20,
+                         Land = "Netherland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 21,
+                         Land = "Poland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 22,
+                         Land = "Portugal"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 23,
+                         Land = "Romania"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 24,
+                         Land = "Slovakia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 25,
+                         Land = "Slovenia"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 26,
+                         Land = "Spain"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 27,
+                         Land = "Sweden"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 28,
+                         Land = "Iceland"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 29,
+                         Land = "Liechtenstein"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 30,
+                         Land = "Norway"
+                     },
+
+                     new EU_EEA_Land
+                     {
+                         LandId = 31,
+                         Land = "Switzerland"
+                     }
+
+                    );
+            });
+
 
 
         }
         public DbSet<Sporsmal> Sporsmals => Set<Sporsmal>();
         public DbSet<SvarAlternativ> SvarAlternativer => Set<SvarAlternativ>();
+        public DbSet<BrukerSvarAlternativ> BrukerSvarAlternativer => Set<BrukerSvarAlternativ>();
         public DbSet<Resultat> Resultat => Set<Resultat>();
         public DbSet<AnonymBruker> AnonymBruker => Set<AnonymBruker>();
         public DbSet<ValgteSvar> ValgteSvar => Set<ValgteSvar>();
+
+        public DbSet<EU_EEA_Land> EU_EEA_Land => Set<EU_EEA_Land>();
 
 
     }

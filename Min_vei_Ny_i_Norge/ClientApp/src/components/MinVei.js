@@ -182,7 +182,7 @@ export const MinVei = () => {
     const gaTilResultat = () => {
         /* Sender brukerens svar til bakcken og navigerer brukeren til resultatsiden */
         // event.preventDefault() hva gjør denne? brude jeg ha den?
-        axios.post('svar/', svarData)
+        axios.post('hentSvar/', svarData)
             .then((response: AxiosResponse<any>) => {
                 console.log(response)
             });
