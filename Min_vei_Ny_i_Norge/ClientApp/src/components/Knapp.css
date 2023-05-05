@@ -48,3 +48,15 @@
     background-color: #F5AA74;
     border-color: #F5AA74;
 }
+
+@media (max-width: 479px) {
+    .tilbakeKnapp {
+        padding: 2% 10%;
+        font-size: 1.4em;
+    }
+
+    .nesteKnapp {
+        padding: 2% 10%;
+        font-size: 1.4em;
+    }
+}

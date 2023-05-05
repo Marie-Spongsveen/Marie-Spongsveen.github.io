@@ -49,3 +49,14 @@
         grid-template-columns: 100%;
     }
 }
+
+@media (max-width: 479px) {
+    .velg-livssituasjon-side {
+        margin: 0 2%;
+        max-width: 100%
+    }
+
+    .livssituasjon-boks p {
+        font-size: 1.4em;
+    }
+}

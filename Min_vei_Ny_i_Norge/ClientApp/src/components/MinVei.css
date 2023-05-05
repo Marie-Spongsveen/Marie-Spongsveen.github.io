@@ -46,8 +46,6 @@
     width: 60%
 }
 
-
-
 .radioknapp-rad {
     display: flex;
     align-items: center;
@@ -104,4 +102,25 @@ input[type="checkbox"] {
     padding: 0;
     color: #CACACA;
     transform: rotate(90deg) scaleX(3);
+}
+
+@media (max-width: 479px) {
+    .minVei {
+        margin: 2%;
+        width: 100%;
+    }
+
+    .besvar-container {
+        font-size: 1.2em;
+        width: 95%;
+    }
+
+    .radioknapp-rad, .landliste {
+        font-size: 1.4em;
+        width: 95%;
+    }
+
+    .knapper {
+        width: 95%;
+    }
 }
