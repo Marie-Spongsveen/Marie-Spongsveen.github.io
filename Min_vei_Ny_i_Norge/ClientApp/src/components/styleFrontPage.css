@@ -42,7 +42,7 @@
 
 @media (max-width: 479px) {
     .forside {
-        margin: 2% auto 5% 10%;
+        margin: 2% auto 5% 5%;
     }
 
     .headline {
@@ -50,12 +50,12 @@
     }
 
     .infotekst {
-        max-width: 85%;
+        max-width: 95%;
         font-size: 1.4em;
     }
 
     .knappContainer {
-        max-width: 85%;
+        max-width: 95%;
         display: grid;
         grid-template-columns: 1fr;
     }
