@@ -520,13 +520,15 @@ namespace Min_vei_Ny_i_Norge.Controllers
             var politiRegistrering = await hentResultat(2);
 
 
-            // 3. resultat som tilsvarer " ID-nummer ":
-            var idNummer = await hentResultat(3);
+            // 3. resultat som tilsvarer " F-nummer ":
+            var fNummer = await hentResultat(3);
 
+            // 4. resultat som tilsvarer " D-nummer ":
+            var dNummer = await hentResultat(4);
 
-            // 4. resultat som tilsvarer "Skattekort ":
+            // 5. resultat som tilsvarer "Skattekort ":
 
-            var skattekort = await hentResultat(4);
+            var skattekort = await hentResultat(5);
 
 
             // henter Id til siste bruker
