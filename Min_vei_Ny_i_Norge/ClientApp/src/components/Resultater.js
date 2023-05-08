@@ -154,6 +154,7 @@ export const Resultater = () => {
                 <div className="informasjon-relevant">
                     <Informasjon
                         ikon={udiLogo}
+                        ikonBeskrivelse="Logo of The Norwegian Directorate of Immigration "
                         overskrift="Bringing your family with you"
                         tekst="As an EU or EEA citizen you have the right to bring your family to Norway, but they may have to apply to move themselves."
                         lenke="https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/?resetguide=1"
@@ -161,17 +162,20 @@ export const Resultater = () => {
                     />
                     <Informasjon
                         ikon={norgeskart}
+                        ikonBeskrivelse="A map of Norway"
                         overskrift="Norwegian language course"
                         tekst="Learning Norwegian makes it easier to navigate through the city, understand the culture and getting involved in your local community. Some municipals arrange language courses, you will have to check your municipal."
                     />
                     <Informasjon
                         ikon={statensVegvesenLogo}
+                        ikonBeskrivelse="The logo of the Norwegian Public Roads Administration"
                         overskrift="Exchanging your driver's license"
                         tekst="If you have a driving license issued in another EU/EEA country, it is valid for driving in Norway providing the licence is still valid. If you are living permanently in Norway, you can use your driving license for driving in Norway or exchange it for a Norwegian driving license."
                     />
                     <Informasjon
                         ikon={tollLogo}
                         overskrift="Bringing your vehicle"
+                        ikonBeskrivelse="Logo of the Norwegian customs"
                         tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
                         lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
                         lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs - (toll.no)"
@@ -422,7 +426,7 @@ const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="The logo of The Norwegian tax authority" className="resultat-boks-ikon" />
 
                 <div>
                     <div className="resultat-boks-overskrift-dott">
