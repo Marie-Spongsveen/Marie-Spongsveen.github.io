@@ -587,7 +587,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
                     }
                     //Hvis bruker skal jobbe i Norge
-                    //NY VERSION
+                    //NY VERSION ...
                     if (brukerSvarAlternativIdList.Contains(7) || brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
                     {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
                         if (!brukerResultatList.Contains(fNummer) || !brukerResultatList.Contains(dNummer))
