@@ -1,5 +1,4 @@
-﻿import { react } from 'react'
-import './Footer.css';
+﻿import './Footer.css';
 
 export const Footer = () => {
     function topFunction() {

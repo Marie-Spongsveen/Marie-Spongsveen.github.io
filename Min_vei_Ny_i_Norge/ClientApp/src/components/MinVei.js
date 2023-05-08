@@ -128,11 +128,6 @@ export const MinVei = () => {
     }
 
     const apneEdit = (sporsmal) => {
-        // må finne id til spørsmålet som skal edites
-        // så hente spørsmålet
-        // så vise spørsmålet med svaralternativer
-        console.log("edit:", sporsmal.i)
-
         axios.get('hentnoe/' + sporsmal.i)
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
@@ -194,6 +189,8 @@ export const MinVei = () => {
 
     return (
         <div className="minVei">
+            <a href="min-vei/#sporsmal" className="skip-to-content">Skip to main content</a>
+
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
 
@@ -202,8 +199,8 @@ export const MinVei = () => {
                 {svarDataJSX}
             </div>
 
-            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
-            <h3>{sporsmal}</h3>
+            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */}
+            <h3 id="sporsmal">{sporsmal}</h3>
 
             {
                 skattForklaring &&

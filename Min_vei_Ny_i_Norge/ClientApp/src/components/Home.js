@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styleFrontPage.css'
 import { useNavigate } from "react-router-dom";
 
-//const naviger = useNavigate()
-
 export const Home =() => {
-    //static displayName = Home.name
-        const naviger = useNavigate()
+    const naviger = useNavigate()
+
     const navigerTilValg = () => {
         naviger('/velg-livssituasjon')
     };
