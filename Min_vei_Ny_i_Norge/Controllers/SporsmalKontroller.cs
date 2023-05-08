@@ -6,8 +6,6 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 
-//hey
-
 namespace Min_vei_Ny_i_Norge.Controllers
 {
     [ApiController]
@@ -524,7 +522,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
 
             // 3. resultat som tilsvarer " ID-nummer ":
-            //Skal splittes i to etter databasen er oppdatert, til dNummer, hentResultat(3) og fNummer, hentResultat(4)
+            //Skal splittes i to etter databasen er oppdatert, til fNummer, hentResultat(3) og dNummer, hentResultat(4)
             var idNummer = await hentResultat(3);
 
 
