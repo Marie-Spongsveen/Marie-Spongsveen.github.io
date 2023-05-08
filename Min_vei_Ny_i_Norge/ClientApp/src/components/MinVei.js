@@ -241,6 +241,7 @@ export const MinVei = () => {
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
+                            handleId="country"
                         />
                         <label className="sjekkboks">
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
@@ -251,11 +252,12 @@ export const MinVei = () => {
 
             {
                 andreLandListe &&
-                    <div>
+                    <div className="landliste-2">
                         <h3>What is your second citizenship?</h3>
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your second citizenship?"
+                            handleId="country2"
                         />
                     </div>
             }
