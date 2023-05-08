@@ -521,17 +521,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
             var politiRegistrering = await hentResultat(2);
 
 
-            // 3. resultat som tilsvarer " ID-nummer ":
-            //Skal splittes i to etter databasen er oppdatert, til fNummer, hentResultat(3) og dNummer, hentResultat(4)
-            var idNummer = await hentResultat(3);
-
-
-            // 4. resultat som tilsvarer "Skattekort ":
-            // Skal bli nr 5 etter id nummer er oppdatert
-
-            var skattekort = await hentResultat(4);
-
-
             // henter Id til siste bruker
             var sisteAnonymBruker = await _db.AnonymBruker.OrderByDescending(a => a.AnonymBrukerId).FirstOrDefaultAsync();
             int sisteAnonymBrukerId = sisteAnonymBruker.AnonymBrukerId;
