@@ -7,7 +7,7 @@ export const Footer = () => {
     }
 
     return (
-        <div className="footer">
+        <footer className="footer">
             <div className="footer-box">
                 <div className="footer-description">
                     <p>This digital guide is developed by a bachelor group at OsloMet</p>
@@ -35,6 +35,6 @@ export const Footer = () => {
                 </div>
             </div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        </div>
+        </footer>
         );
 }
