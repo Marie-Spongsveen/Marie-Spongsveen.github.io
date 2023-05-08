@@ -175,7 +175,7 @@ export const Resultater = () => {
                 <div className="videre-fremover">
                     <Fremover
                         ikon={riksVåpen}
-                        ikonBeskrivelse="A photo of the coat of arms of Norway"
+                        ikonBeskrivelse="The coat of arms of Norway"
                         overskrift="Voting rights in local elections"
                         tekst="If you have lived in Norway for at least three consecutive years before the date of the election, you gain the right to vote in the local elections. Local elections are considered as municipal and county council elections."
                     />
@@ -280,7 +280,7 @@ const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <img src={props.ikon} alt="The logo of The Norwegian tax authority" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="The logo of Police" className="resultat-boks-ikon" />
 
                 <div>
                     <div className="resultat-boks-overskrift-dott">
