@@ -552,6 +552,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     // hvis man skal være under 3 mnd
                     if (brukerSvarAlternativIdList.Contains(18))
                     {
+                        //Legge til riktig melde flytte, her ikkemeldeFlytting
                         brukerResultatList.Add(meldeFlytting);
                         brukerResultatList.Add(politiRegistrering);
                     }
@@ -559,12 +560,14 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     // hvis man skal være over 3 mnd og under 6 mnd
                     if (brukerSvarAlternativIdList.Contains(19))
                     {
+                        //Legge til riktig melde flytte, her ikkemeldeFlytting
                         brukerResultatList.Add(meldeFlytting);
                         brukerResultatList.Add(politiRegistrering);
                     }
 
                     if (brukerSvarAlternativIdList.Contains(20))
                     {
+                        //Legge til riktig melde flytte, her meldeFlytting
                         brukerResultatList.Add(meldeFlytting);
                         brukerResultatList.Add(politiRegistrering);
                     }
