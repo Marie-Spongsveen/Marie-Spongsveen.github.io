@@ -552,6 +552,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 {
                     brukerResultatList.Add(meldeFlytting);
                     brukerResultatList.Add(politiRegistrering);
+                    //slitte den i 2, f og d nummer
                     brukerResultatList.Add(idNummer);
                     brukerResultatList.Add(skattekort);
 
