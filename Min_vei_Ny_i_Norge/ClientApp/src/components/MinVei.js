@@ -10,9 +10,13 @@ import "./MinVei.css"
 export const MinVei = () => {
     const naviger = useNavigate();
 
+    // iden til spørsmålet
     const [id, setId] = useState(1);
     const [sporsmal, setSporsmal] = useState();
     const [svaralternativ, setSvaralternativ] = useState();
+
+    const [editboks, setEditboks] = useState()
+    const [editSporsmal, setEditSporsmal] = useState()
 
     // Synlighet for elmenter som ikke alltid skal være synlige
     const [forrigeSynlighet, setForrigeSynlighet] = useState(false);
@@ -95,10 +99,6 @@ export const MinVei = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        /*[name]: {
-                    ["spørsmål"]: name,
-                    ["svar"]: value
-                }*/
         setSvarData(prevFormData => {
             return {
                 ...prevFormData,
@@ -106,7 +106,6 @@ export const MinVei = () => {
             }
         })
         console.log(svarData)
-        // setSvarDataJSX
     }
 
     const formaterBesvart = () => {
@@ -128,9 +127,6 @@ export const MinVei = () => {
         setSvarDataJSX(array)
     }
 
-    const [editboks, setEditboks] = useState()
-    const[test, setTest] = useState()
-
     const apneEdit = (sporsmal) => {
         // må finne id til spørsmålet som skal edites
         // så hente spørsmålet
@@ -140,7 +136,7 @@ export const MinVei = () => {
         axios.get('hentnoe/' + sporsmal.i)
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
-                setTest(response.data)
+                setEditSporsmal(response.data)
             });
 
 
@@ -148,7 +144,7 @@ export const MinVei = () => {
             <div className="editApen">
                 <h3>{sporsmal.i}</h3>
                 {
-                    test?.map(data => {
+                    editSporsmal?.map(data => {
                         return (
                             <div key={data.svarAlternativId} className="radioknapp-rad">
                                 <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
