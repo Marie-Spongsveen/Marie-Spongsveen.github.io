@@ -175,7 +175,7 @@ export const Resultater = () => {
                 <div className="videre-fremover">
                     <Fremover
                         ikon={riksVåpen}
-                        ikonBeskrivelse="The coat of arms of Norway"
+                        ikonBeskrivelse="A photo of the coat of arms of Norway"
                         overskrift="Voting rights in local elections"
                         tekst="If you have lived in Norway for at least three consecutive years before the date of the election, you gain the right to vote in the local elections. Local elections are considered as municipal and county council elections."
                     />
