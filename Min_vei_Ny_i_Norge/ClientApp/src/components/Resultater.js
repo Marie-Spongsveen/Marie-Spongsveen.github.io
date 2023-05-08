@@ -422,7 +422,7 @@ const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="The logo of The Norwegian tax authority" className="resultat-boks-ikon" />
 
                 <div>
                     <div className="resultat-boks-overskrift-dott">
