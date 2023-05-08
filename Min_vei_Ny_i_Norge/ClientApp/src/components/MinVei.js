@@ -128,11 +128,6 @@ export const MinVei = () => {
     }
 
     const apneEdit = (sporsmal) => {
-        // må finne id til spørsmålet som skal edites
-        // så hente spørsmålet
-        // så vise spørsmålet med svaralternativer
-        console.log("edit:", sporsmal.i)
-
         axios.get('hentnoe/' + sporsmal.i)
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
