@@ -194,6 +194,8 @@ export const MinVei = () => {
 
     return (
         <div className="minVei">
+            <a href="min-vei/#sporsmal" className="skip-to-content">Skip to main content</a>
+
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
 
@@ -202,8 +204,8 @@ export const MinVei = () => {
                 {svarDataJSX}
             </div>
 
-            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
-            <h3>{sporsmal}</h3>
+            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */}
+            <h3 id="sporsmal">{sporsmal}</h3>
 
             {
                 skattForklaring &&
