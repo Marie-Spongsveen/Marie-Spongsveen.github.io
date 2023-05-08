@@ -1,0 +1,126 @@
+﻿.minVei {
+    margin: 5% auto 5% 20%;
+    width: 70%;
+}
+
+.knapper {
+    padding-top: 2em;
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+
+.besvar-container {
+    margin: 5% 0;
+    width: 80%;
+}
+
+.besvar-boks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C4DFE0;
+    padding: 1% 2%;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    height: auto;
+    margin: 2% 0 0 0;
+}
+
+.besvar-boks p {
+    margin: 0;
+}
+
+.edit {
+    border: none;
+    background-color: transparent;
+}
+
+.editApen {
+    border: 10px solid #C4DFE0;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+    padding: 2%;
+}
+
+.landliste {
+    width: 60%
+}
+
+.radioknapp-rad {
+    display: flex;
+    align-items: center;
+    padding: 0.5% 0;
+}
+
+.radioknapp-rad label {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    width: 1em;
+    height: 1em;
+    margin-right: 2%;
+    accent-color: #0067C5;
+    cursor: pointer;
+}
+
+.sjekkboks {
+    display: flex;
+    align-items: center;
+    padding: 0.5% 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 1em;
+    height: 1em;
+    margin-right: 2%;
+    accent-color: #0067C5;
+    cursor: pointer;
+}
+
+.skattforklaringKnapp {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #f9f9f9;
+    color: #0067C5;
+}
+
+.skattforklaringTekst {
+    margin-left: 11px;
+    width: 50%;
+    font-size: 0.85em;
+    padding-left: 2%;
+    border-left: 2px solid #CFCFCF;
+}
+
+.strek {
+    margin: 0;
+    padding: 0;
+    color: #CACACA;
+    transform: rotate(90deg) scaleX(3);
+}
+
+@media (max-width: 479px) {
+    .minVei {
+        margin: 2%;
+        width: 100%;
+    }
+
+    .besvar-container {
+        font-size: 1.2em;
+        width: 95%;
+    }
+
+    .radioknapp-rad, .landliste {
+        font-size: 1.4em;
+        width: 95%;
+    }
+
+    .knapper {
+        width: 95%;
+    }
+}

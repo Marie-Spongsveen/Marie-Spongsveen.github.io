@@ -38,6 +38,7 @@ namespace Min_vei_Ny_i_Norge.Migrations
                     { 6, "How long do you plan to stay in Norway?" },
                     { 7, "Have you applied for a tax deduction card in Norway?" }
                 });
+
         }
 
         /// <inheritdoc />
