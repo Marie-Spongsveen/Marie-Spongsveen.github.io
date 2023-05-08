@@ -37,9 +37,9 @@ export class NavMenu extends Component {
                 <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
                     <ul className="navbar-nav flex-grow">
                         <NavItem>
-                            <NavLink className="changeLanguage" onClick={this.languageAlert} tabindex="0">
+                            <button className="changeLanguage" onClick={this.languageAlert} tabindex="0">
                                 <p>Change language</p>
-                            </NavLink>
+                            </button>
                         </NavItem>
                     </ul>
                 </Collapse>

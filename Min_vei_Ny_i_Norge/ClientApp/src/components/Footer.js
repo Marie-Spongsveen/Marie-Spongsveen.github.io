@@ -26,12 +26,12 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-to-top">
-                    <p onClick={topFunction} className="til-topp" tabindex="0">
+                    <button onClick={topFunction} className="til-topp" tabindex="0">
                         Top of page
                         <span class="material-symbols-outlined">
                             arrow_upward
                         </span>
-                    </p>
+                    </button>
                 </div>
             </div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />

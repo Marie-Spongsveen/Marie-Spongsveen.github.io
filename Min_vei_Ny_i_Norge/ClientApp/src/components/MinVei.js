@@ -189,7 +189,7 @@ export const MinVei = () => {
 
     return (
         <div className="minVei">
-            <a href="min-vei/#sporsmal" className="skip-to-content">Skip to main content</a>
+            <a href="min-vei/#sporsmal" className="skip-to-content">Skip to content</a>
 
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
