@@ -512,23 +512,24 @@ namespace Min_vei_Ny_i_Norge.Controllers
             // 1. resultat som tilsvarer "melde flytting":
             var meldeFlytting = await hentResultat(1);
 
-            //var ikkemeldeFlytting = await hentResultat(2);
+            // 2. hvis brukeren ikke skal melde flytte 
+            var ikkemeldeFlytting = await hentResultat(2);
 
 
-            // 2. resultat som tilsvarer "Registrere hos politi":
-            var politiRegistrering = await hentResultat(2);
+            // 3. resultat som tilsvarer "Registrere hos politi":
+            var politiRegistrering = await hentResultat(3);
 
 
-            // 3. resultat som tilsvarer " F-nummer ":
-            var fNummer = await hentResultat(3);
+            // 4. resultat som tilsvarer " F-nummer ":
+            var fNummer = await hentResultat(4);
            
             // lagt til dNummer
-            // 4. resultat som tilsvarer " D-nummer ":
-            var dNummer = await hentResultat(4);
+            // 5. resultat som tilsvarer " D-nummer ":
+            var dNummer = await hentResultat(5);
 
 
-            // 5. resultat som tilsvarer "Skattekort ":
-            var skattekort = await hentResultat(5);
+            // 6. resultat som tilsvarer "Skattekort ":
+            var skattekort = await hentResultat(6);
 
 
 
@@ -553,7 +554,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     if (brukerSvarAlternativIdList.Contains(18))
                     {
                         //Legge til riktig melde flytte, her ikkemeldeFlytting
-                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(ikkemeldeFlytting);
                         brukerResultatList.Add(politiRegistrering);
                     }
 
@@ -561,7 +562,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     if (brukerSvarAlternativIdList.Contains(19))
                     {
                         //Legge til riktig melde flytte, her ikkemeldeFlytting
-                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(ikkemeldeFlytting);
                         brukerResultatList.Add(politiRegistrering);
                     }
 
@@ -606,7 +607,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     }
 
                     // hvis man har søkt skattekort 
-                    if (brukerSvarAlternativIdList.Contains(22))
+                    if (brukerSvarAlternativIdList.Contains(22) || brukerSvarAlternativIdList.Contains(23))
                     {
                         brukerResultatList.Add(skattekort);
                     }
