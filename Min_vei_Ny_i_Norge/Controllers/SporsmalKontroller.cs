@@ -491,10 +491,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         }
 
-
-
-
-
         [HttpGet]
         [Route("/hentResultat")]
 
@@ -515,6 +511,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             // 1. resultat som tilsvarer "melde flytting":
             var meldeFlytting = await hentResultat(1);
+
+            //var ikkemeldeFlytting = await hentResultat(2);
 
 
             // 2. resultat som tilsvarer "Registrere hos politi":
@@ -550,11 +548,34 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 //hvis EU/EØS-land
                 if (brukerSvarAlternativIdList.Contains(1) || brukerSvarAlternativIdList.Contains(4))
                 {
+<<<<<<< HEAD
                     brukerResultatList.Add(meldeFlytting);
                     brukerResultatList.Add(politiRegistrering);
                     //slitte den i 2, f og d nummer
                     brukerResultatList.Add(dNummer);
                     brukerResultatList.Add(skattekort);
+=======
+
+                    // hvis man skal være under 3 mnd
+                    if (brukerSvarAlternativIdList.Contains(18))
+                    {
+                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
+                    }
+
+                    // hvis man skal være over 3 mnd og under 6 mnd
+                    if (brukerSvarAlternativIdList.Contains(19))
+                    {
+                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
+                    }
+
+                    if (brukerSvarAlternativIdList.Contains(20))
+                    {
+                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
+                    }
+>>>>>>> 6d7c42ed151c6cd73fdc8ec0f94e6c374f9caa1f
 
                     // hvis man ikke skal jobbe i Norge (svarer utdanning, asyl, familie eller på egne midler), må ikke  oppgis info om ID-nummer
                     if (brukerSvarAlternativIdList.Contains(8) || brukerSvarAlternativIdList.Contains(9) || brukerSvarAlternativIdList.Contains(10) || brukerSvarAlternativIdList.Contains(11))
@@ -563,13 +584,21 @@ namespace Min_vei_Ny_i_Norge.Controllers
                         if (brukerResultatList.Contains(fNummer))
                         {
                             brukerResultatList.Remove(fNummer);
+<<<<<<< HEAD
+=======
+                        }
+                        if (brukerResultatList.Contains(dNummer))
+                        {
+                            brukerResultatList.Remove(fNummer);
+>>>>>>> 6d7c42ed151c6cd73fdc8ec0f94e6c374f9caa1f
                         }
 
                     }
-
-                    //hvis man svarer svarer på spm4 at man skal jobbe, må info om ID-nummer oppgis
-                    if (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
+                    //Hvis bruker skal jobbe i Norge
+                    //NY VERSION
+                    if (brukerSvarAlternativIdList.Contains(7) || brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
                     {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
+<<<<<<< HEAD
                         if (!brukerResultatList.Contains(Nummer)) 
                         {
                             brukerResultatList.Add(fNummer);
@@ -581,56 +610,27 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
                     {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
                         if (!brukerResultatList.Contains(idNummer))
+=======
+                        if (!brukerResultatList.Contains(fNummer) || !brukerResultatList.Contains(dNummer))
+>>>>>>> 6d7c42ed151c6cd73fdc8ec0f94e6c374f9caa1f
                         {
+                            //Hvis bruker skal være i Norge under 6 måneder
                             if (brukerSvarAlternativIdList.Contains(18) || brukerSvarAlternativIdList.Contains(19))
                             {
                                 brukerResultatList.Add(dNummer);
                             }
+                            //Hvis bruker skal være i Norge mer enn 6 måneder
                             if (brukerSvarAlternativIdList.Contains(20))
                             {
                                 brukerResultatList.Add(fNummer);
                             }
                         }
                     }
-                    */
-
-                    //SLITTA VERSJON
-
-                    //Hvis man skal jobbe og være i Norge under 6 måneder
-                    /*if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || (brukerSvarAlternativIdList.Contains(14) || (brukerSvarAlternativIdList.Contains(15) && (brukerSvarAlternativIdList.Contains(18) || (brukerSvarAlternativIdList.Contains(19){
-                        if (!brukerResultatList.Contains(idNummer))
-                        {
-                            brukerResultatList.Add(dNummer);
-                        }
-                    }*/
-                    //Hvis man skal jobbe og være i Norge under 6 måneder
-                    /*if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || (brukerSvarAlternativIdList.Contains(14) || (brukerSvarAlternativIdList.Contains(15) && (brukerSvarAlternativIdList.Contains(20){
-                        if (!brukerResultatList.Contains(fNummer))
-                        {
-                            brukerResultatList.Add(fNummer);
-                        }
-                    }*/
-
-
-
-                    // hvis man skal være under 3 mnd
-                    if (brukerSvarAlternativIdList.Contains(18))
-                    {
-                        brukerResultatList.Remove(politiRegistrering);
-                        brukerResultatList.Remove(meldeFlytting);
-                    }
-
-                    // hvis man skal være over 3 mnd og under 6 mnd
-                    if (brukerSvarAlternativIdList.Contains(19))
-                    {
-
-                        brukerResultatList.Remove(meldeFlytting);
-                    }
 
                     // hvis man har søkt skattekort 
                     if (brukerSvarAlternativIdList.Contains(22))
                     {
-                        brukerResultatList.Remove(skattekort);
+                        brukerResultatList.Add(skattekort);
                     }
 
                 }
@@ -647,9 +647,13 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 var resultatTekst = (string)etResultat.ResultatTekst;
                     brukerResultatList.Add(resultatTekst);
                 }*/
-                    brukerResultatList.Add(meldeFlytting);
+                brukerResultatList.Add(meldeFlytting);
                 brukerResultatList.Add(politiRegistrering);
+<<<<<<< HEAD
                 brukerResultatList.Add(fNummer);
+=======
+                brukerResultatList.Add(dNummer);
+>>>>>>> 6d7c42ed151c6cd73fdc8ec0f94e6c374f9caa1f
                 brukerResultatList.Add(skattekort);
 
             }
@@ -657,8 +661,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
             Console.WriteLine("!!!!!!!!!!!!!!!!", brukerResultatList);
             return brukerResultatList;
         }
-
-
 
         public async Task<string> hentResultat(int id)
         {
