@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Min_vei_Ny_i_Norge.Data;
 using Min_vei_Ny_i_Norge.Models;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Text;
 
 namespace Min_vei_Ny_i_Norge.Controllers
@@ -520,14 +521,16 @@ namespace Min_vei_Ny_i_Norge.Controllers
             var politiRegistrering = await hentResultat(2);
 
 
+
             // 3. resultat som tilsvarer " F-nummer ":
             var fNummer = await hentResultat(3);
-
+           
+            // lagt til dNummer
             // 4. resultat som tilsvarer " D-nummer ":
             var dNummer = await hentResultat(4);
 
             // 5. resultat som tilsvarer "Skattekort ":
-
+            
             var skattekort = await hentResultat(5);
 
 
@@ -549,6 +552,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 {
                     brukerResultatList.Add(meldeFlytting);
                     brukerResultatList.Add(politiRegistrering);
+                    //slitte den i 2, f og d nummer
                     brukerResultatList.Add(idNummer);
                     brukerResultatList.Add(skattekort);
 
@@ -566,11 +570,47 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     //hvis man svarer svarer på spm4 at man skal jobbe, må info om ID-nummer oppgis
                     if (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
                     {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
-                        if (!brukerResultatList.Contains(idNummer))
+                        if (!brukerResultatList.Contains(idNummer)) 
                         {
                             brukerResultatList.Add(idNummer);
                         }
                     }
+                    //NY VERSION, LEGGES TIL ETTER OPPDATERING I DATABASE
+                    // KOMBINERT VERSJON
+                    /*
+                    if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
+                    {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
+                        if (!brukerResultatList.Contains(idNummer))
+                        {
+                            if (brukerSvarAlternativIdList.Contains(18) || brukerSvarAlternativIdList.Contains(19))
+                            {
+                                brukerResultatList.Add(dNummer);
+                            }
+                            if (brukerSvarAlternativIdList.Contains(20))
+                            {
+                                brukerResultatList.Add(fNummer);
+                            }
+                        }
+                    }
+                    */
+
+                    //SLITTA VERSJON
+
+                    //Hvis man skal jobbe og være i Norge under 6 måneder
+                    /*if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || (brukerSvarAlternativIdList.Contains(14) || (brukerSvarAlternativIdList.Contains(15) && (brukerSvarAlternativIdList.Contains(18) || (brukerSvarAlternativIdList.Contains(19){
+                        if (!brukerResultatList.Contains(idNummer))
+                        {
+                            brukerResultatList.Add(dNummer);
+                        }
+                    }*/
+                    //Hvis man skal jobbe og være i Norge under 6 måneder
+                    /*if (brukerSvarAlternativIdList.Contains(7) || (brukerSvarAlternativIdList.Contains(13) || (brukerSvarAlternativIdList.Contains(14) || (brukerSvarAlternativIdList.Contains(15) && (brukerSvarAlternativIdList.Contains(20){
+                        if (!brukerResultatList.Contains(fNummer))
+                        {
+                            brukerResultatList.Add(fNummer);
+                        }
+                    }*/
+
 
 
                     // hvis man skal være under 3 mnd
@@ -586,7 +626,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
                         brukerResultatList.Remove(meldeFlytting);
                     }
-
 
                     // hvis man har søkt skattekort 
                     if (brukerSvarAlternativIdList.Contains(22))
@@ -608,7 +647,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 var resultatTekst = (string)etResultat.ResultatTekst;
                     brukerResultatList.Add(resultatTekst);
                 }*/
-                brukerResultatList.Add(meldeFlytting);
+                    brukerResultatList.Add(meldeFlytting);
                 brukerResultatList.Add(politiRegistrering);
                 brukerResultatList.Add(idNummer);
                 brukerResultatList.Add(skattekort);
