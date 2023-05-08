@@ -499,12 +499,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
             //oppretter list av type "string" hvor vi skal legge til aktuelle resultate til bruker
             var brukerResultatList = new List<string>();
 
-
-
             // henter alle resultater fra database
             //var resultater = await _db.Resultat.ToListAsync();
-
-
 
             // inisialiserer strenger resultater og henter tilsvarende resultater fra database  :
 
