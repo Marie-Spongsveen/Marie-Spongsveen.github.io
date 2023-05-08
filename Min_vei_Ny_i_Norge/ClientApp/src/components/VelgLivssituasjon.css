@@ -22,6 +22,10 @@
     height: 100%;
 }
 
+.livssituasjon-boks:focus {
+    background-color: #F5AA74;
+}
+
 .livssituasjon-boks img {
     width: 12%;
 }

@@ -1,17 +1,11 @@
 ﻿import { react } from 'react'
 import './Footer.css';
 
-
-
 export const Footer = () => {
     function topFunction() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
-
-
-
- 
 
     return (
         <div className="footer">
@@ -33,7 +27,7 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-to-top">
-                    <p onClick={topFunction} className="til-topp">
+                    <p onClick={topFunction} className="til-topp" tabindex="0">
                         Top of page
                         <span class="material-symbols-outlined">
                             arrow_upward
