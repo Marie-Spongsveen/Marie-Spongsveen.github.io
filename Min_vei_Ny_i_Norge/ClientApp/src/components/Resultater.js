@@ -194,12 +194,14 @@ export const Resultater = () => {
                 <div className="videre-fremover">
                     <Fremover
                         ikon={riksVåpen}
+                        ikonBeskrivelse="A photo of the coat of arms of Norway"
                         overskrift="Voting rights in local elections"
                         tekst="If you have lived in Norway for at least three consecutive years before the date of the election, you gain the right to vote in the local elections. Local elections are considered as municipal and county council elections."
                     />
                     <Fremover
                         ikon={udiLogo}
                         overskrift="Permanent residency"
+                        ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
                         lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
                         lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals"
@@ -207,6 +209,7 @@ export const Resultater = () => {
                     <Fremover
                         ikon={udiLogo}
                         overskrift="Norwegian citizenship"
+                        ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="The requirements for Norwegian citizenship are not the same for everyone. You have to have permanent recidency in Norway. A Norwegian citizenship can give you more rights."
                         lenke="https://www.udi.no/en/want-to-apply/citizenship/citizenship-for-eueea-nationals-who-have-held-a-residence-permit-in-norway/"
                         lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway"
