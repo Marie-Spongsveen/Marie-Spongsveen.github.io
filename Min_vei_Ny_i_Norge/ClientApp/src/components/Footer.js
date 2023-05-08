@@ -1,15 +1,20 @@
 ﻿import { react } from 'react'
 import './Footer.css';
 
+
+
 export const Footer = () => {
     function topFunction() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 
+
+
+ 
+
     return (
         <div className="footer">
-            <div className="blue-box"></div>
             <div className="footer-box">
                 <div className="footer-description">
                     <p>This digital guide is developed by a bachelor group at OsloMet</p>
