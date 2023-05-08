@@ -521,7 +521,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
             var politiRegistrering = await hentResultat(2);
 
 
-
             // 3. resultat som tilsvarer " F-nummer ":
             var fNummer = await hentResultat(3);
            
@@ -529,9 +528,10 @@ namespace Min_vei_Ny_i_Norge.Controllers
             // 4. resultat som tilsvarer " D-nummer ":
             var dNummer = await hentResultat(4);
 
+
             // 5. resultat som tilsvarer "Skattekort ":
-            
             var skattekort = await hentResultat(5);
+
 
 
             // henter Id til siste bruker
