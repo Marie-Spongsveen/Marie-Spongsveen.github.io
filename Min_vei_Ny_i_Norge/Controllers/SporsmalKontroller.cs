@@ -553,16 +553,16 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     brukerResultatList.Add(meldeFlytting);
                     brukerResultatList.Add(politiRegistrering);
                     //slitte den i 2, f og d nummer
-                    brukerResultatList.Add(idNummer);
+                    brukerResultatList.Add(dNummer);
                     brukerResultatList.Add(skattekort);
 
                     // hvis man ikke skal jobbe i Norge (svarer utdanning, asyl, familie eller på egne midler), må ikke  oppgis info om ID-nummer
                     if (brukerSvarAlternativIdList.Contains(8) || brukerSvarAlternativIdList.Contains(9) || brukerSvarAlternativIdList.Contains(10) || brukerSvarAlternativIdList.Contains(11))
                     {
                         // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
-                        if (brukerResultatList.Contains(idNummer))
+                        if (brukerResultatList.Contains(fNummer))
                         {
-                            brukerResultatList.Remove(idNummer);
+                            brukerResultatList.Remove(fNummer);
                         }
 
                     }
@@ -570,9 +570,9 @@ namespace Min_vei_Ny_i_Norge.Controllers
                     //hvis man svarer svarer på spm4 at man skal jobbe, må info om ID-nummer oppgis
                     if (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
                     {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
-                        if (!brukerResultatList.Contains(idNummer)) 
+                        if (!brukerResultatList.Contains(Nummer)) 
                         {
-                            brukerResultatList.Add(idNummer);
+                            brukerResultatList.Add(fNummer);
                         }
                     }
                     //NY VERSION, LEGGES TIL ETTER OPPDATERING I DATABASE
@@ -649,7 +649,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 }*/
                     brukerResultatList.Add(meldeFlytting);
                 brukerResultatList.Add(politiRegistrering);
-                brukerResultatList.Add(idNummer);
+                brukerResultatList.Add(fNummer);
                 brukerResultatList.Add(skattekort);
 
             }
