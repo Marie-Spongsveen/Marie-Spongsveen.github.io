@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Min_vei_Ny_i_Norge.Data;
 using Min_vei_Ny_i_Norge.Models;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Text;
 
 namespace Min_vei_Ny_i_Norge.Controllers
@@ -490,10 +491,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
         }
 
-
-
-
-
         [HttpGet]
         [Route("/hentResultat")]
 
@@ -502,12 +499,8 @@ namespace Min_vei_Ny_i_Norge.Controllers
             //oppretter list av type "string" hvor vi skal legge til aktuelle resultate til bruker
             var brukerResultatList = new List<string>();
 
-
-
             // henter alle resultater fra database
             //var resultater = await _db.Resultat.ToListAsync();
-
-
 
             // inisialiserer strenger resultater og henter tilsvarende resultater fra database  :
 
@@ -515,18 +508,25 @@ namespace Min_vei_Ny_i_Norge.Controllers
             // 1. resultat som tilsvarer "melde flytting":
             var meldeFlytting = await hentResultat(1);
 
-
-            // 2. resultat som tilsvarer "Registrere hos politi":
-            var politiRegistrering = await hentResultat(2);
-
-
-            // 3. resultat som tilsvarer " ID-nummer ":
-            var idNummer = await hentResultat(3);
+            // 2. hvis brukeren ikke skal melde flytte 
+            var ikkemeldeFlytting = await hentResultat(2);
 
 
-            // 4. resultat som tilsvarer "Skattekort ":
+            // 3. resultat som tilsvarer "Registrere hos politi":
+            var politiRegistrering = await hentResultat(3);
 
-            var skattekort = await hentResultat(4);
+
+            // 4. resultat som tilsvarer " F-nummer ":
+            var fNummer = await hentResultat(4);
+           
+            // lagt til dNummer
+            // 5. resultat som tilsvarer " D-nummer ":
+            var dNummer = await hentResultat(5);
+
+
+            // 6. resultat som tilsvarer "Skattekort ":
+            var skattekort = await hentResultat(6);
+
 
 
             // henter Id til siste bruker
@@ -545,51 +545,67 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 //hvis EU/EØS-land
                 if (brukerSvarAlternativIdList.Contains(1) || brukerSvarAlternativIdList.Contains(4))
                 {
-                    brukerResultatList.Add(meldeFlytting);
-                    brukerResultatList.Add(politiRegistrering);
-                    brukerResultatList.Add(idNummer);
-                    brukerResultatList.Add(skattekort);
-
-                    // hvis man ikke skal jobbe i Norge (svarer utdanning, asyl, familie eller på egne midler), må ikke  oppgis info om ID-nummer
-                    if (brukerSvarAlternativIdList.Contains(8) || brukerSvarAlternativIdList.Contains(9) || brukerSvarAlternativIdList.Contains(10) || brukerSvarAlternativIdList.Contains(11))
-                    {
-                        // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
-                        if (brukerResultatList.Contains(idNummer))
-                        {
-                            brukerResultatList.Remove(idNummer);
-                        }
-
-                    }
-
-                    //hvis man svarer svarer på spm4 at man skal jobbe, må info om ID-nummer oppgis
-                    if (brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
-                    {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
-                        if (!brukerResultatList.Contains(idNummer))
-                        {
-                            brukerResultatList.Add(idNummer);
-                        }
-                    }
-
 
                     // hvis man skal være under 3 mnd
                     if (brukerSvarAlternativIdList.Contains(18))
                     {
-                        brukerResultatList.Remove(politiRegistrering);
-                        brukerResultatList.Remove(meldeFlytting);
+                        //Legge til riktig melde flytte, her ikkemeldeFlytting
+                        brukerResultatList.Add(ikkemeldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
                     }
 
                     // hvis man skal være over 3 mnd og under 6 mnd
                     if (brukerSvarAlternativIdList.Contains(19))
                     {
-
-                        brukerResultatList.Remove(meldeFlytting);
+                        //Legge til riktig melde flytte, her ikkemeldeFlytting
+                        brukerResultatList.Add(ikkemeldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
                     }
 
+                    if (brukerSvarAlternativIdList.Contains(20))
+                    {
+                        //Legge til riktig melde flytte, her meldeFlytting
+                        brukerResultatList.Add(meldeFlytting);
+                        brukerResultatList.Add(politiRegistrering);
+                    }
+
+                    // hvis man ikke skal jobbe i Norge (svarer utdanning, asyl, familie eller på egne midler), må ikke  oppgis info om ID-nummer
+                    if (brukerSvarAlternativIdList.Contains(8) || brukerSvarAlternativIdList.Contains(9) || brukerSvarAlternativIdList.Contains(10) || brukerSvarAlternativIdList.Contains(11))
+                    {
+                        // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
+                        if (brukerResultatList.Contains(fNummer))
+                        {
+                            brukerResultatList.Remove(fNummer);
+                        }
+                        if (brukerResultatList.Contains(dNummer))
+                        {
+                            brukerResultatList.Remove(fNummer);
+                        }
+
+                    }
+                    //Hvis bruker skal jobbe i Norge
+                    //NY VERSION ...
+                    if (brukerSvarAlternativIdList.Contains(7) || brukerSvarAlternativIdList.Contains(13) || brukerSvarAlternativIdList.Contains(14) || brukerSvarAlternativIdList.Contains(15))
+                    {     // må sjekkse hver gang om Idnummer info eksistere fra før i brukerResultatList. Hvis ja må fjernes
+                        if (!brukerResultatList.Contains(fNummer) || !brukerResultatList.Contains(dNummer))
+                        {
+                            //Hvis bruker skal være i Norge under 6 måneder
+                            if (brukerSvarAlternativIdList.Contains(18) || brukerSvarAlternativIdList.Contains(19))
+                            {
+                                brukerResultatList.Add(dNummer);
+                            }
+                            //Hvis bruker skal være i Norge mer enn 6 måneder
+                            if (brukerSvarAlternativIdList.Contains(20))
+                            {
+                                brukerResultatList.Add(fNummer);
+                            }
+                        }
+                    }
 
                     // hvis man har søkt skattekort 
-                    if (brukerSvarAlternativIdList.Contains(22))
+                    if (brukerSvarAlternativIdList.Contains(22) || brukerSvarAlternativIdList.Contains(23))
                     {
-                        brukerResultatList.Remove(skattekort);
+                        brukerResultatList.Add(skattekort);
                     }
 
                 }
@@ -608,16 +624,12 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 }*/
                 brukerResultatList.Add(meldeFlytting);
                 brukerResultatList.Add(politiRegistrering);
-                brukerResultatList.Add(idNummer);
+                brukerResultatList.Add(dNummer);
                 brukerResultatList.Add(skattekort);
 
             }
-
-            Console.WriteLine("!!!!!!!!!!!!!!!!", brukerResultatList);
             return brukerResultatList;
         }
-
-
 
         public async Task<string> hentResultat(int id)
         {
