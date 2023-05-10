@@ -628,8 +628,6 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 brukerResultatList.Add(skattekort);
 
             }
-
-            Console.WriteLine("!!!!!!!!!!!!!!!!", brukerResultatList);
             return brukerResultatList;
         }
 
