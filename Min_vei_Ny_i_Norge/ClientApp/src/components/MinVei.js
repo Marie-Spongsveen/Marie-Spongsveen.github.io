@@ -10,9 +10,13 @@ import "./MinVei.css"
 export const MinVei = () => {
     const naviger = useNavigate();
 
+    // iden til spørsmålet
     const [id, setId] = useState(1);
     const [sporsmal, setSporsmal] = useState();
     const [svaralternativ, setSvaralternativ] = useState();
+
+    const [editboks, setEditboks] = useState()
+    const [editSporsmal, setEditSporsmal] = useState()
 
     // Synlighet for elmenter som ikke alltid skal være synlige
     const [forrigeSynlighet, setForrigeSynlighet] = useState(false);
@@ -95,10 +99,6 @@ export const MinVei = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        /*[name]: {
-                    ["spørsmål"]: name,
-                    ["svar"]: value
-                }*/
         setSvarData(prevFormData => {
             return {
                 ...prevFormData,
@@ -106,7 +106,6 @@ export const MinVei = () => {
             }
         })
         console.log(svarData)
-        // setSvarDataJSX
     }
 
     const formaterBesvart = () => {
@@ -128,19 +127,11 @@ export const MinVei = () => {
         setSvarDataJSX(array)
     }
 
-    const [editboks, setEditboks] = useState()
-    const[test, setTest] = useState()
-
     const apneEdit = (sporsmal) => {
-        // må finne id til spørsmålet som skal edites
-        // så hente spørsmålet
-        // så vise spørsmålet med svaralternativer
-        console.log("edit:", sporsmal.i)
-
         axios.get('hentnoe/' + sporsmal.i)
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
-                setTest(response.data)
+                setEditSporsmal(response.data)
             });
 
 
@@ -148,7 +139,7 @@ export const MinVei = () => {
             <div className="editApen">
                 <h3>{sporsmal.i}</h3>
                 {
-                    test?.map(data => {
+                    editSporsmal?.map(data => {
                         return (
                             <div key={data.svarAlternativId} className="radioknapp-rad">
                                 <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
@@ -198,6 +189,8 @@ export const MinVei = () => {
 
     return (
         <div className="minVei">
+            <a href="min-vei/#sporsmal" className="skip-to-content">Skip to content</a>
+
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
 
@@ -206,8 +199,8 @@ export const MinVei = () => {
                 {svarDataJSX}
             </div>
 
-            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */ }
-            <h3>{sporsmal}</h3>
+            { /* Viser ett og ett spørsmål med svaralternativer eller eventuelle input */}
+            <h3 id="sporsmal">{sporsmal}</h3>
 
             {
                 skattForklaring &&
@@ -248,6 +241,7 @@ export const MinVei = () => {
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
+                            handleId="country"
                         />
                         <label className="sjekkboks">
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
@@ -258,11 +252,12 @@ export const MinVei = () => {
 
             {
                 andreLandListe &&
-                    <div>
+                    <div className="landliste-2">
                         <h3>What is your second citizenship?</h3>
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your second citizenship?"
+                            handleId="country2"
                         />
                     </div>
             }

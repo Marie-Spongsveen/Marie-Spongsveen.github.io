@@ -23,21 +23,18 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-.changeLanguage p {
+.changeLanguage {
+    background: none;
+    border: none;
     color: #FFF;
 }
 
-.changeLanguage:hover p {
+.changeLanguage:hover {
     color: lightgrey;
     cursor: pointer;
 }
@@ -48,4 +45,10 @@ html {
 
 .navbar-toggler {
     border: 3px solid rgba(255, 255, 255);
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

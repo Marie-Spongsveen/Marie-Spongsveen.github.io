@@ -10,6 +10,15 @@
     justify-content: space-between;
 }
 
+.skip-to-content {
+    position: absolute;
+    left: -1000px;
+}
+
+.skip-to-content:focus {
+    left: 0;
+}
+
 .besvar-container {
     margin: 5% 0;
     width: 80%;
@@ -43,7 +52,11 @@
 }
 
 .landliste {
-    width: 60%
+    width: 60%;
+}
+
+.landliste-2 {
+    padding-top: 5%;
 }
 
 .radioknapp-rad {

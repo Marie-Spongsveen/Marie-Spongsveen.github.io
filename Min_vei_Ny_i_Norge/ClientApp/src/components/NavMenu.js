@@ -32,14 +32,14 @@ export class NavMenu extends Component {
     return (
       <header>
             <Navbar className="meny navbar-expand-sm navbar-toggleable-sm" container dark>
-                <NavbarBrand tag={Link} to="/"><img src={logoBilde} className="logo"></img></NavbarBrand>
+                <NavbarBrand tag={Link} to="/"><img src={logoBilde} alt="Logo for Norge.no" className="logo"></img></NavbarBrand>
                 <NavbarToggler onClick={this.toggleNavbar}/>
                 <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
                     <ul className="navbar-nav flex-grow">
                         <NavItem>
-                            <NavLink className="changeLanguage" onClick={this.languageAlert}>
+                            <button className="changeLanguage" onClick={this.languageAlert} tabindex="0">
                                 <p>Change language</p>
-                            </NavLink>
+                            </button>
                         </NavItem>
                     </ul>
                 </Collapse>

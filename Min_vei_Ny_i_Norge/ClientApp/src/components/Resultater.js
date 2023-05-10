@@ -16,22 +16,6 @@ import skatteetatenLogo from '../bilder/skatteetatenLogo.svg'
 import politietLogo from '../bilder/politietLogo.jpg'
 import tollLogo from '../bilder/tollLogo.jpg'
 
-//knappen "Back to my guide"
-const TilbakeKnapp = (props) => {
-    return (
-        <div>
-            <button
-                onClick={props.handleClick}
-                style={props.handleStyle}
-                className={props.handleClassName}
-            >
-                {props.tekst}
-            </button>
-        </div>
-    );
-}
-
-
 //bygger selve layouten av resultatene ved hjelp av komponentene nedenfor
 export const Resultater = () => {
     const [resultatTekst, setResultatTekst] = useState([])
@@ -53,9 +37,6 @@ export const Resultater = () => {
                 setResultatTekst(response.data)
             });
     }
-
-    //const parse = require('html-react-parser');
-    const myProp = resultatTekst[0]
     
     return (
         <div className="resultatside">
@@ -154,6 +135,7 @@ export const Resultater = () => {
                 <div className="informasjon-relevant">
                     <Informasjon
                         ikon={udiLogo}
+                        ikonBeskrivelse="Logo of The Norwegian Directorate of Immigration "
                         overskrift="Bringing your family with you"
                         tekst="As an EU or EEA citizen you have the right to bring your family to Norway, but they may have to apply to move themselves."
                         lenke="https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/?resetguide=1"
@@ -161,17 +143,20 @@ export const Resultater = () => {
                     />
                     <Informasjon
                         ikon={norgeskart}
+                        ikonBeskrivelse="A map of Norway"
                         overskrift="Norwegian language course"
                         tekst="Learning Norwegian makes it easier to navigate through the city, understand the culture and getting involved in your local community. Some municipals arrange language courses, you will have to check your municipal."
                     />
                     <Informasjon
                         ikon={statensVegvesenLogo}
+                        ikonBeskrivelse="The logo of the Norwegian Public Roads Administration"
                         overskrift="Exchanging your driver's license"
                         tekst="If you have a driving license issued in another EU/EEA country, it is valid for driving in Norway providing the licence is still valid. If you are living permanently in Norway, you can use your driving license for driving in Norway or exchange it for a Norwegian driving license."
                     />
                     <Informasjon
                         ikon={tollLogo}
                         overskrift="Bringing your vehicle"
+                        ikonBeskrivelse="Logo of the Norwegian customs"
                         tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
                         lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
                         lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs - (toll.no)"
@@ -190,12 +175,14 @@ export const Resultater = () => {
                 <div className="videre-fremover">
                     <Fremover
                         ikon={riksVåpen}
+                        ikonBeskrivelse="A photo of the coat of arms of Norway"
                         overskrift="Voting rights in local elections"
                         tekst="If you have lived in Norway for at least three consecutive years before the date of the election, you gain the right to vote in the local elections. Local elections are considered as municipal and county council elections."
                     />
                     <Fremover
                         ikon={udiLogo}
                         overskrift="Permanent residency"
+                        ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
                         lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
                         lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals"
@@ -203,6 +190,7 @@ export const Resultater = () => {
                     <Fremover
                         ikon={udiLogo}
                         overskrift="Norwegian citizenship"
+                        ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="The requirements for Norwegian citizenship are not the same for everyone. You have to have permanent recidency in Norway. A Norwegian citizenship can give you more rights."
                         lenke="https://www.udi.no/en/want-to-apply/citizenship/citizenship-for-eueea-nationals-who-have-held-a-residence-permit-in-norway/"
                         lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway"
@@ -216,11 +204,7 @@ export const Resultater = () => {
     );
 }
 
-//må endres slik at komponenter med mer enn ett ikon og/eller flere lenker vises riktig
-//lenker må åpnes i nytt vindu/fane
-
 const Rettigheter = (props) => {
-
     return (
         <div className="fremover-boks">
             <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
@@ -290,139 +274,13 @@ const Fremover = (props) => {
     );
 }
 
-
-//statisk del for "My benefits"
-const MineRettigheter = () => {
-    return (
-        
-        <div className="mine-rettigheter-del">
-
-            <div className="resultater-h2 overskrift2">
-                <h2>My Benefits</h2>
-            </div>
-
-            <div className="mine-rettigheter">
-                <Rettigheter
-                    ikon={navLogo}
-                    ikonBeskrivelse="Logo of the Norwegian Labour and Welfare Administration"
-                    overskrift="National insurance scheme"
-                    tekst="You will be a member of the scheme because you are working in Norway. Membership in the National Insurance Scheme is the key to eligibility for rights to services from NAV. The scheme covers among other things health benefits, pension and parental benefits."
-                    lenke="https://www.nav.no/en/home/rules-and-regulations/membership-of-the-national-insurance-scheme"
-                    lenkeBeskrivelse="Membership of the National Insurance Scheme - nav.no"
-                    lenke2="https://www.nav.no/en/home/benefits-and-services/information-about-nav-s-services-and-benefits"
-                    lenke2Beskrivelse="Information about NAV's services and benefits - nav.no"
-                />
-                <Rettigheter
-                    ikon={arbeidstilsynetLogo}
-                    ikonBeskrivelse="Logo of the The Norwegian Labour Inspection Authority"
-                    overskrift="Labor rights"
-                    tekst="When you work in Norway you will have multiple rights for example about working hours, tax or safe working environments."
-                    lenke="https://www.arbeidstilsynet.no/en/knowyourrights/"
-                    lenkeBeskrivelse="Working in Norway: Your rights and obligations (arbeidstilsynet.no)"
-                />
-                <Rettigheter
-                    ikon={navLogo}
-                    ikonBeskrivelse="Logo of the Norwegian Labour and Welfare Administration"
-                    overskrift="Pension rights"
-                    tekst="Norwegian pension is a part of the national insurance scheme. The government will start saving up for you when you are paying tax to Norway."
-                    lenke="https://www.nav.no/en/home/benefits-and-services/pensions-and-pension-application-from-outside-norway"
-                    lenkeBeskrivelse="Pensions and pension applications from outside Norway - nav.no"
-                />
-
-            </div>
-        </div>
-    )
-
-}
-
-//statisk del for "Information we think may be relevant for you"
-const NyttigInformasjon = () => {
-    return (
-
-        <div className="informasjon-relevant-del">
-
-            <div className="resultater-h2 overskrift2">
-                <h2>Information we think may be relevant for you</h2>
-            </div>
-            
-
-            <div className="informasjon-relevant">
-                <Informasjon
-                    ikon={udiLogo}
-                    overskrift="Bringing your family with you"
-                    tekst="As an EU or EEA citizen you have the right to bring your family to Norway, but they may have to apply to move themselves."
-                    lenke="https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/?resetguide=1"
-                    lenkeBeskrivelse="Want to apply: Family immigration with a Norwegian or Nordic citizen - UDI"
-                />
-                <Informasjon
-                    ikon={norgeskart}
-                    overskrift="Norwegian language course"
-                    tekst="Learning Norwegian makes it easier to navigate through the city, understand the culture and getting involved in your local community. Some municipals arrange language courses, you will have to check your municipal."
-                />
-                <Informasjon
-                    ikon={statensVegvesenLogo}
-                    overskrift="Exchanging your driver's license"
-                    tekst="If you have a driving license issued in another EU/EEA country, it is valid for driving in Norway providing the licence is still valid. If you are living permanently in Norway, you can use your driving license for driving in Norway or exchange it for a Norwegian driving license."
-                />
-                <Informasjon
-                    ikon={tollLogo}
-                    overskrift="Bringing your vehicle"
-                    tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
-                    lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
-                    lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs - (toll.no)"
-                    lenke2="https://www.vegvesen.no/en/vehicles/buy-and-sell/import/import-of-vehicles/"
-                    lenke2Beskrivelse="Import of vehicles - Statens vegvesen"
-                />
-            </div>
-        </div>
-    )
-}
-
-//statisk del
-const VidereFremover = () => {
-    return (
-
-        <div className="videre-fremover-del">
-
-            <div className="resultater-h2 overskrift2">
-                <h2>The years ahead</h2>
-            </div>
-            
-
-            <div className="videre-fremover">
-                <Fremover
-                    ikon={riksVåpen}
-                    overskrift="Voting rights in local elections"
-                    tekst="If you have lived in Norway for at least three consecutive years before the date of the election, you gain the right to vote in the local elections. Local elections are considered as municipal and county council elections."
-                />
-                <Fremover
-                    ikon={udiLogo}
-                    overskrift="Permanent residency"
-                    tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
-                    lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
-                    lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals"
-                />
-                <Fremover
-                    ikon={udiLogo}
-                    overskrift="Norwegian citizenship"
-                    tekst="The requirements for Norwegian citizenship are not the same for everyone. You have to have permanent recidency in Norway. A Norwegian citizenship can give you more rights."
-                    lenke="https://www.udi.no/en/want-to-apply/citizenship/citizenship-for-eueea-nationals-who-have-held-a-residence-permit-in-norway/"
-                    lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway"
-                />
-
-            </div>
-        </div>
-    )
-}
-
-//endre tag på hvorfor-boks
 const Plikter = (props) => {
     const [hvorforForklaring, setHvorforForklaring] = useState(false)
 
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <img src={props.ikon} alt="Logo" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt="The logo of Police" className="resultat-boks-ikon" />
 
                 <div>
                     <div className="resultat-boks-overskrift-dott">
@@ -463,192 +321,3 @@ const Plikter = (props) => {
         </div>
     );
 }
-
-//dynamisk komponent
-const MeldeFlytte = () => {
-    return (
-        <Plikter
-            ikon={skatteetatenLogo}
-            overskrift="Report a move to Norway"
-            hvorfor="Why do I get this information?"
-            tekst={
-                <p>
-                    <b>When?</b>
-                    <br/>
-                    You should report a move to Norway at earliest 31 days before your arrival
-                    and at latest 8 days after your arrival.
-                    <br /><br />
-                    <b>How?</b>
-                    <br />
-                    <ol>
-                        <li>
-                            You must <a href="https://www.udi.no/en/want-to-apply/residence-under-the-eueeu-regulations/" target="_blank" rel="noopener noreferrer">
-                            register with the police as an EU/EEA citizen
-                            </a>
-                            . You must do it within your first 3 months in Norway.
-                        </li>
-                        <li>
-                            You must book an appointment with the Tax Administration for an ID check. This applies even if you have lived in Norway before.
-                        </li>
-                        <li>
-                            You must bring the following:
-                        </li>
-                        <ul>
-                            <li>The completed form <a href="https://www.skatteetaten.no/globalassets/skjema/alltid/rf1401_2020e_kodet.pdf" target="_blank" rel="noopener noreferrer">RF-1401: Report a move to Norway from abroad</a></li>
-                            <li>Passport or national ID card</li>
-                            <li>Documentation showing that: you are going to live in Norway for at least 6 months</li>
-                        </ul>
-                    </ol>
-                </p>}
-        />
-    )}
-
-
-//må få inn egen className på "hvorfor"-props
-const RegPoliti = (props) => {
-    return (
-        <div className="resultat-boks">
-            <div className="resultat-boks-overskrift">
-                <span className="resultat-boks-overskrift-tittel">
-                    <h3>{props.overskrift}</h3>
-                </span>
-                <img src={props.ikon} alt="Logo of the Norwegian Police" className="resultat-boks-ikon" />
-            </div>
-
-            <div className="resultat-boks-hvorfor">
-                <p>{props.hvorfor}</p>
-            </div>
-
-            <p className="resultat-boks-tekst">
-                {props.tekst}
-            </p>
-        </div>
-    );
-}
-
-//dynamisk komponent
-const RegHosPolitiet = () => {
-    return (
-            <Plikter
-                ikon={politietLogo}
-                overskrift="Register as an EU/EEA citizen with the police"
-                hvorfor="Why do I get this information?"
-                tekst={
-                    <p>
-                        <b>When?</b>
-                        <br/>
-                        You have to register with the police within 3 months after your arrival to Norway.
-                        <br/>
-                        You are allowed to start working before the registration is completed.
-                        <br /><br />
-                        <b>How?</b>
-                        <br />
-                        You have to fill out an <a href="https://forms.udi.no/en/formNext/f5cfe46d-6851-43b4-9b88-0d892189ecd1/kiohmm85_4v5dcbbt/e8dc8249287d" target="_blank" rel="noopener noreferrer">application form</a>.
-                        <br/>
-                        If you meet the requirements for registering, the police will issue you a <a href="https://www.udi.no/en/word-definitions/registration-certificate-for-eueea-nationals/" target="_blank" rel="noopener noreferrer">registration certificate</a>.
-                        <br/>
-                        Some municipalities have long <a href="https://www.politiet.no/en/tjenester/residence-permits-and-protection/waiting-times/to-get-an-appointment-to-register-as-an-EU-EEA-citizen/" target="_blank" rel="noopener noreferrer">waiting time</a>.
-                </p>}
-            />
-    )}
-
-
-//må få inn egen className på "hvorfor"-props
-const IdNummer = (props) => {
-    return (
-        <div className="resultat-boks">
-            <div className="resultat-boks-overskrift">
-                <span className="resultat-boks-overskrift-tittel">
-                    <h3>{props.overskrift}</h3>
-                </span>
-                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
-            </div>
-
-            <div className="resultat-boks-hvorfor">
-                <p>{props.hvorfor}</p>
-            </div>
-
-            <p className="resultat-boks-tekst">
-                {props.tekst}
-            </p>
-        </div>
-    );
-}
-
-//dynamisk komponent
-const IdentitetsNummer = () => {
-    return (
-        <Plikter
-            ikon={skatteetatenLogo}
-            overskrift="National identity number"
-            hvorfor="Why do I get this information?"
-            tekst={
-                <p>
-                    <b>How?</b>
-                    <br/>
-                    If you have reported a move to Norway and meet the criteria, you will be assigned a national identity number.
-                    <br/><br/>
-                    You will receive your identification number in the mail.
-                </p>
-                }
-        />
-    )
-}
-
-/*
-//Vet ikke im dette er rett måte å få bilder til å bli brukt flere ganger
-const navLogo = () => {
-    return (
-        <div>
-            < img src="navLogo.png"/>
-        </div>
-    )
-}
-*/
-
-const Skatt = (props) => {
-    return (
-        <div className="resultat-boks">
-            <div className="resultat-boks-overskrift">
-                <span className="resultat-boks-overskrift-tittel">
-                    <h3>{props.overskrift}</h3>
-                </span>
-                <img src={props.ikon} alt="Logo of the Norwegian Tax administration" className="resultat-boks-ikon" />
-            </div>
-
-            <div className="resultat-boks-hvorfor">
-                <p>{props.hvorfor}</p>
-            </div>
-
-            <p className="resultat-boks-tekst">
-                {props.tekst}
-            </p>
-        </div>
-    );
-}
-
-//dynamisk komponent
-const Skattekort = () => {
-    return (
-            <Plikter
-                ikon={skatteetatenLogo}
-                overskrift="Tax deduction card"
-                hvorfor="Why do I get this information?"
-                tekst={
-                    <p>
-                        <b>When?</b>
-                        <br/>
-                        You should have a tax deduction card before your receive your first salary.
-                        The tax deduction card is normally ready within five working days after you have applied.
-                        <br/><br/>
-                        <b>How?</b>
-                        <br/>
-                        <a href="https://www.skatteetaten.no/en/forms/tax-deduction-card-for-foreign-citizens/" target="_blank" rel="noopener noreferrer">Application for tax deduction card for foreign employee - The Norwegian Tax Administration (skatteetaten.no)</a>
-                        <br/><br/>
-                        You must choose how to pay tax, there are two different ways; simplified tax scheme and general tax rules. Most new foreign workers in Norway automatically become part of a simplified tax scheme <a href="https://www.skatteetaten.no/en/person/foreign/are-you-intending-to-work-in-norway/tax-deduction-cards/paye/" target="_blank" rel="noopener noreferrer">PAYE (Pay As You Earn)</a>. Under this scheme, you are taxed at a fixed percentage that your employer deducts from your salary.
-                        <br /><br />
-                        Your employer automatically retrieves your tax deduction card electronically from the Norwegian Tax Administration.
-                    </p>}
-            />
-    )}
-

@@ -37,10 +37,9 @@
 .til-topp {
     display: flex;
     align-items: center;
-}
-
-.til-topp:hover {
-    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
 }
 
 .blue-box {
