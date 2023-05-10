@@ -26,7 +26,7 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-to-top">
-                    <button onClick={topFunction} className="til-topp" tabindex="0">
+                    <button onClick={topFunction} className="til-topp" aria-hidden="true">
                         Top of page
                         <span class="material-symbols-outlined">
                             arrow_upward
