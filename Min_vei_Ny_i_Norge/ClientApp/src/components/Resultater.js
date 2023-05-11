@@ -104,7 +104,7 @@ export const Resultater = () => {
                         overskrift="National insurance scheme"
                         tekst="You will be a member of the scheme because you are working in Norway. Membership in the National Insurance Scheme is the key to eligibility for rights to services from NAV. The scheme covers among other things health benefits, pension and parental benefits."
                         lenke="https://www.nav.no/en/home/rules-and-regulations/membership-of-the-national-insurance-scheme"
-                        lenkeBeskrivelse="Membership of the National Insurance Scheme - nav.no"
+                        lenkeBeskrivelse="Membership of the National Insurance Scheme (nav.no)"
                         lenke2="https://www.nav.no/en/home/benefits-and-services/information-about-nav-s-services-and-benefits"
                         lenke2Beskrivelse="Information about NAV's services and benefits (nav.no)"
                     />
