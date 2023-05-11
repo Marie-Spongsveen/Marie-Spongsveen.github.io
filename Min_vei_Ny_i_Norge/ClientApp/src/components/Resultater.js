@@ -161,7 +161,7 @@ export const Resultater = () => {
                         lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
                         lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs (toll.no)"
                         lenke2="https://www.vegvesen.no/en/vehicles/buy-and-sell/import/import-of-vehicles/"
-                        lenke2Beskrivelse="Import of vehicles (statensvegvesen.no)"
+                        lenke2Beskrivelse="Import of vehicles (vegvesen.no)"
                     />
                 </div>
             </div>
