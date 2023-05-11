@@ -106,7 +106,7 @@ export const Resultater = () => {
                         lenke="https://www.nav.no/en/home/rules-and-regulations/membership-of-the-national-insurance-scheme"
                         lenkeBeskrivelse="Membership of the National Insurance Scheme - nav.no"
                         lenke2="https://www.nav.no/en/home/benefits-and-services/information-about-nav-s-services-and-benefits"
-                        lenke2Beskrivelse="Information about NAV's services and benefits - nav.no"
+                        lenke2Beskrivelse="Information about NAV's services and benefits (nav.no)"
                     />
                     <Rettigheter
                         ikon={arbeidstilsynetLogo}
@@ -122,7 +122,7 @@ export const Resultater = () => {
                         overskrift="Pension rights"
                         tekst="Norwegian pension is a part of the national insurance scheme. The government will start saving up for you when you are paying tax to Norway."
                         lenke="https://www.nav.no/en/home/benefits-and-services/pensions-and-pension-application-from-outside-norway"
-                        lenkeBeskrivelse="Pensions and pension applications from outside Norway - nav.no"
+                        lenkeBeskrivelse="Pensions and pension applications from outside Norway (nav.no)"
                     />
                 </div>
             </div>
@@ -139,7 +139,7 @@ export const Resultater = () => {
                         overskrift="Bringing your family with you"
                         tekst="As an EU or EEA citizen you have the right to bring your family to Norway, but they may have to apply to move themselves."
                         lenke="https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/?resetguide=1"
-                        lenkeBeskrivelse="Want to apply: Family immigration with a Norwegian or Nordic citizen - UDI"
+                        lenkeBeskrivelse="Want to apply: Family immigration with a Norwegian or Nordic citizen (udi.no)"
                     />
                     <Informasjon
                         ikon={norgeskart}
@@ -159,9 +159,9 @@ export const Resultater = () => {
                         ikonBeskrivelse="Logo of the Norwegian customs"
                         tekst="If your vehicle meets Norwegian and European technical requirements, you can bring your car. Register the vehicle with customs when crossing the border. Tolls and taxes apply."
                         lenke="https://www.toll.no/en/goods/motor-vehicles/importing-cars-and-other-vehicles/"
-                        lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs - (toll.no)"
+                        lenkeBeskrivelse="Importing cars and other vehicles - Norwegian Customs (toll.no)"
                         lenke2="https://www.vegvesen.no/en/vehicles/buy-and-sell/import/import-of-vehicles/"
-                        lenke2Beskrivelse="Import of vehicles - Statens vegvesen"
+                        lenke2Beskrivelse="Import of vehicles (statensvegvesen.no)"
                     />
                 </div>
             </div>
@@ -185,7 +185,7 @@ export const Resultater = () => {
                         ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
                         lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
-                        lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals"
+                        lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals (udi.no)"
                     />
                     <Fremover
                         ikon={udiLogo}
@@ -193,7 +193,7 @@ export const Resultater = () => {
                         ikonBeskrivelse = "Logo of The Norwegian Directorate of Immigration"
                         tekst="The requirements for Norwegian citizenship are not the same for everyone. You have to have permanent recidency in Norway. A Norwegian citizenship can give you more rights."
                         lenke="https://www.udi.no/en/want-to-apply/citizenship/citizenship-for-eueea-nationals-who-have-held-a-residence-permit-in-norway/"
-                        lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway"
+                        lenkeBeskrivelse="Want to apply: Citizenship for EU/EEA nationals who have held a residence permit in Norway (udi.no)"
                     />
 
                 </div>
@@ -218,6 +218,7 @@ const Rettigheter = (props) => {
                     <a href={props.lenke} target="_blank" rel="noopener noreferrer">
                         {props.lenkeBeskrivelse}
                     </a>
+                    <br />
                     <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
                         {props.lenke2Beskrivelse}
                     </a>
@@ -241,6 +242,7 @@ const Informasjon = (props) => {
                     <a href={props.lenke} target="_blank" rel="noopener noreferrer">
                         {props.lenkeBeskrivelse}
                     </a>
+                    <br />
                     <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
                         {props.lenke2Beskrivelse}
                     </a>
@@ -265,6 +267,7 @@ const Fremover = (props) => {
                     <a href={props.lenke} target="_blank" rel="noopener noreferrer">
                         {props.lenkeBeskrivelse}
                     </a>
+                    <br />
                     <a href={props.lenke2} target="_blank" rel="noopener noreferrer">
                         {props.lenke2Beskrivelse}
                     </a>
