@@ -60,6 +60,7 @@ export const Resultater = () => {
                 <div className="plikter">
                     <Plikter
                         ikon={skatteetatenLogo}
+                        ikonBeskrivelse="Logo of the norwegian tax administration authority"
                         overskrift="Report a move to Norway"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months"
@@ -68,6 +69,7 @@ export const Resultater = () => {
 
                     <Plikter
                         ikon={politietLogo}
+                        ikonBeskrivelse="Logo of the norwegian police"
                         overskrift="Register as an EU/EEA citizen"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months and are an EU or EEA citizen"
@@ -76,6 +78,7 @@ export const Resultater = () => {
 
                     <Plikter
                         ikon={skatteetatenLogo}
+                        ikonBeskrivelse="Logo of the norwegian tax administration authority"
                         overskrift="National identity number"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are planning to stay in Norway for more than 6 months"
@@ -84,6 +87,7 @@ export const Resultater = () => {
 
                     <Plikter
                         ikon={skatteetatenLogo}
+                        ikonBeskrivelse="Logo of the norwegian tax administration authority"
                         overskrift="Tax deduction card"
                         hvorfor="Why do I get this information?"
                         hvorforForklaring="Because you answered that you are going to work in Norway"
@@ -283,7 +287,7 @@ const Plikter = (props) => {
     return (
         <div className="resultat-boks">
             <div className="resultat-boks-overskrift">
-                <img src={props.ikon} alt="The logo of Police" className="resultat-boks-ikon" />
+                <img src={props.ikon} alt={props.ikonBeskrivelse} className="resultat-boks-ikon" />
 
                 <div>
                     <div className="resultat-boks-overskrift-dott">
