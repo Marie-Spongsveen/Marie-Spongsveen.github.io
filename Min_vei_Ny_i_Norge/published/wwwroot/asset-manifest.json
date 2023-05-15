@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ce0742b2.css",
+    "main.js": "/static/js/main.97e58014.js",
+    "static/js/787.ab2b7346.chunk.js": "/static/js/787.ab2b7346.chunk.js",
+    "static/media/riksVåpen.png": "/static/media/riksVåpen.d1aec15dc2cddac46a9b.png",
+    "service-worker.js": "/service-worker.js",
+    "static/media/navLogo.png": "/static/media/navLogo.19c7ee0e4605eb80f91b.png",
+    "static/media/statensVegvesenLogo.webp": "/static/media/statensVegvesenLogo.39580146221f6184c6a4.webp",
+    "static/media/arbeidstilsynetLogo.png": "/static/media/arbeidstilsynetLogo.f005a2709dc4a3c6898e.png",
+    "static/media/norgeskart.png": "/static/media/norgeskart.8ea1164125a4315c11c0.png",
+    "static/media/politietLogo.jpg": "/static/media/politietLogo.fc4d7289dbec231218aa.jpg",
+    "static/media/skatteetatenLogo.svg": "/static/media/skatteetatenLogo.35b85e4b8fedebffe71b9be2183b9594.svg",
+    "static/media/tollLogo.jpg": "/static/media/tollLogo.213f7f0ffe7aca6ba330.jpg",
+    "static/media/logo.png": "/static/media/logo.82141f162fde67a0f802.png",
+    "static/media/udiLogo.svg": "/static/media/udiLogo.9bfec514b93c00b3625ff07be121a077.svg",
+    "index.html": "/index.html",
+    "main.ce0742b2.css.map": "/static/css/main.ce0742b2.css.map",
+    "main.97e58014.js.map": "/static/js/main.97e58014.js.map",
+    "787.ab2b7346.chunk.js.map": "/static/js/787.ab2b7346.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce0742b2.css",
+    "static/js/main.97e58014.js"
+  ]
+}

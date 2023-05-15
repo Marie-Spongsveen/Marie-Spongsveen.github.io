@@ -12,6 +12,8 @@
     <SpaProxyLaunchCommand>npm install</SpaProxyLaunchCommand> <!-- Prøver dette :) -->
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>cc68f377-08b9-4836-b9ce-998d2bd6a1b3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +30,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.32" />
+    <PackageReference Include="axios.js" Version="0.18.0" />
+    <PackageReference Include="axios" Version="0.16.2" />
+    <PackageReference Include="React.Core" Version="5.2.12" />
+    <PackageReference Include="React.AspNet" Version="5.2.12" />
   </ItemGroup>
 
   <ItemGroup>

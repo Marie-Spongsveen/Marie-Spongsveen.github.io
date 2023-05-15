@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  min_vei_ny_i_norge:
+    image: ${DOCKER_REGISTRY-}minveinyinorge
+    build:
+      context: .
+      dockerfile: Min_vei_Ny_i_Norge/Dockerfile

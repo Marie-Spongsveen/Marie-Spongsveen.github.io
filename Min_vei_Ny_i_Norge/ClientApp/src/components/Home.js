@@ -19,7 +19,7 @@ export const Home =() => {
                         <h1>My Digital Guide</h1>
                     </div>
                     <div className='infotekst tekstboks'>
-                        <p> This guide is a simulation of your duties, right and benefits. <br /> In this guide you will be asked to answer a few questions based on your situation. All the questions are optional, but we recommend answering the ones you can.<br /><br />
+                        <p> This guide is a simulation of your duties, right and benefits. <br /> In this guide you will be asked to answer a few questions based on your situation. <br /> All the questions are optional, but we recommend answering the ones you can.<br /><br />
                             We do not permanently store any of the information you provide. This not an application, if you wish to apply you need to contact the responsible agency.</p>
                     </div>
                     <div className='headline'>
