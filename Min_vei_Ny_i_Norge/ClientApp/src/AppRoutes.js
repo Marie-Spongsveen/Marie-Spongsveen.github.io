@@ -10,7 +10,6 @@ const AppRoutes = [
         index: true,
         element: <Home />
     },
-    
     {
         path: '/min-vei',
         element: <MinVei />
