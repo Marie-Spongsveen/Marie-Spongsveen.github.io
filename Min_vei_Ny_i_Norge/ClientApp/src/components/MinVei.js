@@ -36,7 +36,7 @@ export const MinVei = () => {
         hentSporsmal(id)
 
         // Formaterer og viser de besvarte spørsmålene
-        formaterBesvart()
+        //formaterBesvart()
 
         // Sender brukerens svar til backend
         // sendSvar()
@@ -71,23 +71,12 @@ export const MinVei = () => {
         }
     }, [id])
 
-    const[idSporsmal, setIdSporsmal] = useState([])
-
     const hentSporsmal = (id) => {
         // Henter spørsmålet med rikitg ID fra hook
         axios.get('hent/' + id)
             .then((response: AxiosResponse<any>) => {
-                setSporsmal(response.data)
-
-            // denne kan kanskje fjernes
-            setIdSporsmal(prev => {
-                return {
-                        ...prev,
-                        [id]: response.data
-                    }
-                })
+                setSporsmal(response.data)    
             });
-       console.log(idSporsmal)
 
         // Henter svaralternativene til samme spørsmålsID
         axios.get('hentSvaralternativ/' + id)
@@ -98,6 +87,7 @@ export const MinVei = () => {
     }
 
     const handleChange = (event) => {
+        console.log(event)
         const { name, value } = event.target
         setSvarData(prevFormData => {
             return {
@@ -111,6 +101,7 @@ export const MinVei = () => {
     const formaterBesvart = () => {
         // hele metoden kan legges inn i handle change
         const array = []
+        // det må mappes over
         for (let i in svarData) {
             // formaterer svardaten til JSX og legger det til i array
             let boks =
@@ -126,31 +117,67 @@ export const MinVei = () => {
         }
         setSvarDataJSX(array)
     }
+    /*
+    setSvarDataJSX(
+        <div>
+
+        </div>
+    )
+    */
 
     const apneEdit = (sporsmal) => {
-        axios.get('hentnoe/' + sporsmal.i)
+        // siden den er statisk, trenger ikke denne
+        /*
+        axios.get('hentnoe/' + sporsmal.data)
             .then((response: AxiosResponse<any>) => {
                 console.log(response.data)
                 setEditSporsmal(response.data)
             });
 
-
         setEditboks(
             <div className="editApen">
-                <h3>{sporsmal.i}</h3>
+                <h3>{sporsmal.data}</h3>
                 {
                     editSporsmal?.map(data => {
                         return (
                             <div key={data.svarAlternativId} className="radioknapp-rad">
-                                <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals.sporsmalet}></input>
+                                <input id={data.svarAlternativId} type="radio" value={data.svarAlternativTekst} onChange={handleChange} name={data.sporsmals}></input>
                                 <label htmlFor={data.svarAlternativId}>{data.svarAlternativTekst}</label>
                             </div>
                         )
                     })
                 }
+
                 <Knapp
-                    navn="close"
+                    navn="save"
                     handleClick={() => setEditboks()} 
+                    handleClassName="tilbakeKnapp"
+                />
+            </div>
+        )
+        */
+
+        setEditboks(
+            <div className="editApen">
+                <h3>How long do you plan to stay in norway?</h3>
+                <div>
+                    <div className="radioknapp-rad">
+                        <input id="less" type="radio" value="Less than 3 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <label htmlFor="less">Less than 3 months</label>
+                    </div>
+                    <div className="radioknapp-rad">
+                        <input id="between" type="radio" value="Between 3 months and 6 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <label htmlFor="between">Between 3 months and 6 months</label>
+                    </div>
+                    <div className="radioknapp-rad">
+                        <input id="more" type="radio" value="More than 6 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <label htmlFor="more">More than 6 months</label>
+                    </div>
+                </div>
+
+                <Knapp
+                    navn="save"
+                    handleClick={() => setEditboks()}
                     handleClassName="tilbakeKnapp"
                 />
             </div>
@@ -176,10 +203,8 @@ export const MinVei = () => {
         else if (id == 1) naviger("/velg-livssituasjon")
     }
 
-    // DENNE ER IKKE TESTET
     const gaTilResultat = () => {
         /* Sender brukerens svar til bakcken og navigerer brukeren til resultatsiden */
-        // event.preventDefault() hva gjør denne? brude jeg ha den?
         axios.post('hentSvar/', svarData)
             .then((response: AxiosResponse<any>) => {
                 console.log("sentSvar response: ", response)
@@ -193,6 +218,38 @@ export const MinVei = () => {
 
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
+            
+            {(() => {
+                const besvart = [];
+
+                for (let data in svarData) {
+                    if (data == "How long do you plan to stay in norway?") {
+                        besvart.push(
+                            <div>
+                                <div className="besvar-boks">
+                                    <p>{data} {svarData[data]}</p>
+                                    <button onClick={() => apneEdit({ data })} className="edit">edit</button>
+                                </div>
+                                {editboks}
+                            </div>
+                        );
+                    }
+                    else {
+                        besvart.push(
+                            <div>
+                                <div className="besvar-boks">
+                                    <p>{data} {svarData[data]}</p>
+                                    <button onClick={() => apneEdit({ data })} className="edit">edit</button>
+                                </div>
+                            </div>
+                        );
+                    }
+                }
+                
+
+                return besvart;
+            })()}
+            
 
             { /* Brukerens svar */}
             <div className="besvar-container">
@@ -242,7 +299,9 @@ export const MinVei = () => {
                             handleChange={handleChange}
                             handleName="What is your citizenship?"
                             handleId="country"
-                            handleAriaLabelby="sporsmal"
+                            handleAriaLabelby="What is your citizenship?"
+                            label="Choose your citizenship:"
+
                         />
                         <label className="sjekkboks">
                             <input type="checkbox" onClick={ () => setAndreLandListe(prev => !prev) }></input>
@@ -253,13 +312,14 @@ export const MinVei = () => {
 
             {
                 andreLandListe &&
-                    <div className="landliste-2">
+                    <div className="landliste-2 ">
                         <h3 id="secondCitizenship">What is your second citizenship?</h3>
                         <LandNedtrekksliste
                             handleChange={handleChange}
                             handleName="What is your second citizenship?"
                             handleId="country2"
                             handleAriaLabelby="secondCitizenship"
+                            label="Choose your second citizenship:"
                         />
                     </div>
             }

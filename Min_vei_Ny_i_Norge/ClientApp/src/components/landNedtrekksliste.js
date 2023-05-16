@@ -5,7 +5,7 @@ import "./LandNedtrekksliste.css"
 export const LandNedtrekksliste = (props) => {
     return (
         <div>
-            <label for={props.handleId}>Choose your citizenship:</label>
+            <label for={props.handleId}>{props.label}</label>
             <select aria-labelledby={props.handleAriaLabelby} className="form-control liste" id={props.handleId} name={props.handleName} onChange={props.handleChange}>
                 <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
                 <option value="Afghanistan">Afghanistan</option>
