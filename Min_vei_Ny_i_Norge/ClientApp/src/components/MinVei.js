@@ -159,18 +159,18 @@ export const MinVei = () => {
 
         setEditboks(
             <div className="editApen">
-                <h3>How long do you plan to stay in norway?</h3>
+                <h3>How long do you plan to stay in Norway??</h3>
                 <div>
                     <div className="radioknapp-rad">
-                        <input id="less" type="radio" value="Less than 3 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <input id="less" type="radio" value="Less than 3 months" onChange={handleChange} name="How long do you plan to stay in Norway?"></input>
                         <label htmlFor="less">Less than 3 months</label>
                     </div>
                     <div className="radioknapp-rad">
-                        <input id="between" type="radio" value="Between 3 months and 6 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <input id="between" type="radio" value="Between 3 months and 6 months" onChange={handleChange} name="How long do you plan to stay in Norway?"></input>
                         <label htmlFor="between">Between 3 months and 6 months</label>
                     </div>
                     <div className="radioknapp-rad">
-                        <input id="more" type="radio" value="More than 6 months" onChange={handleChange} name="How long do you plan to stay in norway?"></input>
+                        <input id="more" type="radio" value="More than 6 months" onChange={handleChange} name="How long do you plan to stay in Norway?"></input>
                         <label htmlFor="more">More than 6 months</label>
                     </div>
                 </div>
@@ -223,7 +223,7 @@ export const MinVei = () => {
                 const besvart = [];
 
                 for (let data in svarData) {
-                    if (data == "How long do you plan to stay in norway?") {
+                    if (data == "How long do you plan to stay in Norway?") {
                         besvart.push(
                             <div>
                                 <div className="besvar-boks">
