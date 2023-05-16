@@ -162,7 +162,7 @@ namespace Min_vei_Ny_i_Norge.Controllers
 
             if (dictionary.Count != 0)
             {
-                var sporsmalList = await HentAlleSporsmal();
+                /*var sporsmalList = await HentAlleSporsmal();
 
                 string sporsmal1 = sporsmalList[0];
                 string sporsmal2 = sporsmalList[1];
@@ -170,7 +170,15 @@ namespace Min_vei_Ny_i_Norge.Controllers
                 string sporsmal4 = sporsmalList[3];
                 string sporsmal5 = sporsmalList[4];
                 string sporsmal6 = sporsmalList[5];
-                string sporsmal7 = sporsmalList[6];
+                string sporsmal7 = sporsmalList[6];*/
+
+                string sporsmal1 = "What is your citizenship?";
+                string sporsmal2 = "What is your second citizenship?";
+                string sporsmal3 = "What is the main purpose of your stay in Norway?";
+                string sporsmal4 = "Do you have a job offer in Norway or do you plan to come as a job seeker?";
+                string sporsmal6 = "How long do you plan to stay in Norway?";
+                string sporsmal7 = "Have you applied for a tax deduction card in Norway?";
+
 
                 if (dictionary.ContainsKey(sporsmal1))
                 {
