@@ -52,7 +52,7 @@ export const VelgLivssituasjon = () => {
                     />
                     <Livshendelse
                         ikon={jobbIkon}
-                        overskrift="Loose and Find a job"
+                        overskrift="Lose and Find a job"
                         tekst="You have lost your job or are looking for new work."
                     />
                     <Livshendelse
@@ -63,7 +63,7 @@ export const VelgLivssituasjon = () => {
                     <Livshendelse
                         ikon={syktBarnIkon}
                         overskrift="Seriously ill child"
-                        tekst="You have a chil with needs, chronically ill child or child in hospital."
+                        tekst="You have a child with needs, chronically ill child or child in hospital."
                     />
                     <Livshendelse
                         ikon={frivilligIkon}

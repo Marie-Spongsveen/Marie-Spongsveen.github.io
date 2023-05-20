@@ -186,7 +186,7 @@ export const Resultater = () => {
                         ikon={udiLogo}
                         overskrift="Permanent residency"
                         ikonBeskrivelse = "The Norwegian Directorate of Immigration"
-                        tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligble."
+                        tekst="If you have stayed in Norway as an EU/EEA national for at least five years, you can apply for permanent right of residence. This entitles you to stay and work in Norway indefinitely. Your family members may also be eligible."
                         lenke="https://www.udi.no/en/want-to-apply/permanent-residence/permanent-right-of-residence-for-eueea-nationals/"
                         lenkeBeskrivelse="Want to apply: Permanent right of residence for EU/EEA nationals (udi.no)"
                     />
