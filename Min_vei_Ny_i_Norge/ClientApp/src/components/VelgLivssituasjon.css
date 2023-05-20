@@ -14,7 +14,6 @@
     margin: 5% auto;
 }
 
-
 .livssituasjon-boks {
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
     padding: 5% 4%;
@@ -38,6 +37,7 @@
 .livssituasjon-boks-overskrift {
     display: flex;
     align-items: center;
+    text-align: left;
 }
 
 .livssituasjon-boks-overskrift h3 {
