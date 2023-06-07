@@ -36,7 +36,7 @@ export const MinVei = () => {
         hentSporsmal(id)
 
         // Formaterer og viser de besvarte spørsmålene
-        //formaterBesvart()
+        formaterBesvart()
 
         // Sender brukerens svar til backend
         // sendSvar()
@@ -219,7 +219,7 @@ export const MinVei = () => {
             <h1>My Digital Guide</h1>
             <h2>New in Norway</h2>
             
-            {(() => {
+            {/*(() => {
                 const besvart = [];
 
                 for (let data in svarData) {
@@ -245,10 +245,8 @@ export const MinVei = () => {
                         );
                     }
                 }
-                
-
                 return besvart;
-            })()}
+            })()*/}
             
 
             { /* Brukerens svar */}
